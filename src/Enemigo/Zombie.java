@@ -5,6 +5,11 @@ public class Zombie extends Enemigo {
 	protected int daño;
 	protected int velocidad;
 	
+	//Constructor
+	public Zombie () {
+		
+	}
+	
 	
 
 }
