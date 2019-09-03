@@ -7,15 +7,16 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class GUI {//Interfaz grafica del juego
-	
-	//Frame y panel
-	private JFrame frameInicio, frameJuego;
-	private JLayeredPane panel, panel2;
+public class GUI {// Interfaz grafica del juego
 
-	// Atributos de la  GUI
+	// Frame y panel
+	private JFrame frameInicio, frameJuego;
+	private JLayeredPane panel, panelPrincipal, panelJuego, panelTorres, panelJugador;
+
+	// Atributos de la GUI
 	private JLabel fondo;
 	private JLabel fondo2;
+	private JLabel fondo3;
 	private JButton startButton;
 
 	/**
@@ -78,24 +79,6 @@ public class GUI {//Interfaz grafica del juego
 			public void actionPerformed(ActionEvent e) {
 				/** Elimina la ventana anterior */
 				frameInicio.dispose();
-
-				/**
-				 * Se crea la ventana principal, donde se desarrolla el juego
-				 */
-				frameJuego = new JFrame();
-				frameJuego.setBounds(0, 0, 800, 600);
-				frameJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frameJuego.getContentPane().setLayout(null);
-				frameJuego.setLocationRelativeTo(null);
-				frameJuego.setResizable(false);
-				frameJuego.setTitle("Proyecto de TDP 2019");
-				frameJuego.setVisible(true);
-				panel2 = new JLayeredPane();
-				frameJuego.setContentPane(panel2);
-				fondo2 = new JLabel(new ImageIcon(this.getClass().getResource("/Imagenes/Mapa/MinecraftFondo1.jpg")));
-				fondo2.setBounds(0, 0, 800, 570);
-				frameJuego.add(fondo2, -1);
-
 				iniciarJuego();
 			}
 
@@ -103,9 +86,59 @@ public class GUI {//Interfaz grafica del juego
 	}// Fin inicializar
 
 	/*
-	 * Inicializa el frame principal, 
+	 * Inicializa el frame principal,
 	 */
 	public void iniciarJuego() {
+		/**
+		 * Se crea la ventana principal, donde se desarrolla el juego
+		 */
+		// *********Se crea el frame*********
+		frameJuego = new JFrame();// Crea la ventana donde se desarrolla el juego
+		frameJuego.setBounds(0, 0, 800, 600);
+		frameJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frameJuego.setLocationRelativeTo(null);
+		frameJuego.setResizable(false);
+		frameJuego.setTitle("Proyecto de TDP 2019");
+		frameJuego.setVisible(true);
+
+		// *********Se crean los paneles*********
+		panelPrincipal = new JLayeredPane();// Panel juego principal
+		panelPrincipal.setBounds(0, 0, 800, 600);
+
+		panelTorres = new JLayeredPane();// Panel donde se compran las torres
+		panelTorres.setBounds(550, 0, 250, 450);
+		panelTorres.setBackground(Color.green);
+
+		panelJugador = new JLayeredPane();// Panel del jugador con la vida etc
+		panelJugador.setBounds(0, 450, 800, 150);
+		panelJugador.setBackground(new java.awt.Color(204, 0, 0));
+
+		panelJuego = new JLayeredPane();// Panel donde se ejecuta el juego (MAPA)
+		panelJuego.setBounds(0, 0, 550, 450);
+		panelJuego.setForeground(Color.red);
+
+		// ************Se crean los JLabel con sus imagenes************
+		fondo = new JLabel(new ImageIcon(this.getClass().getResource("/Imagenes/Mapa/MinecraftFondo1.jpg")));
+		fondo.setBounds(0, 0, 250, 450);
+
+		fondo2 = new JLabel(new ImageIcon(this.getClass().getResource("/Imagenes/Mapa/MinecraftFondo2.jpg")));
+		fondo2.setBounds(0, 0, 800, 150);
+		fondo2.setBackground(new java.awt.Color(204, 0, 0));
+
+		fondo3 = new JLabel(new ImageIcon(this.getClass().getResource("/Imagenes/Mapa/materia-oscura.jpg")));
+		fondo3.setBounds(0, 0, 800, 570);
+		
+		//Se agregan los JLabel a sus respectivos paneles
+		panelTorres.add(fondo, -1);
+		panelJugador.add(fondo2, -1);
+		panelJuego.add(fondo3, -1);
+
+		// Se setea el panel principal con el contenedor del frame y se agregan los
+		// demas paneles al panel principal
+		frameJuego.setContentPane(panelPrincipal);//
+		panelPrincipal.add(panelTorres);
+		panelPrincipal.add(panelJugador);
+		panelPrincipal.add(panelJuego);
 
 	}
 }
