@@ -1,19 +1,24 @@
 package Personaje;
 
+import java.awt.Point;
+
 import Entidad.Entidad;
 
-public class Personaje extends Entidad {
+/**
+ * Clase abstracta Personaje.
+ * @author Aldana Case(104870),Biernat Diego (105974) , Emanuel Somoza (112100).
+ *
+ */
+public abstract class Personaje extends Entidad {
 	
-	protected int fuerzaImpacto; //cuanta vida consume al atacar
+	//Atributos especificos de un Personaje
 	protected int alcance; //cuantos cuadros de alcance tiene
 	protected int precioPersonaje;
 	
-	public Personaje(int i, int a, int precio) {
-		i = fuerzaImpacto;
-		a = alcance;
-		precio = precioPersonaje;
+	//Constructor
+	protected Personaje(Point p, int ancho, int alto) {
+		super(p, ancho, alto);
 	}
-	
 	
 
 }

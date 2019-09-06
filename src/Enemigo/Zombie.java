@@ -1,14 +1,13 @@
 package Enemigo;
 
+import java.awt.Point;
+
 public class Zombie extends Enemigo {
-	protected int vida;
-	protected int daño;
-	protected int velocidad;
-	
-	//Constructor
-	public Zombie () {
-		
+
+	protected Zombie(Point p, int ancho, int alto) {
+		super(p, ancho, alto);
 	}
+	
 	
 	
 
