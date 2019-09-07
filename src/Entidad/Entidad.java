@@ -2,6 +2,8 @@ package Entidad;
 
 import java.awt.Point;
 
+import javax.swing.ImageIcon;
+
 /**
  * Clase abstracta Entidad.
  * @author Aldana Case(104870),Biernat Diego (105974) , Emanuel Somoza (112100).
@@ -24,5 +26,11 @@ public abstract class Entidad {
 		this.ancho = ancho;
 		this.alto = alto;
 	}
+	
+	public Point obtenerPosicion(){
+		return pos;
+	}
+	
+	public abstract ImageIcon obtenerGrafico();
 	
 }

@@ -19,5 +19,9 @@ public abstract class Enemigo extends Entidad {
 		protected Enemigo(Point p, int ancho , int alto) {
 			super(p, ancho, alto);
 		}
+		
+		
+		
+		
 
 }

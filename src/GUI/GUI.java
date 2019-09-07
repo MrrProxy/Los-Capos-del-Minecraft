@@ -2,10 +2,15 @@ package GUI;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
+import Enemigo.Zombie;
+import Juego.Juego;
+import Entidad.*;
 
 public class GUI {// Interfaz grafica del juego
 
@@ -15,6 +20,7 @@ public class GUI {// Interfaz grafica del juego
 
 
 	// Atributos de la GUI
+	Juego j = new Juego();
 	//****Labels****
 	private JLabel fondo;
 	private JLabel fondo2;
@@ -135,7 +141,7 @@ public class GUI {// Interfaz grafica del juego
 		fondo2.setBounds(0, 0, 800, 150);
 		fondo2.setBackground(new java.awt.Color(204, 0, 0));
 
-		fondo3 = new JLabel(new ImageIcon(this.getClass().getResource("/Imagenes/Mapa/Saturno.jpg")));
+		fondo3 = new JLabel(new ImageIcon(this.getClass().getResource("/Imagenes/Mapa/GameMap.png")));
 		fondo3.setBounds(0, 0, 800, 600);
 		
 		Titulo1 = new JLabel("PANEL 1");
@@ -174,6 +180,9 @@ public class GUI {// Interfaz grafica del juego
 		Comprar.setBorderPainted(true);
 		Comprar.setVisible(true);
 		
+		//Agrego las entidades que tenga en el mapa.
+		agregarEntidades();
+		
 		//Accion del boton
 		Comprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -193,5 +202,19 @@ public class GUI {// Interfaz grafica del juego
 		
 		
 
+	}
+	
+	/*Metodo para agregar entidades tanto graficamente como logicamente. Solo está
+	 * implementado para una sola entidad, pero deberia recorrer una lista de entidades
+	 * y de ahi ir agregando todas al mapa en el momento deseado.
+	 */
+public void agregarEntidades(){
+		
+		Zombie e = new Zombie(new Point(0,0),150,150);
+		j.agregarEntidad(e);
+		JLabel nuevo = new JLabel(e.obtenerGrafico());
+		nuevo.setBounds(750,50,41,42);
+		panelJuego.add(nuevo,0);
+		
 	}
 }
