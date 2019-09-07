@@ -25,13 +25,22 @@ public class Juego {
 	public Juego(GUI gui){
 		map = new Mapa();
 		
+		int arreglo [] = new int[6];
+		arreglo[0]=40;
+		arreglo[1]=135;
+		arreglo[2]=230;
+		arreglo[3]=325;
+		arreglo[4]=415;
+		arreglo[5]=510;
+		
 		
 		malos = new Zombie[3];
 
 		for (int i = 0; i < malos.length; i++) {
 			//System.out.println("Entreeeeeeeeeeeeeeee");
-			int valorX = (int) (Math.random() * 800) + 1;
-			int valorY = (int) (Math.random() * 600) + 1;
+			int valorX = (int) (1 * 800);
+			int random = (int)(Math.random()*((5-0+1))+0); //Calcula random entre 0 y 5
+			int valorY = arreglo[random];
 			//System.out.println("X es igual a " + valorX + "Y es igual a: " + valorY);
 			malos[i] = new Zombie(new Point(valorX, valorY), 42, 42);
 			gui.agregarAlJuego(malos[i].getGrafico());
@@ -63,7 +72,7 @@ public class Juego {
 		System.out.print("EMTRE");
 		for(int i = 0; i < malos.length; i++){
 			final int mov=-20;
-			malos[i].mover(mov);
+			malos[i].mover(-1);
 
 		}
 		}
