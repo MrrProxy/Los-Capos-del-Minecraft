@@ -11,12 +11,14 @@ import javax.swing.ImageIcon;
  */
 public class Araña extends Enemigo{
 
-	protected Araña(Point p, int ancho, int alto) {
+	//Constructor
+	public Araña(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 	}
 	
+	//Devuelve el grafico del enemigo
 	public ImageIcon obtenerGrafico(){
-		return new ImageIcon(this.getClass().getResource("/Imagenes/Mapa/Araña.jpg"));
+		return new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Araña.jpg"));
 	}
 
 }

@@ -1,5 +1,6 @@
 package Tienda;
 
+import GUI.GUI;
 
 /**
  * Clase Botones que extiende de Tienda.
@@ -8,5 +9,10 @@ package Tienda;
  */
 //Coleccion de botones
 public class Botones extends Tienda{
+
+	public Botones(GUI gui) {
+		super(gui);
+		// TODO Auto-generated constructor stub
+	}
 
 }

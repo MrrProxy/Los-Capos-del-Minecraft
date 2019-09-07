@@ -10,13 +10,15 @@ import javax.swing.ImageIcon;
  *
  */
 public class Ender extends Enemigo {
-
+	
+	//Constructor
 	protected Ender(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 	}
 	
+	//Devuelve el grafico del enemigo
 	public ImageIcon obtenerGrafico(){
-		return new ImageIcon(this.getClass().getResource("/Imagenes/Mapa/Ender.jpg"));
+		return new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Ender.jpg"));
 	}
 	
 

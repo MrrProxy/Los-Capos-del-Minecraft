@@ -10,13 +10,15 @@ import javax.swing.ImageIcon;
  *
  */
 public class Esqueleto extends Enemigo {
-
+	
+	//Constructor
 	protected Esqueleto(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 	}
 	
+	//Devuelve el grafico del enemigo
 	public ImageIcon obtenerGrafico(){
-		return new ImageIcon(this.getClass().getResource("/Imagenes/Mapa/Esqueleto.jpg"));
+		return new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Esqueleto.jpg"));
 	}
 
 }

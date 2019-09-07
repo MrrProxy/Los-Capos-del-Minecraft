@@ -11,12 +11,14 @@ import javax.swing.ImageIcon;
  */
 public class Creeper extends Enemigo {
 	
+	//Constructor
 	protected Creeper(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 	}
 	
+	//Devuelve el grafico del enemigo
 	public ImageIcon obtenerGrafico(){
-		return new ImageIcon(this.getClass().getResource("/Imagenes/Mapa/Creeper.jpg"));
+		return new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Creeper.jpg"));
 	}
 
 }

@@ -15,8 +15,9 @@ public class Bruja extends Enemigo {
 		super(p, ancho, alto);
 	}
 	
+	//Devuelve el grafico del enemigo
 	public ImageIcon obtenerGrafico(){
-		return new ImageIcon(this.getClass().getResource("/Imagenes/Mapa/Bruja.jpg"));
+		return new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Bruja.jpg"));
 	}
 
 
