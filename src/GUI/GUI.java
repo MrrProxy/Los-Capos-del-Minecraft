@@ -1,17 +1,12 @@
 package GUI;
 
 import java.awt.event.*;
-import java.time.Year;
-import java.util.Random;
 import java.awt.*;
-import java.applet.*;
 
 import javax.swing.*;
 
-import Enemigo.Araña;
-import Enemigo.Zombie;
 import Juego.Juego;
-import Entidad.*;
+import Personaje.SteveDiamante;
 import Hilo.HiloPrincipal;
 
 /**
@@ -22,12 +17,13 @@ import Hilo.HiloPrincipal;
  */
 public class GUI extends JFrame {// Interfaz grafica del juego
 
+	private static final long serialVersionUID = 1L;
 	// Frame y panel
 	private JFrame frameInicio, frameJuego;
 	private JLayeredPane panel, panelPrincipal, panelJuego, panelTorres, panelJugador;
 
 	// Atributos de la GUI
-	private Juego j ;
+	private Juego j;
 	private HiloPrincipal tiempo;
 
 	// ****Labels****
@@ -39,6 +35,10 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	private JButton startButton;
 	private JButton Comprar;
 	private JButton Torre1;
+	private JButton Torre2;
+	private JButton Torre3;
+	private JButton Torre4;
+	private JButton Torre5;
 
 	/**
 	 * Ejecuta la aplicacion GUI.
@@ -116,7 +116,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 
 		// *********Se crea el frame*********
 		frameJuego = new JFrame();// Crea la ventana donde se desarrolla el juego
-		frameJuego.setBounds(0, 0, 1000, 800);
+		frameJuego.setBounds(0, 0, 1000, 720);
 		frameJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameJuego.setLocationRelativeTo(null);
 		frameJuego.setLayout(null);
@@ -134,7 +134,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		panelTorres.setBounds(800, 0, 200, 700);
 
 		panelJugador = new JLayeredPane();// Panel del jugador con la vida etc
-		panelJugador.setBounds(0, 600, 800, 100);
+		panelJugador.setBounds(0, 600, 800, 150);
 
 		panelJuego = new JLayeredPane();// Panel donde se ejecuta el juego (MAPA)
 		panelJuego.setBounds(0, 0, 800, 600);
@@ -143,9 +143,9 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		fondo = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/GREEN.jpg")));
 		fondo.setBounds(0, 0, 800, 600);
 
-		fondo2 = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/RED.jpg")));
-		fondo2.setBounds(0, 0, 800, 150);
-		fondo2.setBackground(new java.awt.Color(204, 0, 0));
+		fondo2 = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/JugadorFondo.png")));
+		fondo2.setBounds(0, 0, 800, 100);
+		// fondo2.setBackground(new java.awt.Color(204, 0, 0));
 
 		fondo3 = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/GameMap.png")));
 		fondo3.setBounds(0, 0, 800, 600);
@@ -157,37 +157,12 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Titulo2.setFont(new java.awt.Font("cambria", 15, 40));
 
 		// Se agregan los JLabel a sus respectivos paneles
-		panelTorres.add(fondo, -1);
+		panelTorres.add(fondo, 0);
 		panelJugador.add(fondo2, -1);
-		panelJugador.add(Titulo2, 0);
+		// panelJugador.add(Titulo2, 0);
 		panelJuego.add(fondo3, -1);
 
-		// Se crea el boton Comprar
-		Comprar = new JButton("Comprar");// Crea el boton
-		Comprar.setBounds(0, 600, 200, 100);
-		Comprar.setForeground(new java.awt.Color(155, 017, 030));
-		Comprar.setBackground(new java.awt.Color(0, 0, 0));
-		Comprar.setFont(new java.awt.Font("cambria", 12, 33));
-		Comprar.setHorizontalAlignment(SwingConstants.CENTER);
-		Comprar.setBorderPainted(true);
-		Comprar.setVisible(true);
-
-		// Se crea el boton Torre1
-		Torre1 = new JButton("Torre1");// Crea el boton
-		Torre1.setBounds(0, 0, 200, 100);
-		Torre1.setForeground(new java.awt.Color(155, 017, 030));
-		Torre1.setBackground(new java.awt.Color(0, 0, 0));
-		Torre1.setFont(new java.awt.Font("cambria", 12, 33));
-		Torre1.setHorizontalAlignment(SwingConstants.CENTER);
-		Torre1.setBorderPainted(true);
-		Torre1.setVisible(false);
-
-		// Agrego las entidades que tenga en el mapa.
-		//agregarEntidades();
-
-		// Agrego los botones al panel torre
-		panelTorres.add(Comprar);
-		panelTorres.add(Torre1);
+		botones();
 
 		// Se setea el panel principal con el contenedor del frame y se agregan los
 		// demas paneles al panel principal
@@ -200,55 +175,33 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		j = new Juego(this);
 		tiempo = new HiloPrincipal(j);
 		tiempo.start();
-		// *************ActionListener Botones*******************
 
-		// Accion del boton Comprar
-		Comprar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Torre1.setVisible(true);
-				Comprar.setEnabled(false);
-			}
-
-		});
-
-		Torre1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				agregarTorre();
-				Torre1.setVisible(false);
-				Comprar.setEnabled(true);
-			}
-
-		});
-
-	}
+	}// FIN iniciarJuego
 
 	/*
 	 * Metodo para agregar entidades tanto graficamente como logicamente. Solo está
 	 * implementado para una sola entidad, pero deberia recorrer una lista de
 	 * entidades y de ahi ir agregando todas al mapa en el momento deseado.
 	 */
-	/*public void agregarEntidades() {
-		Entidad malos[];
-		malos = new Zombie[3];
+	/*
+	 * public void agregarEntidades() { Entidad malos[]; malos = new Zombie[3];
+	 * 
+	 * for (int i = 0; i < malos.length; i++) {
+	 * //System.out.println("Entreeeeeeeeeeeeeeee"); int valorX = (int)
+	 * (Math.random() * 800) + 1; int valorY = (int) (Math.random() * 600) + 1;
+	 * //System.out.println("X es igual a " + valorX + "Y es igual a: " + valorY);
+	 * malos[i] = new Zombie(new Point(valorX, valorY), 42, 42);
+	 * panelJuego.add(malos[i].getGrafico(), 0);
+	 * 
+	 * }
+	 */
 
-		for (int i = 0; i < malos.length; i++) {
-			//System.out.println("Entreeeeeeeeeeeeeeee");
-			int valorX = (int) (Math.random() * 800) + 1;
-			int valorY = (int) (Math.random() * 600) + 1;
-			//System.out.println("X es igual a " + valorX + "Y es igual a: " + valorY);
-			malos[i] = new Zombie(new Point(valorX, valorY), 42, 42);
-			panelJuego.add(malos[i].getGrafico(), 0);
-
-		}*/
-		
-
-	//}
+	// }
 
 	public void agregarTorre() {
 
-		Zombie e = new Zombie(new Point(0, 0), 150, 150);
-		j.agregarEntidad(e);
-		JLabel nuevo = new JLabel(e.obtenerGrafico());
+		SteveDiamante ste = new SteveDiamante(new Point(0, 0), 47, 48);
+		JLabel nuevo = new JLabel(ste.obtenerGrafico());
 
 		// Evento del teclado
 		panelJuego.addMouseListener(new MouseAdapter() {
@@ -258,18 +211,208 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 				if (cont == 0) {
 					int x = e.getX();
 					int y = e.getY();
-					nuevo.setBounds(x, y, 41, 42);
-					cont++;
+					if (y < 100)
+						y = 40;
+					else {
+						if (y <= 200)
+							y = 135;
+
+						else {
+							if (y <= 300)
+								y = 230;
+							else {
+								if (y <= 400)
+									y = 320;
+
+								else {
+									if (y <= 500)
+										y = 425;
+									else {
+										y = 510;
+									}
+								}
+							}
+						}
+					}
+					if (j.agregarEntidad(ste) == true) {
+						//System.out.print("........"+j.agregarEntidad(ste));
+						nuevo.setBounds(x, y, 47, 48);
+						panelJuego.add(nuevo, 0);
+						cont++;
+					}
 				}
 			}
 		});
-		panelJuego.add(nuevo, 0);
 
 	}
-	
+
 	public void agregarAlJuego(JLabel j) {
-		panelJuego.add(j,0);
-		
+		panelJuego.add(j, 0);
+
+	}
+
+	public void botones() {
+		// Se crea el boton Comprar
+		Comprar = new JButton("Comprar");// Crea el boton
+		Comprar.setBounds(0, 600, 202, 100);
+		Comprar.setForeground(new java.awt.Color(155, 017, 030));
+		Comprar.setBackground(new java.awt.Color(0, 0, 0));
+		Comprar.setFont(new java.awt.Font("cambria", 12, 33));
+		Comprar.setHorizontalAlignment(SwingConstants.CENTER);
+		Comprar.setBorderPainted(true);
+		Comprar.setVisible(true);
+
+		// Se crea el boton Torre1
+		Torre1 = new JButton("Torre1");
+		Torre1.setBounds(0, 0, 200, 100);
+		Torre1.setForeground(new java.awt.Color(155, 017, 030));
+		Torre1.setBackground(new java.awt.Color(0, 0, 0));
+		Torre1.setFont(new java.awt.Font("cambria", 12, 33));
+		Torre1.setHorizontalAlignment(SwingConstants.CENTER);
+		Torre1.setBorderPainted(true);
+		Torre1.setVisible(false);
+
+		// Se crea el boton Torre2
+		Torre2 = new JButton("Torre2");
+		Torre2.setBounds(0, 100, 200, 100);
+		Torre2.setForeground(new java.awt.Color(155, 017, 030));
+		Torre2.setBackground(new java.awt.Color(0, 0, 0));
+		Torre2.setFont(new java.awt.Font("cambria", 12, 33));
+		Torre2.setHorizontalAlignment(SwingConstants.CENTER);
+		Torre2.setBorderPainted(true);
+		Torre2.setVisible(false);
+
+		// Se crea el boton Torre3
+		Torre3 = new JButton("Torre3");
+		Torre3.setBounds(0, 200, 200, 100);
+		Torre3.setForeground(new java.awt.Color(155, 017, 030));
+		Torre3.setBackground(new java.awt.Color(0, 0, 0));
+		Torre3.setFont(new java.awt.Font("cambria", 12, 33));
+		Torre3.setHorizontalAlignment(SwingConstants.CENTER);
+		Torre3.setBorderPainted(true);
+		Torre3.setVisible(false);
+
+		// Se crea el boton Torre4
+		Torre4 = new JButton("Torre4");
+		Torre4.setBounds(0, 300, 200, 100);
+		Torre4.setForeground(new java.awt.Color(155, 017, 030));
+		Torre4.setBackground(new java.awt.Color(0, 0, 0));
+		Torre4.setFont(new java.awt.Font("cambria", 12, 33));
+		Torre4.setHorizontalAlignment(SwingConstants.CENTER);
+		Torre4.setBorderPainted(true);
+		Torre4.setVisible(false);
+
+		// Se crea el boton Torre5
+		Torre5 = new JButton("Torre5");
+		Torre5.setBounds(0, 400, 200, 100);
+		Torre5.setForeground(new java.awt.Color(155, 017, 030));
+		Torre5.setBackground(new java.awt.Color(0, 0, 0));
+		Torre5.setFont(new java.awt.Font("cambria", 12, 33));
+		Torre5.setHorizontalAlignment(SwingConstants.CENTER);
+		Torre5.setBorderPainted(true);
+		Torre5.setVisible(false);
+
+		Torre1.setEnabled(false);
+		Torre2.setEnabled(false);
+		Torre3.setEnabled(false);
+		Torre4.setEnabled(false);
+		Torre5.setEnabled(false);
+
+		// *************ActionListener Botones*******************
+
+		// Accion del boton Comprar
+		Comprar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Torre1.setVisible(true);
+				Torre2.setVisible(true);
+				Torre3.setVisible(true);
+				Torre4.setVisible(true);
+				Torre5.setVisible(true);
+
+				Torre1.setEnabled(true);
+				Torre2.setEnabled(true);
+				Torre3.setEnabled(true);
+				Torre4.setEnabled(true);
+				Torre5.setEnabled(true);
+
+				Comprar.setEnabled(false);
+			}
+
+		});
+
+		Torre1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				agregarTorre();
+				Torre1.setEnabled(false);
+				Torre2.setEnabled(false);
+				Torre3.setEnabled(false);
+				Torre4.setEnabled(false);
+				Torre5.setEnabled(false);
+				Comprar.setEnabled(true);
+			}
+
+		});
+
+		Torre2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				agregarTorre();
+				Torre1.setEnabled(false);
+				Torre2.setEnabled(false);
+				Torre3.setEnabled(false);
+				Torre4.setEnabled(false);
+				Torre5.setEnabled(false);
+				Comprar.setEnabled(true);
+			}
+
+		});
+
+		Torre3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				agregarTorre();
+				Torre1.setEnabled(false);
+				Torre2.setEnabled(false);
+				Torre3.setEnabled(false);
+				Torre4.setEnabled(false);
+				Torre5.setEnabled(false);
+				Comprar.setEnabled(true);
+			}
+
+		});
+
+		Torre4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				agregarTorre();
+				Torre1.setEnabled(false);
+				Torre2.setEnabled(false);
+				Torre3.setEnabled(false);
+				Torre4.setEnabled(false);
+				Torre5.setEnabled(false);
+				Comprar.setEnabled(true);
+			}
+
+		});
+
+		Torre5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				agregarTorre();
+				Torre1.setEnabled(false);
+				Torre2.setEnabled(false);
+				Torre3.setEnabled(false);
+				Torre4.setEnabled(false);
+				Torre5.setEnabled(false);
+				Comprar.setEnabled(true);
+			}
+
+		});
+
+		// Agrego los botones al panel torre
+		panelTorres.add(Comprar);
+		panelTorres.add(Torre1, 0);
+		panelTorres.add(Torre2, 0);
+		panelTorres.add(Torre3, 0);
+		panelTorres.add(Torre4, 0);
+		panelTorres.add(Torre5, 0);
+
 	}
 
 }// Fin GUI

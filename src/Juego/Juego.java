@@ -31,17 +31,15 @@ public class Juego {
 		arreglo[2]=230;
 		arreglo[3]=325;
 		arreglo[4]=415;
-		arreglo[5]=510;
+		arreglo[5]=415;
 		
 		
 		malos = new Zombie[3];
 
 		for (int i = 0; i < malos.length; i++) {
-			//System.out.println("Entreeeeeeeeeeeeeeee");
 			int valorX = (int) (1 * 800);
 			int random = (int)(Math.random()*((5-0+1))+0); //Calcula random entre 0 y 5
 			int valorY = arreglo[random];
-			//System.out.println("X es igual a " + valorX + "Y es igual a: " + valorY);
 			malos[i] = new Zombie(new Point(valorX, valorY), 42, 42);
 			gui.agregarAlJuego(malos[i].getGrafico());
 
@@ -49,8 +47,9 @@ public class Juego {
 	}
 	
 	//Agrega entidad grafica
-	public void agregarEntidad(Entidad e){
-		map.agregarEntidadMap(e);
+	public boolean agregarEntidad(Entidad e){
+		boolean toReturn= map.agregarEntidadMap(e);
+		return toReturn;
 		
 		
 	}
@@ -69,11 +68,9 @@ public class Juego {
 	
 	
 	public void mover(){
-		System.out.print("EMTRE");
+		//System.out.print("EMTRE");
 		for(int i = 0; i < malos.length; i++){
-			final int mov=-20;
 			malos[i].mover(-1);
-
 		}
 		}
 	}

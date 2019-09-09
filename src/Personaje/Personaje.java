@@ -10,6 +10,7 @@ import Entidad.Entidad;
  *
  */
 public abstract class Personaje extends Entidad {
+
 	
 	//Atributos especificos de un Personaje
 	protected int alcance; //cuantos cuadros de alcance tiene

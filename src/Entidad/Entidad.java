@@ -37,7 +37,6 @@ public abstract class Entidad {
 		//******METODOS******
 	
 	public void mover(int Velocidad){	
-		System.out.println("ENTRE 2 "+pos.x+"y es igual a  "+pos.y);
 		pos.x+=Velocidad;
 		setGrafico(1);
 		
@@ -128,7 +127,7 @@ public abstract class Entidad {
 		public void setGrafico(int dir){
 			if(this.grafico != null){
 				this.grafico.setIcon(this.imagen[dir]);
-				this.grafico.setBounds(this.pos.x-30, this.pos.y, width, height);
+				this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
 			}
 		}
 		
