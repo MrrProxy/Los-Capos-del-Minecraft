@@ -3,6 +3,10 @@ package Personaje;
 import java.awt.Point;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+import Disparos.Disparo;
+import Disparos.DisparoTorre;
 
 /**
  * Clase SteveDiamante que extiende de Personaje.
@@ -26,5 +30,10 @@ public class SteveDiamante extends Personaje {
 	//Devuelve la imagen grafica de la torre
 	public ImageIcon obtenerGrafico() {
 		return new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/Steve1.png"));
+	}
+	
+	public DisparoTorre disparar() {
+		DisparoTorre nuevo= new DisparoTorre(new Point(pos.x+50,pos.y),46,16,15,15);
+		return nuevo;
 	}
 }

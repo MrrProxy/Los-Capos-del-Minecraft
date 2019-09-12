@@ -200,8 +200,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 
 	public void agregarTorre() {
 
-		SteveDiamante ste = new SteveDiamante(new Point(0, 0), 47, 48);
-		JLabel nuevo = new JLabel(ste.obtenerGrafico());
+		
 
 		// Evento del teclado
 		panelJuego.addMouseListener(new MouseAdapter() {
@@ -234,7 +233,10 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 							}
 						}
 					}
-					if (j.agregarEntidad(ste) == true) {
+					SteveDiamante ste = new SteveDiamante(new Point(x, y), 47, 48);
+					JLabel nuevo = new JLabel(ste.obtenerGrafico());
+					if (j.agregarTorre(ste) == true) {
+						
 						//System.out.print("........"+j.agregarEntidad(ste));
 						nuevo.setBounds(x, y, 47, 48);
 						panelJuego.add(nuevo, 0);
@@ -247,6 +249,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	}
 
 	public void agregarAlJuego(JLabel j) {
+		if (j!=null)
 		panelJuego.add(j, 0);
 
 	}

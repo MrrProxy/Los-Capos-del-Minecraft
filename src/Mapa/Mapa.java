@@ -29,6 +29,7 @@ public class Mapa {
 
 	public boolean agregarEntidadMap(Entidad e) {
 		boolean EstaVacio = true;
+		System.out.println("entre");
 		int x = e.obtenerPosicion().x;
 		int y = e.obtenerPosicion().y;
 		int ancho = e.anchoEntidad();

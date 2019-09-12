@@ -13,13 +13,19 @@ public class HiloPrincipal extends Thread {
 
 	//Hilo
 	public void run() {
+		int n=1;
 		while(true){
 			try {
 				Thread.sleep(30);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			elJuego.mover();
+			//n++;
+			//if (n==1)
+				elJuego.mover();
+			//else 
+				//if (n==10)
+					//n=0;
 		}
 	}
 }

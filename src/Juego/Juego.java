@@ -2,12 +2,18 @@ package Juego;
 
 
 import java.awt.Point;
+import java.util.LinkedList;
 import java.util.Random;
 
+import javax.swing.JLabel;
+
+import Disparos.*;
 import Enemigo.Zombie;
 import Entidad.Entidad;
 import GUI.GUI;
 import Mapa.Mapa;
+import Personaje.SteveDiamante;
+import Disparos.*;
 
 /**
  * Clase Juego .
@@ -20,6 +26,9 @@ public class Juego {
 	private GUI gui;
 	private Entidad entidad ;
 	private Entidad malos[];
+	private LinkedList<SteveDiamante> torres;
+	private LinkedList<Disparo> disparos;
+	private int tiempoDisparos;
 	
 	//Constructor
 	public Juego(GUI gui){
@@ -33,8 +42,14 @@ public class Juego {
 		arreglo[4]=415;
 		arreglo[5]=415;
 		
+		this.gui=gui;
+		
+		tiempoDisparos=0;
+		
 		
 		malos = new Zombie[3];
+		torres= new LinkedList<SteveDiamante>();
+		disparos = new LinkedList<Disparo>();
 
 		for (int i = 0; i < malos.length; i++) {
 			int valorX = (int) (1 * 800);
@@ -50,9 +65,16 @@ public class Juego {
 	public boolean agregarEntidad(Entidad e){
 		boolean toReturn= map.agregarEntidadMap(e);
 		return toReturn;
-		
-		
+				
 	}
+	
+	public boolean agregarTorre(SteveDiamante e) {
+			boolean toReturn= map.agregarEntidadMap(e);
+			torres.addLast(e);
+			return toReturn;
+	}
+	
+	
 	public void establecerGrafica(GUI g) {
 		if(gui == null)
 			gui = g;
@@ -64,7 +86,7 @@ public class Juego {
 		gui.add(entidad.getGrafico());
 		
 	}*/
-		
+	
 	
 	
 	public void mover(){
@@ -72,6 +94,28 @@ public class Juego {
 		for(int i = 0; i < malos.length; i++){
 			malos[i].mover(-1);
 		}
+		for (Disparo disp : disparos) {
+			disp.mover(1);
+		}
+			
+			
+		//}
+		if (tiempoDisparos==0) {
+			for(SteveDiamante d : torres ) {
+				System.out.println("Disparando");
+				DisparoTorre nuevo = d.disparar();
+				JLabel test = nuevo.getGrafico();
+				gui.agregarAlJuego(nuevo.getGrafico());
+				disparos.addLast(nuevo);		
+			}
+			tiempoDisparos=100;
+			System.out.println("Entre");
+		}
+		tiempoDisparos--;
+		
+				
+			
+				
 		}
 	}
 	
