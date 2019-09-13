@@ -4,10 +4,12 @@ package Juego;
 import java.awt.Point;
 import java.util.Random;
 
+import Enemigo.Enemigo;
 import Enemigo.Zombie;
 import Entidad.Entidad;
 import GUI.GUI;
 import Mapa.Mapa;
+import Personaje.SteveDiamante;
 
 /**
  * Clase Juego .
@@ -18,8 +20,8 @@ public class Juego {
 	protected int cantMonedas;
 	protected Mapa map;
 	private GUI gui;
-	private Entidad entidad ;
-	private Entidad malos[];
+	private Enemigo malos[];
+	private Entidad buenoEntidad;
 	
 	//Constructor
 	public Juego(GUI gui){
@@ -34,24 +36,28 @@ public class Juego {
 		arreglo[5]=415;
 		
 		
-		malos = new Zombie[3];
+		malos = new Zombie[10];
 
 		for (int i = 0; i < malos.length; i++) {
 			int valorX = (int) (1 * 800);
 			int random = (int)(Math.random()*((5-0+1))+0); //Calcula random entre 0 y 5
 			int valorY = arreglo[random];
 			malos[i] = new Zombie(new Point(valorX, valorY), 42, 42);
-			gui.agregarAlJuego(malos[i].getGrafico());
-
+			buenoEntidad=new SteveDiamante(new Point(valorX, valorY), 77, 77);
+			gui.agregarAlJuego(buenoEntidad.getGrafico(2));
+			gui.agregarAlJuego(malos[i].getGrafico(1));
 		}
+		
+		
 	}
 	
 	//Agrega entidad grafica
-	public boolean agregarEntidad(Entidad e){
-		boolean toReturn= map.agregarEntidadMap(e);
-		return toReturn;
-		
-		
+	public void agregarEntidad(Entidad e){
+			map.agregarEntidadMap(e);
+	}
+	
+	public boolean mapavacio(Entidad e) {
+		return map.EstaVacioLugar(e);
 	}
 	public void establecerGrafica(GUI g) {
 		if(gui == null)

@@ -16,21 +16,13 @@ public class Zombie extends Enemigo {
 	public Zombie(Point p, int x, int y) {
 		super(p, x, y);
 		
-		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Zombie.jpg"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Zombie.jpg"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Zombie.jpg"));
+		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/WALKING_GOBLIN_1.gif"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/WALKING_GOBLIN_1.gif"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/WALKING_GOBLIN_1.gif"));
 		this.imagen[3] = null;
-		
 		velocidad=10;
 
 		
 	}
-	//Devuelve el grafico del enemigo
-	public ImageIcon obtenerGrafico(){
-		return new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Zombie.jpg"));
-	}
-	
-	
-	
 
 }

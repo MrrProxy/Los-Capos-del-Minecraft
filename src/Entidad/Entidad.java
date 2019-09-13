@@ -13,35 +13,25 @@ import javax.swing.JLabel;
 public abstract class Entidad {
 	
 	//Atributos especificos de una entidad
-	protected int width = 42;
-	protected int height= 42;
+	protected int width ;
+	protected int height;
 	protected JLabel grafico;
 	protected Icon imagen[];
 	protected int puntaje;
 	protected int puntosVida;
-	protected int ancho;
-	protected int alto;
 	protected Point pos;
 	protected int danioImpacto;
-	protected int velocidad;//Velocidad es solo del enemigo es correcto tenerla en la Entidad PREGUNTAR
 	
 
 	// constructor
-	protected Entidad(Point p, int ancho, int alto) {
+	protected Entidad(Point p, int width, int height) {//Recive todos los componentes del enemigo no recive velocidad
 		pos = p;
-		this.ancho = ancho;
-		this.alto = alto;
+		this.width = width;
+		this.height = height;
 		this.imagen = new Icon[4];
 	}
 	
 		//******METODOS******
-	
-	public void mover(int Velocidad){	
-		pos.x+=Velocidad;
-		setGrafico(1);
-		
-	}
-	
 		/**
 		 * Devuelve el puntaje de la entidad.
 		 * @return puntaje de la entidad.
@@ -58,21 +48,7 @@ public abstract class Entidad {
 			puntaje = p;
 		}
 		
-		/**
-		 * Devuelve la velocidad de desplazamiento de la entidad.
-		 * @return velocidad de desplazamiento de la entidad.
-		 */
-		public int getVelocidad(){
-			return velocidad;
-		}
 		
-		/**
-		 * Establece la velocidad de desplazamiento de la entidad por la recibida como parametro.
-		 * @param v velocidad a establecer.
-		 */
-		public void setVelocidad(int v){
-			velocidad = v;		
-		}
 		
 		/**
 		 * Devuelve la cantidad de vidas que tiene la entidad.
@@ -111,10 +87,11 @@ public abstract class Entidad {
 		/**
 		 * Devuelve el grafico de la entidad.
 		 * @return grafico de la entidad.
+		 * @param La posicion en el arreglo de la imagen que se desea obtener
 		 */
-		public JLabel getGrafico(){
+		public JLabel getGrafico(int i){
 			if(this.grafico == null){
-				this.grafico = new JLabel(imagen[0]);
+				this.grafico = new JLabel(imagen[i]);
 				this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
 			}
 			return grafico;
@@ -162,6 +139,18 @@ public abstract class Entidad {
 		public int anchoEntidad() {
 			return width;
 		}
+		
+		/**
+		 * Produce el movimiento de los enemigos
+		 * @param v velocidad con la que se desplaza el enemigo
+		 */
+		public void mover(int Velocidad){
+			pos.x+=Velocidad;
+			setGrafico(1);
+			
+			
+		}
+		
 		
 	
 }

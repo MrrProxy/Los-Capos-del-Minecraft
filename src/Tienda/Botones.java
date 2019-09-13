@@ -10,9 +10,6 @@ import GUI.GUI;
 //Coleccion de botones
 public class Botones extends Tienda{
 
-	public Botones(GUI gui) {
-		super(gui);
-		// TODO Auto-generated constructor stub
-	}
-
+	//crear una lista de botones en tienda y los botones en botones
+	//ademas una clase particular para cada boton donde tenga su funcionamiento 
 }

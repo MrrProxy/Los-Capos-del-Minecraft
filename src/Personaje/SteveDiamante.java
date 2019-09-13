@@ -16,15 +16,12 @@ public class SteveDiamante extends Personaje {
 	public SteveDiamante(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 		
-		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/Steve1.png"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/Steve1.png"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/Steve1.png"));
+		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ATTACK_KNIGHT_1.gif"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ATTACK_KNIGHT_1.gif"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ESTATICO_KNIGHT_1.gif"));
 		this.imagen[3] = null;
-		velocidad=0;
+		puntosVida=200;
+		
 	}
 
-	//Devuelve la imagen grafica de la torre
-	public ImageIcon obtenerGrafico() {
-		return new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/Steve1.png"));
-	}
 }
