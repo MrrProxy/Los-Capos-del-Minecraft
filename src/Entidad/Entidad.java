@@ -21,6 +21,8 @@ public abstract class Entidad {
 	protected int puntosVida;
 	protected Point pos;
 	protected int danioImpacto;
+	protected int velocidad;
+
 	
 
 	// constructor

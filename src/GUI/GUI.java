@@ -6,6 +6,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import Enemigo.Zombie;
 import Entidad.Entidad;
 import Juego.Juego;
 import Personaje.SteveCuero;
@@ -169,18 +170,17 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		// panelJugador.add(Titulo2, 0);
 		panelJuego.add(fondo3, -1);
 		botones();
-		
+
 		// Se setea el panel principal con el contenedor del frame y se agregan los
 		// demas paneles al panel principal
 		frameJuego.setContentPane(panelPrincipal);
 		panelPrincipal.add(panelTorres);
 		panelPrincipal.add(panelJugador);
 		panelPrincipal.add(panelJuego);
-		
-	//	Tienda tienda=new Tienda();
-		//tienda.crearBotones(this);
-		//repaint();
 
+		// Tienda tienda=new Tienda();
+		// tienda.crearBotones(this);
+		// repaint();
 
 		// Inicio el juego
 		j = new Juego(this);
@@ -189,7 +189,6 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 
 	}// FIN iniciarJuego
 
-		
 	/*
 	 * Metodo para agregar entidades tanto graficamente como logicamente. Solo está
 	 * implementado para una sola entidad, pero deberia recorrer una lista de
@@ -210,7 +209,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 
 	// }
 
-	public void agregarTorre(Entidad ste) {
+public void agregarTorre(Entidad ste) {
 		
 		// Evento del teclado
 		panelJuego.addMouseListener(new MouseAdapter() {
@@ -236,7 +235,8 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	}
 
 	public void agregarAlJuego(JLabel j) {
-		panelJuego.add(j, 0);
+		if (j != null)
+			panelJuego.add(j, 0);
 
 	}
 
@@ -306,14 +306,13 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Torre3.setEnabled(false);
 		Torre4.setEnabled(false);
 		Torre5.setEnabled(false);
-		
+
 		panelTorres.add(Comprar);
 		panelTorres.add(Torre1);
 		panelTorres.add(Torre2);
 		panelTorres.add(Torre3);
 		panelTorres.add(Torre4);
 		panelTorres.add(Torre5);
-		
 
 		// *************ActionListener Botones*******************
 
@@ -353,7 +352,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Torre2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Entidad ste = new SteveCuero(new Point(0, 0), 70, 70);
-				agregarTorre(ste);				
+				agregarTorre(ste);
 				Torre1.setEnabled(false);
 				Torre2.setEnabled(false);
 				Torre3.setEnabled(false);
@@ -367,7 +366,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Torre3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Entidad ste = new SteveHierro(new Point(0, 0), 70, 70);
-				agregarTorre(ste);				
+				agregarTorre(ste);
 				Torre1.setEnabled(false);
 				Torre2.setEnabled(false);
 				Torre3.setEnabled(false);
@@ -381,7 +380,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Torre4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Entidad ste = new SteveOro(new Point(0, 0), 70, 70);
-				agregarTorre(ste);				
+				agregarTorre(ste);
 				Torre1.setEnabled(false);
 				Torre2.setEnabled(false);
 				Torre3.setEnabled(false);
@@ -395,7 +394,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Torre5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Entidad ste = new SteveRed(new Point(0, 0), 70, 70);
-				agregarTorre(ste);				
+				agregarTorre(ste);
 				Torre1.setEnabled(false);
 				Torre2.setEnabled(false);
 				Torre3.setEnabled(false);
@@ -406,7 +405,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 
 		});
 		// Agrego los botones al panel torre
-		panelTorres.add(Comprar,0);
+		panelTorres.add(Comprar, 0);
 		panelTorres.add(Torre1, 0);
 		panelTorres.add(Torre2, 0);
 		panelTorres.add(Torre3, 0);
@@ -414,12 +413,12 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		panelTorres.add(Torre5, 0);
 
 	}
-	
-	//Agrega los botones al panel de torres
+
+	// Agrega los botones al panel de torres
 	public void agregarBotones(JButton B) {
-		panelTorres.add(B,0);
+		panelTorres.add(B, 0);
 		repaint();
-		
+
 	}
 
 }// Fin GUI

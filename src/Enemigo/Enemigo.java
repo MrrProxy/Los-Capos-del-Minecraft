@@ -14,7 +14,6 @@ import GUI.GUI;
 public abstract class Enemigo extends Entidad {
 	
 	//Atributos especificos de un enemigo
-	protected int velocidad;
 	
 	//Constructor
 		protected Enemigo(Point p, int ancho , int alto) {
