@@ -36,6 +36,16 @@ public abstract class Enemigo extends Entidad {
 			velocidad = v;		
 		}
 		
+		/**
+		 * Produce el movimiento de los enemigos
+		 * @param v velocidad con la que se desplaza el enemigo
+		 */
+		public void Accionar(){
+			pos.x-=velocidad;
+			setGrafico(1);
+			
+			
+		}
 		
 		
 		

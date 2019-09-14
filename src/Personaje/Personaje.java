@@ -14,12 +14,21 @@ public abstract class Personaje extends Entidad {
 	
 	//Atributos especificos de un Personaje
 	protected int alcance; //cuantos cuadros de alcance tiene
-	protected int precioPersonaje;
+	
 	
 	//Constructor
 	protected Personaje(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 	}
 	
-
+	
+	public void Accionar() {
+//		HiloPrincipal hilo=HiloPrincipal.getInstace();
+//		hilo.stop();
+//		Entidad entidad=new DisparoTorre(this.obtenerPosicion(),50,50,50,50);
+//		Juego juego=Juego.getInstance();
+//		juego.agregarEntidad(entidad);
+//		hilo.start();
+//		
+	}
 }

@@ -22,6 +22,7 @@ public abstract class Entidad {
 	protected Point pos;
 	protected int danioImpacto;
 	protected int velocidad;
+	protected int precioPersonaje;
 
 	
 
@@ -142,17 +143,32 @@ public abstract class Entidad {
 			return width;
 		}
 		
+		
+	
 		/**
-		 * Produce el movimiento de los enemigos
-		 * @param v velocidad con la que se desplaza el enemigo
+		 * Produce todas las acciones de las entidades
+		 * @param e Entidad
 		 */
-		public void mover(int Velocidad){
-			pos.x+=Velocidad;
-			setGrafico(1);
-			
+		public void Accionar() {
 			
 		}
 		
+		/**
+		 * Devuelve el precio de la torre que se desea comprar
+		 * @return Precio del personaje
+		 */
+		public int getPrecioPersonaje() {
+			return precioPersonaje;
+		}
+		
+		/**
+		 * Actualiza el precio del personaje
+		 * @param precio
+		 */
+		public void setPrecioPersonaje(int precio) {
+			precioPersonaje=precio;
+			
+		}
 		
 	
 }

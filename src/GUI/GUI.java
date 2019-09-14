@@ -1,21 +1,15 @@
 package GUI;
 
 import java.awt.event.*;
-import java.security.PublicKey;
 import java.awt.*;
 
 import javax.swing.*;
 
-import Enemigo.Zombie;
+import Disparos.DisparoTorre;
 import Entidad.Entidad;
 import Juego.Juego;
-import Personaje.SteveCuero;
-import Personaje.SteveDiamante;
-import Personaje.SteveHierro;
-import Personaje.SteveOro;
-import Personaje.SteveRed;
-import Hilo.HiloPrincipal;
 import Tienda.Tienda;
+import Hilo.HiloPrincipal;
 
 /**
  * Clase GUI .
@@ -33,6 +27,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	// Atributos de la GUI
 	private Juego j;
 	private HiloPrincipal tiempo;
+	private Tienda tienda;
 
 	// ****Labels****
 	private JLabel fondo;
@@ -41,18 +36,12 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	private JLabel Titulo2;
 	// ****Botones****
 	private JButton startButton;
-	private JButton Comprar;
-	private JButton Torre1;
-	private JButton Torre2;
-	private JButton Torre3;
-	private JButton Torre4;
-	private JButton Torre5;
 
+	private static GUI instance;
 	/**
-	 * Ejecuta la aplicacion GUI.
-	 * 
-	 * @param args arrglo de String.
+	 * Constructor de la GUII. Crea la aplicacion.
 	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -66,13 +55,24 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		});
 	}
 
+	public static GUI getInstance() {
+		if (instance == null)
+			instance = new GUI();
+		return instance;
+
+	}
 	/**
-	 * Constructor de la GUII. Crea la aplicacion.
+	 * Ejecuta la aplicacion GUI.
+	 * 
+	 * @param args arrglo de String.
 	 */
-	public GUI() {
+	
+	private GUI() {
 		iniciar();
 	}
 
+	
+	
 	/*
 	 * Inicializa los atributos de la gui, crea la intefaz grafica
 	 */
@@ -167,9 +167,11 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		// Se agregan los JLabel a sus respectivos paneles
 		panelTorres.add(fondo, 0);
 		panelJugador.add(fondo2, -1);
-		// panelJugador.add(Titulo2, 0);
 		panelJuego.add(fondo3, -1);
-		botones();
+
+		// Se crean los botones
+		tienda = new Tienda();
+		tienda.crearBotones(this);
 
 		// Se setea el panel principal con el contenedor del frame y se agregan los
 		// demas paneles al panel principal
@@ -178,39 +180,18 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		panelPrincipal.add(panelJugador);
 		panelPrincipal.add(panelJuego);
 
-		// Tienda tienda=new Tienda();
-		// tienda.crearBotones(this);
-		// repaint();
-
 		// Inicio el juego
-		j = new Juego(this);
-		tiempo = new HiloPrincipal(j);
+		j = Juego.getInstance();
+		j.establecerGrafica(this);
+		j.iniciarJuego();
+		tiempo = HiloPrincipal.getInstace();
 		tiempo.start();
-
+//		hiloOleadas= new HiloOleadas(j);
+//		hiloOleadas.start();
 	}// FIN iniciarJuego
+	
+	public void agregarTorre(Entidad ste) {
 
-	/*
-	 * Metodo para agregar entidades tanto graficamente como logicamente. Solo está
-	 * implementado para una sola entidad, pero deberia recorrer una lista de
-	 * entidades y de ahi ir agregando todas al mapa en el momento deseado.
-	 */
-	/*
-	 * public void agregarEntidades() { Entidad malos[]; malos = new Zombie[3];
-	 * 
-	 * for (int i = 0; i < malos.length; i++) {
-	 * //System.out.println("Entreeeeeeeeeeeeeeee"); int valorX = (int)
-	 * (Math.random() * 800) + 1; int valorY = (int) (Math.random() * 600) + 1;
-	 * //System.out.println("X es igual a " + valorX + "Y es igual a: " + valorY);
-	 * malos[i] = new Zombie(new Point(valorX, valorY), 42, 42);
-	 * panelJuego.add(malos[i].getGrafico(), 0);
-	 * 
-	 * }
-	 */
-
-	// }
-
-public void agregarTorre(Entidad ste) {
-		
 		// Evento del teclado
 		panelJuego.addMouseListener(new MouseAdapter() {
 			int cont = 0;
@@ -225,9 +206,10 @@ public void agregarTorre(Entidad ste) {
 						y = 40;
 					ste.setPosition(new Point(x, y));
 					panelJuego.add(ste.getGrafico(2), 0);
-					j.agregarEntidad(ste);
+					Entidad en=new  DisparoTorre(ste.obtenerPosicion(),100,100,100,100);
+					panelJuego.add(en.getGrafico(2), 0);
+					j.agregarEntidad(en);
 					cont++;
-					Comprar.setEnabled(true);
 				}
 			}
 		});
@@ -240,184 +222,9 @@ public void agregarTorre(Entidad ste) {
 
 	}
 
-	public void botones() {
-		// Se crea el boton Comprar
-		Comprar = new JButton("Comprar");// Crea el boton
-		Comprar.setBounds(0, 600, 202, 100);
-		Comprar.setForeground(new java.awt.Color(155, 017, 030));
-		Comprar.setBackground(new java.awt.Color(0, 0, 0));
-		Comprar.setFont(new java.awt.Font("cambria", 12, 33));
-		Comprar.setHorizontalAlignment(SwingConstants.CENTER);
-		Comprar.setBorderPainted(true);
-		Comprar.setVisible(true);
-
-		// Se crea el boton Torre1
-		Torre1 = new JButton("Torre 1");
-		Torre1.setBounds(0, 0, 200, 100);
-		Torre1.setForeground(new java.awt.Color(155, 017, 030));
-		Torre1.setBackground(new java.awt.Color(0, 0, 0));
-		Torre1.setFont(new java.awt.Font("cambria", 12, 33));
-		Torre1.setHorizontalAlignment(SwingConstants.CENTER);
-		Torre1.setBorderPainted(true);
-		Torre1.setVisible(false);
-
-		// Se crea el boton Torre2
-		Torre2 = new JButton("Torre2");
-		Torre2.setBounds(0, 100, 200, 100);
-		Torre2.setForeground(new java.awt.Color(155, 017, 030));
-		Torre2.setBackground(new java.awt.Color(0, 0, 0));
-		Torre2.setFont(new java.awt.Font("cambria", 12, 33));
-		Torre2.setHorizontalAlignment(SwingConstants.CENTER);
-		Torre2.setBorderPainted(true);
-		Torre2.setVisible(false);
-
-		// Se crea el boton Torre3
-		Torre3 = new JButton("Torre3");
-		Torre3.setBounds(0, 200, 200, 100);
-		Torre3.setForeground(new java.awt.Color(155, 017, 030));
-		Torre3.setBackground(new java.awt.Color(0, 0, 0));
-		Torre3.setFont(new java.awt.Font("cambria", 12, 33));
-		Torre3.setHorizontalAlignment(SwingConstants.CENTER);
-		Torre3.setBorderPainted(true);
-		Torre3.setVisible(false);
-
-		// Se crea el boton Torre4
-		Torre4 = new JButton("Torre4");
-		Torre4.setBounds(0, 300, 200, 100);
-		Torre4.setForeground(new java.awt.Color(155, 017, 030));
-		Torre4.setBackground(new java.awt.Color(0, 0, 0));
-		Torre4.setFont(new java.awt.Font("cambria", 12, 33));
-		Torre4.setHorizontalAlignment(SwingConstants.CENTER);
-		Torre4.setBorderPainted(true);
-		Torre4.setVisible(false);
-
-		// Se crea el boton Torre5
-		Torre5 = new JButton("Torre5");
-		Torre5.setBounds(0, 400, 200, 100);
-		Torre5.setForeground(new java.awt.Color(155, 017, 030));
-		Torre5.setBackground(new java.awt.Color(0, 0, 0));
-		Torre5.setFont(new java.awt.Font("cambria", 12, 33));
-		Torre5.setHorizontalAlignment(SwingConstants.CENTER);
-		Torre5.setBorderPainted(true);
-		Torre5.setVisible(false);
-
-		Torre1.setEnabled(false);
-		Torre2.setEnabled(false);
-		Torre3.setEnabled(false);
-		Torre4.setEnabled(false);
-		Torre5.setEnabled(false);
-
-		panelTorres.add(Comprar);
-		panelTorres.add(Torre1);
-		panelTorres.add(Torre2);
-		panelTorres.add(Torre3);
-		panelTorres.add(Torre4);
-		panelTorres.add(Torre5);
-
-		// *************ActionListener Botones*******************
-
-		// Accion del boton Comprar
-		Comprar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Torre1.setVisible(true);
-				Torre2.setVisible(true);
-				Torre3.setVisible(true);
-				Torre4.setVisible(true);
-				Torre5.setVisible(true);
-
-				Torre1.setEnabled(true);
-				Torre2.setEnabled(true);
-				Torre3.setEnabled(true);
-				Torre4.setEnabled(true);
-				Torre5.setEnabled(true);
-
-				Comprar.setEnabled(false);
-			}
-
-		});
-
-		Torre1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Entidad ste = new SteveDiamante(new Point(0, 0), 70, 70);
-				agregarTorre(ste);
-				Torre1.setEnabled(false);
-				Torre2.setEnabled(false);
-				Torre3.setEnabled(false);
-				Torre4.setEnabled(false);
-				Torre5.setEnabled(false);
-			}
-
-		});
-
-		Torre2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Entidad ste = new SteveCuero(new Point(0, 0), 70, 70);
-				agregarTorre(ste);
-				Torre1.setEnabled(false);
-				Torre2.setEnabled(false);
-				Torre3.setEnabled(false);
-				Torre4.setEnabled(false);
-				Torre5.setEnabled(false);
-				Comprar.setEnabled(true);
-			}
-
-		});
-
-		Torre3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Entidad ste = new SteveHierro(new Point(0, 0), 70, 70);
-				agregarTorre(ste);
-				Torre1.setEnabled(false);
-				Torre2.setEnabled(false);
-				Torre3.setEnabled(false);
-				Torre4.setEnabled(false);
-				Torre5.setEnabled(false);
-				Comprar.setEnabled(true);
-			}
-
-		});
-
-		Torre4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Entidad ste = new SteveOro(new Point(0, 0), 70, 70);
-				agregarTorre(ste);
-				Torre1.setEnabled(false);
-				Torre2.setEnabled(false);
-				Torre3.setEnabled(false);
-				Torre4.setEnabled(false);
-				Torre5.setEnabled(false);
-				Comprar.setEnabled(true);
-			}
-
-		});
-
-		Torre5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Entidad ste = new SteveRed(new Point(0, 0), 70, 70);
-				agregarTorre(ste);
-				Torre1.setEnabled(false);
-				Torre2.setEnabled(false);
-				Torre3.setEnabled(false);
-				Torre4.setEnabled(false);
-				Torre5.setEnabled(false);
-				Comprar.setEnabled(true);
-			}
-
-		});
-		// Agrego los botones al panel torre
-		panelTorres.add(Comprar, 0);
-		panelTorres.add(Torre1, 0);
-		panelTorres.add(Torre2, 0);
-		panelTorres.add(Torre3, 0);
-		panelTorres.add(Torre4, 0);
-		panelTorres.add(Torre5, 0);
-
-	}
-
 	// Agrega los botones al panel de torres
 	public void agregarBotones(JButton B) {
 		panelTorres.add(B, 0);
-		repaint();
 
 	}
 

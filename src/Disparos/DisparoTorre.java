@@ -3,7 +3,6 @@ package Disparos;
 import java.awt.Point;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 public class DisparoTorre extends Disparo {
 	
@@ -19,12 +18,4 @@ public class DisparoTorre extends Disparo {
 		velocidad=10;
 
 	}
-	
-	
-
-	
-	public ImageIcon obtenerGrafico(){
-		return new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/Arrow.png"));
-	}
-
 }
