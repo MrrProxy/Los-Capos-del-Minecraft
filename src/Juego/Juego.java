@@ -23,13 +23,15 @@ public class Juego {
 	private Entidad malos;
 	int i=0;
 	private LinkedList<Entidad> entidades;
+    private static Juego instance;
 
-	private static Juego instance;
-
+    //Constructores
+    
 	private Juego() {
 
 	}
-
+    //Metodos
+	
 	public static Juego getInstance() {
 		if (instance == null)
 			instance = new Juego();

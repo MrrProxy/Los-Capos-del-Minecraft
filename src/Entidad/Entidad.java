@@ -57,7 +57,7 @@ public abstract class Entidad {
 		 * Devuelve la cantidad de vidas que tiene la entidad.
 		 * @return Cantidad de vidas.
 		 */
-		public int cantVidas() {
+		public int getCantVidas() {
 			return puntosVida;
 		}
 		
@@ -67,7 +67,7 @@ public abstract class Entidad {
 		 * @return verdadero si la entidad murio, caso contrario falso.
 		 */
 		public boolean estoyMuerto() {
-			return cantVidas() <= 0;
+			return  getCantVidas()<= 0;
 		}
 		
 		
@@ -75,7 +75,7 @@ public abstract class Entidad {
 		 * Devuelve la posicision de la entidad.
 		 * @return posicision de la entidad.
 		 */
-		public Point obtenerPosicion(){
+		public Point getPosition(){
 			return pos;
 		}
 		
@@ -115,7 +115,7 @@ public abstract class Entidad {
 		 * Devuelve el daño de impacto que ocaciona la entidad en porcentaje.
 		 * @return Daño de impacto que ocasiona.
 		 */
-		public int obtenerDanio() {
+		public int getDanio() {
 			return danioImpacto;
 		}
 		
@@ -123,7 +123,7 @@ public abstract class Entidad {
 		 * Establece el daño de impacto que ocaciona la entidad en porcentaje. Requiere que el valor sea entre 0 a 100.
 		 * @param d Daño de impacto.
 		 */
-		public void establecerDanio(int d) {
+		public void setDanio(int d) {
 			danioImpacto = d;
 		}
 		
