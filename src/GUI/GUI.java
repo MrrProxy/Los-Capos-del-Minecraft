@@ -206,7 +206,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 						y = 40;
 					ste.setPosition(new Point(x, y));
 					panelJuego.add(ste.getGrafico(2), 0);
-					Entidad en=new  DisparoTorre(ste.getPosition(),100,100,100,100);
+					Entidad en=new  DisparoTorre(ste.obtenerPosicion(),100,100,100,100);
 					panelJuego.add(en.getGrafico(2), 0);
 					j.agregarEntidad(en);
 					cont++;

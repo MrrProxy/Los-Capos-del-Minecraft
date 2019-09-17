@@ -2398,7 +2398,7 @@
 											"top": 575,
 											"width": 93.208984375,
 											"height": 13,
-											"text": "Arquero"
+											"text": "SteveDiamante"
 										},
 										{
 											"_type": "LabelView",
@@ -2667,7 +2667,7 @@
 											"top": 631,
 											"width": 95,
 											"height": 13,
-											"text": "KnightEspada"
+											"text": "SteveOro"
 										},
 										{
 											"_type": "LabelView",
@@ -2936,7 +2936,7 @@
 											"top": 687,
 											"width": 96.97900390625,
 											"height": 13,
-											"text": "KnightHacha"
+											"text": "SteveHierro"
 										},
 										{
 											"_type": "LabelView",
@@ -3205,7 +3205,7 @@
 											"top": 743,
 											"width": 96.2490234375,
 											"height": 13,
-											"text": "KnightLanza"
+											"text": "SteveCuero"
 										},
 										{
 											"_type": "LabelView",
@@ -3474,7 +3474,7 @@
 											"top": 799,
 											"width": 95,
 											"height": 13,
-											"text": "Mago"
+											"text": "SteveRed"
 										},
 										{
 											"_type": "LabelView",
@@ -7800,7 +7800,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Arquero",
+					"name": "SteveDiamante",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -7823,7 +7823,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "KnightEspada",
+					"name": "SteveOro",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -7846,7 +7846,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "KnightHacha",
+					"name": "SteveHierro",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -7869,7 +7869,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "KnightLanza",
+					"name": "SteveCuero",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -7892,7 +7892,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Mago",
+					"name": "SteveRed",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",

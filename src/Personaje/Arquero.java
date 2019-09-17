@@ -5,7 +5,7 @@ import java.awt.Point;
 import javax.swing.ImageIcon;
 
 /**
- * Clase Arquero que extiende de Personaje.
+ * Clase SteveCuero que extiende de Personaje.
  * @author Aldana Case(104870),Biernat Diego (105974) , Emanuel Somoza (112100).
  *
  */
