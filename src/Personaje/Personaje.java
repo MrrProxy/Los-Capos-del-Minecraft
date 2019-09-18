@@ -28,7 +28,7 @@ public abstract class Personaje extends Entidad {
 	public void Accionar() {
 		Juego juego = Juego.getInstance();
 		if (tiempoEntreDisparo == 0) {
-			Point point=new Point(this.obtenerPosicion());
+			Point point=new Point(this.getPosition());
 			disparo = new DisparoTorre(point, 50, 50, 50, 50);
 			juego.addDisparoJugador(disparo);
 			juego.agregarGrafica(disparo);
