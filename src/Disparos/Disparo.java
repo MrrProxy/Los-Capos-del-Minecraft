@@ -12,8 +12,8 @@ public abstract class Disparo extends Entidad {
 		super(p, ancho, alto);
 	}
 	
-	public void Accionar() {
-		pos.x+=velocidad;
+	public void mover() {
+		this.pos.x+=velocidad;
 		setGrafico(1);
 	}
 

@@ -124,7 +124,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 
 		// *********Se crea el frame*********
 		frameJuego = new JFrame();// Crea la ventana donde se desarrolla el juego
-		frameJuego.setBounds(0, 0, 1000, 720);
+		frameJuego.setBounds(0, 0, 1200, 720);
 		frameJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameJuego.setLocationRelativeTo(null);
 		frameJuego.setLayout(null);
@@ -135,17 +135,17 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 
 		// *********Se crean los paneles*********
 		panelPrincipal = new JLayeredPane();// Panel juego principal
-		panelPrincipal.setBounds(0, 0, 1000, 700);
+		panelPrincipal.setBounds(0, 0, 1200, 700);
 		panelPrincipal.setLayout(null);
 
 		panelTorres = new JLayeredPane();// Panel donde se compran las torres
-		panelTorres.setBounds(800, 0, 200, 700);
+		panelTorres.setBounds(1000, 0, 200, 700);
 
 		panelJugador = new JLayeredPane();// Panel del jugador con la vida etc
 		panelJugador.setBounds(0, 600, 800, 150);
 
 		panelJuego = new JLayeredPane();// Panel donde se ejecuta el juego (MAPA)
-		panelJuego.setBounds(0, 0, 800, 600);
+		panelJuego.setBounds(0, 0, 1000, 600);
 
 		// ************Se crean los JLabel con sus imagenes************
 		fondo = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/GREEN.jpg")));
@@ -156,7 +156,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		// fondo2.setBackground(new java.awt.Color(204, 0, 0));
 
 		fondo3 = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/GameMap.png")));
-		fondo3.setBounds(0, 0, 800, 600);
+		fondo3.setBounds(0, 0, 1000, 600);
 
 		Titulo2 = new JLabel("PANEL 2");
 		Titulo2.setBounds(0, 0, 400, 100);
@@ -205,17 +205,39 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 					if (y < 100)
 						y = 40;
 					ste.setPosition(new Point(x, y));
-					panelJuego.add(ste.getGrafico(2), 0);
-					Entidad en=new  DisparoTorre(ste.obtenerPosicion(),100,100,100,100);
-					panelJuego.add(en.getGrafico(2), 0);
-					j.agregarEntidad(en);
+					j.agregarEntidad(ste);
+					//panelJuego.add(ste.getGrafico(2), 0);
+					//Entidad en=new  DisparoTorre(ste.obtenerPosicion(),100,100,100,100);
+					//panelJuego.add(en.getGrafico(2), 0);
+					//j.agregarEntidad(en);
 					cont++;
 				}
 			}
 		});
 
 	}
+	public void eliminarEnemigo(Entidad ste) {
 
+		// Evento del teclado
+		panelJuego.addMouseListener(new MouseAdapter() {
+			int cont = 0;
+
+			public void mouseClicked(MouseEvent e) {
+				if (cont == 0) {
+					int x = e.getX();
+					int y = e.getY();
+					if (x > 400)
+						x = 400;
+					if (y < 100)
+						y = 40;
+					ste.setPosition(new Point(x, y));
+					j.agregarEntidad(ste);
+					cont++;
+				}
+			}
+		});
+
+	}
 	public void agregarAlJuego(JLabel j) {
 		if (j != null)
 			panelJuego.add(j, 0);

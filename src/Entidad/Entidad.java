@@ -148,8 +148,9 @@ public abstract class Entidad {
 		/**
 		 * Produce todas las acciones de las entidades
 		 * @param e Entidad
+		 * @throws InterruptedException 
 		 */
-		public void Accionar() {
+		public void Accionar()  {
 			
 		}
 		

@@ -15,7 +15,6 @@ public class BotonT2 extends Tienda {
 		// System.out.println("entre al acionar de boton2 ...");
 		entidad = new KnightHacha(new Point(0, 0), 70, 70);
 		juego = Juego.getInstance();
-		juego.agregarEntidad(entidad);
 		// Controlo que disponga de la plata para comprar la torre
 		int precio=entidad.getPrecioPersonaje();
 		int monedas=juego.getCantMonedas();

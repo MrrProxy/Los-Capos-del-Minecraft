@@ -15,7 +15,6 @@ public class BotonT5 extends Tienda{
 	public void AccionarBoton(GUI gui,LinkedList<Tienda> tiendas) {
 			entidad =new Arquero(new Point(0,0),70,70);
 			juego=Juego.getInstance();
-			juego.agregarEntidad(entidad);
 			//Controlo que disponga de la plata para comprar la torre
 			int precio=entidad.getPrecioPersonaje();
 			int monedas=juego.getCantMonedas();
