@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 import GUI.GUI;
 
-public class BotonComprar extends Tienda {
+public class BotonComprar extends FabricaBoton {
 
 	private static final long serialVersionUID = 1L;
 
@@ -14,8 +14,8 @@ public class BotonComprar extends Tienda {
 	}
 
 	// Accion del boton Comprar
-	public void AccionarBoton(GUI gui, LinkedList<Tienda> tiendas) {
-		for (Tienda tienda : tiendas) {
+	public void AccionarBoton(GUI gui, LinkedList<FabricaBoton> botones) {
+		for (FabricaBoton tienda : botones) {
 			if (tienda.getText().equals("Comprar"))
 				tienda.setEnabled(false);
 			else {

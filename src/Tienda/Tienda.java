@@ -3,9 +3,7 @@ package Tienda;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-import Entidad.Entidad;
 import GUI.GUI;
-import Juego.Juego;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,24 +19,23 @@ public class Tienda extends JButton {
 	private static final long serialVersionUID = 1L;
 
 	// Lista de botones
-	LinkedList<Tienda> listadeBotones = new LinkedList<Tienda>();;
-	Entidad entidad;
-	Juego juego;
+	LinkedList<FabricaBoton> listadeBotones = new LinkedList<FabricaBoton>();;
 
 	// Crea los botones de las torres
 	private  void agregarBotones() {
+		AbstractFactoryBoton boton=new FabricaBoton();
 		// Se crea el boton Torre1
-		Tienda Torre1 = new BotonT1();
+		FabricaBoton Torre1 = boton.getBoton1();
 		// Se crea el boton Torre2
-		Tienda Torre2 = new BotonT2();
+		FabricaBoton Torre2 = boton.getBoton2();
 		// Se crea el boton Torre3
-		Tienda Torre3 = new BotonT3();
+		FabricaBoton Torre3 = boton.getBoton3();
 		// Se crea el boton Torre4
-		Tienda Torre4 = new BotonT4();
+		FabricaBoton Torre4 = boton.getBoton4();
 		// Se crea el boton Torre5
-		Tienda Torre5 = new BotonT5();
+		FabricaBoton Torre5 = boton.getBoton5();
 		// Se crea el boton Comprar
-		Tienda Comprar = new BotonComprar("Comprar");
+		FabricaBoton Comprar = boton.getBotonComprar("Comprar");
 		// Se agregan los botones a la lista
 		listadeBotones.addLast(Torre1);
 		listadeBotones.addLast(Torre2);
@@ -53,7 +50,7 @@ public class Tienda extends JButton {
 		int i = 1;
 		agregarBotones();
 		//crea los botones que esten en la lista
-		for (Tienda aUXButton : listadeBotones) {
+		for (FabricaBoton aUXButton : listadeBotones) {
 			aUXButton.setForeground(new java.awt.Color(155, 017, 030));
 			aUXButton.setBackground(new java.awt.Color(0, 0, 0));
 			aUXButton.setFont(new java.awt.Font("cambria", 12, 33));
@@ -79,9 +76,6 @@ public class Tienda extends JButton {
 				}
 			});
 		}
-	}
-
-	public void AccionarBoton(GUI gui, LinkedList<Tienda> tiendas) {
 	}
 
 }// Fin clase Tienda
