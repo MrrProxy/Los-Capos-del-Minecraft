@@ -5,7 +5,6 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import Disparos.DisparoTorre;
 import Entidad.Entidad;
 import Juego.Juego;
 import Tienda.Tienda;
@@ -206,10 +205,6 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 						y = 40;
 					ste.setPosition(new Point(x, y));
 					j.agregarEntidad(ste);
-					//panelJuego.add(ste.getGrafico(2), 0);
-					//Entidad en=new  DisparoTorre(ste.obtenerPosicion(),100,100,100,100);
-					//panelJuego.add(en.getGrafico(2), 0);
-					//j.agregarEntidad(en);
 					cont++;
 				}
 			}
