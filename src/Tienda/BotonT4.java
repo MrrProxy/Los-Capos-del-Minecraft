@@ -1,23 +1,32 @@
 package Tienda;
 
 import java.awt.Point;
-import java.util.LinkedList;
-
+import javax.swing.ImageIcon;
 import Entidad.Entidad;
 import GUI.GUI;
 import Personaje.Mago;
 
-public class BotonT4 extends FabricaBoton{
+public class BotonT4 extends Boton{
+	
 	private static final long serialVersionUID = 1L;
+	
+	public BotonT4(TiendaJuego tienda,GUI gui) {
+		super(tienda, gui);
+		this.setBounds(0, 300, 200, 100);
+		this.setText("Torre4 ");
+		this.setEnabled(false);
 
+	}
 	
+
+	protected ImageIcon getIconoBoton() {
+		return null;
+	}
 	
-	
-	//Accion del boton Torre1
-	public void AccionarBoton(GUI gui, LinkedList<FabricaBoton> botones) {
-			Entidad entidad =new Mago(new Point(0,0),70,70);
-			Accionar(entidad, botones, gui);
-			
-		}
+	protected Entidad crearEntidad() {
+		Entidad entidad =new Mago(new Point(0,0),70,70);
+		return entidad;
+	}
+
 
 }

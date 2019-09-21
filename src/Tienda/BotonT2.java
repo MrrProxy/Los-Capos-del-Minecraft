@@ -1,19 +1,34 @@
 package Tienda;
 
 import java.awt.Point;
-import java.util.LinkedList;
-
+import javax.swing.ImageIcon;
 import Entidad.Entidad;
 import GUI.GUI;
 import Personaje.KnightHacha;
 
-public class BotonT2 extends FabricaBoton {
-
+public class BotonT2 extends Boton {
+	
 	private static final long serialVersionUID = 1L;
+	
+	public BotonT2(TiendaJuego tienda, GUI gui) {
+		super(tienda, gui);
+		this.setBounds(0, 100, 200, 100);
+		this.setText("Torre2 ");
+		this.setEnabled(false);
 
-	public void AccionarBoton(GUI gui, LinkedList<FabricaBoton> botones) {
-		// System.out.println("entre al acionar de boton2 ...");
+
+	}
+
+
+	public void AccionarBoton() {
+	}
+
+	protected ImageIcon getIconoBoton() {
+		return null;
+	}
+
+	protected Entidad crearEntidad() {
 		Entidad entidad = new KnightHacha(new Point(0, 0), 70, 70);
-		Accionar(entidad, botones, gui);
+		return entidad;
 	}
 }

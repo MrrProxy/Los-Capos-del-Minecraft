@@ -91,7 +91,7 @@ public class Juego {
 	}
 
 	public void agregarGrafica(Entidad e) {
-		JLabel j = e.getGrafico(1);
+		JLabel j = e.getGrafico(3);
 		gui.agregarAlJuego(j);
 	}
 
@@ -157,7 +157,6 @@ public class Juego {
 		if (dE != null) {
 			synchronized (disparos) {
 				disparos.add(dE);
-				gui.add(dE.getGrafico(1), 0);
 			}
 		}
 	}
@@ -173,7 +172,6 @@ public class Juego {
 		if (dJ != null) {
 			synchronized (disparos) {
 				disparos.add(dJ);
-				gui.add(dJ.getGrafico(1), 0);
 			}
 		}
 	}

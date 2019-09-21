@@ -4,6 +4,10 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
+import Disparos.Disparo;
+import Disparos.DisparoMago;
+import Juego.Juego;
+
 /**
  * Clase SteveRed que extiende de Personaje.
  * 
@@ -23,5 +27,24 @@ public class Mago extends Personaje {
 		precioPersonaje=600;
 	}
 	
+	public void Accionar() {
+		Juego juego = Juego.getInstance();
+		if (tiempoEntreDisparo == 0) {
+			Point point = new Point(this.getPosition());
+			disparo = new DisparoMago(point, 50, 50, 50, 50);
+			juego.addDisparoJugador(disparo);
+			juego.agregarGrafica(disparo);
+			for (Disparo d : juego.obtenerDisparos()) {
+				d.mover();
+			}
+			tiempoEntreDisparo = 20;
+		} else {
+			tiempoEntreDisparo--;
+			for (Disparo d : juego.obtenerDisparos()) {
+				d.mover();
+			}
+		}
+
+	}
 
 }

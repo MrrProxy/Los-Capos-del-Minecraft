@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Disparos.Disparo;
-import Disparos.DisparoTorre;
+import Disparos.DisparoMago;
 
 /**
  * Clase SteveDiamante que extiende de Personaje.
@@ -34,8 +34,8 @@ public class KnightLanza extends Personaje {
 		return new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/Steve1.png"));
 	}
 	
-	public DisparoTorre disparar() {
-		DisparoTorre nuevo= new DisparoTorre(new Point(pos.x+50,pos.y),46,16,15,15);
+	public DisparoMago disparar() {
+		DisparoMago nuevo= new DisparoMago(new Point(pos.x+50,pos.y),46,16,15,15);
 		return nuevo;
 	}
 }

@@ -13,8 +13,6 @@ public abstract class Disparo extends Entidad {
 	}
 	
 	public void mover() {
-		this.pos.x+=velocidad;
-		setGrafico(1);
 	}
 
 

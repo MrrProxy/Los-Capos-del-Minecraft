@@ -7,7 +7,14 @@ import javax.swing.*;
 
 import Entidad.Entidad;
 import Juego.Juego;
-import Tienda.Tienda;
+import Tienda.Boton;
+import Tienda.BotonComprar;
+import Tienda.BotonT1;
+import Tienda.BotonT2;
+import Tienda.BotonT3;
+import Tienda.BotonT4;
+import Tienda.BotonT5;
+import Tienda.TiendaJuego;
 import Hilo.HiloPrincipal;
 
 /**
@@ -26,7 +33,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	// Atributos de la GUI
 	private Juego j;
 	private HiloPrincipal tiempo;
-	private Tienda tienda;
+	private TiendaJuego tienda;
 
 	// ****Labels****
 	private JLabel fondo;
@@ -37,6 +44,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	private JButton startButton;
 
 	private static GUI instance;
+
 	/**
 	 * Constructor de la GUII. Crea la aplicacion.
 	 */
@@ -60,18 +68,17 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		return instance;
 
 	}
+
 	/**
 	 * Ejecuta la aplicacion GUI.
 	 * 
 	 * @param args arrglo de String.
 	 */
-	
+
 	private GUI() {
 		iniciar();
 	}
 
-	
-	
 	/*
 	 * Inicializa los atributos de la gui, crea la intefaz grafica
 	 */
@@ -168,9 +175,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		panelJugador.add(fondo2, -1);
 		panelJuego.add(fondo3, -1);
 
-		// Se crean los botones
-		tienda = new Tienda();
-		tienda.crearBotones(this);
+		
 
 		// Se setea el panel principal con el contenedor del frame y se agregan los
 		// demas paneles al panel principal
@@ -183,12 +188,16 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		j = Juego.getInstance();
 		j.establecerGrafica(this);
 		j.iniciarJuego();
+		
+		// Se crean los botones
+		tienda = TiendaJuego.getInstance();
+		crearBotones();
+		
 		tiempo = HiloPrincipal.getInstace();
 		tiempo.start();
-//		hiloOleadas= new HiloOleadas(j);
-//		hiloOleadas.start();
+
 	}// FIN iniciarJuego
-	
+
 	public void agregarTorre(Entidad ste) {
 
 		// Evento del teclado
@@ -203,35 +212,27 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 						x = 400;
 					if (y < 100)
 						y = 40;
-					ste.setPosition(new Point(x, y));
-					j.agregarEntidad(ste);
+					tienda.agregarEntidad(x, y);
 					cont++;
 				}
 			}
 		});
 
 	}
-	public void eliminarEnemigo(Entidad ste) {
+	public void crearBotones() {
+		Boton torre1=new BotonT1(tienda,this);
+		Boton torre2=new BotonT2(tienda,this);
+		Boton torre3=new BotonT3(tienda,this);
+		Boton torre4=new BotonT4(tienda,this);
+		Boton torre5=new BotonT5(tienda,this);
+		Boton Comprar=new BotonComprar(tienda,this);
 
-		// Evento del teclado
-		panelJuego.addMouseListener(new MouseAdapter() {
-			int cont = 0;
-
-			public void mouseClicked(MouseEvent e) {
-				if (cont == 0) {
-					int x = e.getX();
-					int y = e.getY();
-					if (x > 400)
-						x = 400;
-					if (y < 100)
-						y = 40;
-					ste.setPosition(new Point(x, y));
-					j.agregarEntidad(ste);
-					cont++;
-				}
-			}
-		});
-
+		agregarBotones(torre1);
+		agregarBotones(torre2);
+		agregarBotones(torre3);
+		agregarBotones(torre4);
+		agregarBotones(torre5);
+		agregarBotones(Comprar);
 	}
 	public void agregarAlJuego(JLabel j) {
 		if (j != null)
