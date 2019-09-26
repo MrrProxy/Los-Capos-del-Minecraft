@@ -37,13 +37,13 @@ public class HiloPrincipal extends Thread {
 			Juego juego = Juego.getInstance();
 			while(true) {
 				try {
-					Thread.sleep(100);
+					Thread.sleep(10);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 		
-				elimEnemigos = new LinkedList<Enemigo>();
-				elimEntidades = new LinkedList<Entidad>();
+				//elimEnemigos = new LinkedList<Enemigo>();
+				//elimEntidades = new LinkedList<Entidad>();
 				juego.Accionar();
 				
 			}

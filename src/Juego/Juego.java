@@ -27,6 +27,7 @@ public class Juego {
 	private LinkedList<Entidad> entidades;
 	private LinkedList<Enemigo> enemigos;
 	private LinkedList<Disparo> disparos;
+	private LinkedList<Entidad> eliminados;
 
 	private static Juego instance;
 
@@ -56,10 +57,10 @@ public class Juego {
 
 	public void iniciarJuego() {
 		map = new Mapa();
-
-		// disparos = new LinkedList<Disparo>();
+		System.out.println("Cantidad de monedas con la cual empieza el juego: "+cantMonedas);
 		entidades = new LinkedList<Entidad>();
 		disparos=new LinkedList<Disparo>();
+		eliminados = new LinkedList<Entidad>();
 
 		int x = 40;
 		for (int i = 0; i < 6; i++) {
@@ -74,8 +75,19 @@ public class Juego {
 	public synchronized void Accionar() {
 		synchronized (entidades) {
 			for (Entidad e : entidades) {
-				e.Accionar();
+				if (e.getVida()!=0)
+					e.Accionar();
+				else
+					eliminados.addLast(e);
 			}
+			
+			for (Entidad e: eliminados) {
+				entidades.remove(e);
+				gui.eliminarEntidad(e.getGrafico(1));
+				gui.remove(e.getGrafico(1));
+			}
+			
+			eliminados= new LinkedList<>();
 
 		}
 	}
@@ -83,9 +95,8 @@ public class Juego {
 	public void agregarEntidad(Entidad e) {
 		if (e != null) {
 			entidades.add(e);
-			//System.out.println(" grafico" + e.obtenerPosicion());
 			gui.agregarAlJuego(e.getGrafico(1));
-			//System.out.println("size de disparos "+disparos.size()+"size entidades"+entidades.size());
+			
 
 		}
 	}
@@ -128,30 +139,14 @@ public class Juego {
 		}
 	}
 
-	public void eliminarEntidad(Entidad e) {
-		if (e != null) {
-			synchronized (entidades) {
-				gui.remove(e.getGrafico(1));
-				entidades.remove(e);
-				gui.repaint();
-			}
+	public void eliminarEntidades() {
+		for(Entidad e: entidades) {
+			e.morir();
+			cantMonedas=cantMonedas+e.getMonedas();
 		}
+		System.out.println("Monedas:" +cantMonedas);
 	}
 
-//	public void eliminarEnemigo(Enemigo e) {
-//		if (e != null) {
-//			if(e.doyPowerUp()) {
-//				PowerUp pU = e.obtenerPowerUp();
-//				agregarEntidad(pU);
-//			}
-//			synchronized(entidades) {
-//				gui.remove(e.getGrafico());
-//				enemigos.remove(e); 
-//				gui.repaint();
-//			}
-//			
-//		}
-//	}
 
 	public void addDisparoEnemigo(Disparo dE) {
 		if (dE != null) {

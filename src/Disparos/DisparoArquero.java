@@ -14,7 +14,7 @@ public class DisparoArquero extends Disparo{
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/Arrow.png"));
 		this.imagen[3] = null;
 		
-		velocidad=10;
+		velocidad=1;
 
 	}
 	

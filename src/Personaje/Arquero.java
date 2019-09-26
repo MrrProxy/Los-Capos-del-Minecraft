@@ -33,11 +33,12 @@ public class Arquero extends Personaje {
 			Point point = new Point(this.getPosition());
 			disparo = new DisparoArquero(point, 50, 50, 50, 50);
 			juego.addDisparoJugador(disparo);
+			//juego.agregarEntidad(disparo);
 			juego.agregarGrafica(disparo);
 			for (Disparo d : juego.obtenerDisparos()) {
 				d.mover();
 			}
-			tiempoEntreDisparo = 20;
+			tiempoEntreDisparo = 100;
 		} else {
 			tiempoEntreDisparo--;
 			for (Disparo d : juego.obtenerDisparos()) {

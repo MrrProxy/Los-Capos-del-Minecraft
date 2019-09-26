@@ -17,7 +17,7 @@ public abstract class Entidad {
 	protected int height;
 	protected JLabel grafico;
 	protected Icon imagen[];
-	protected int puntaje;
+	protected int monedas;
 	protected int puntosVida;
 	protected Point pos;
 	protected int danioImpacto;
@@ -39,25 +39,18 @@ public abstract class Entidad {
 		 * Devuelve el puntaje de la entidad.
 		 * @return puntaje de la entidad.
 		 */
-		public int getPuntaje() {
-			return puntaje;
+	
+		
+		public int getMonedas(){
+			return monedas;
 		}
-		
-		/**
-		 * Establece el puntaje de la entidad por la recibida como parametro.
-		 * @param p puntaje a establecer.
-		 */
-		public void setPuntaje(int p) {
-			puntaje = p;
-		}
-		
-		
+			
 		
 		/**
 		 * Devuelve la cantidad de vidas que tiene la entidad.
 		 * @return Cantidad de vidas.
 		 */
-		public int getCantVidas() {
+		public int getVida() {
 			return puntosVida;
 		}
 		
@@ -67,7 +60,7 @@ public abstract class Entidad {
 		 * @return verdadero si la entidad murio, caso contrario falso.
 		 */
 		public boolean estoyMuerto() {
-			return getCantVidas() <= 0;
+			return puntosVida <= 0;
 		}
 		
 		
@@ -151,6 +144,10 @@ public abstract class Entidad {
 		 * @throws InterruptedException 
 		 */
 		public void Accionar()  {
+			
+		}
+		
+		public void morir() {
 			
 		}
 		

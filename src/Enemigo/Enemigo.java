@@ -47,6 +47,10 @@ public abstract class Enemigo extends Entidad {
 			
 		}
 		
+		public void morir() {
+			puntosVida=0;
+		}
+		
 		
 		
 

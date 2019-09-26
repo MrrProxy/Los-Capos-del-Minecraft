@@ -23,7 +23,7 @@ import Hilo.HiloPrincipal;
  * @author Aldana Case(104870),Biernat Diego (105974) , Emanuel Somoza (112100).
  *
  */
-public class GUI extends JFrame {// Interfaz grafica del juego
+public class GUI extends JFrame implements KeyListener {// Interfaz grafica del juego
 
 	private static final long serialVersionUID = 1L;
 	// Frame y panel
@@ -107,8 +107,9 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		startButton.setBackground(new java.awt.Color(0, 0, 0));
 		startButton.setFont(new java.awt.Font("cambria", 15, 50));
 		startButton.setHorizontalAlignment(SwingConstants.CENTER);
+		startButton.setFocusPainted(false);
 		startButton.setBorderPainted(true);
-		frameInicio.add(startButton);// Agrega el boton al frame
+		frameInicio.add(startButton, 0);// Agrega el boton al frame
 
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -137,6 +138,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		frameJuego.setResizable(false);
 		frameJuego.setTitle("Proyecto de TDP 2019");
 		frameJuego.setVisible(true);
+		frameJuego.addKeyListener(this);
 		// frameJuego.setBackground(Color.RED);
 
 		// *********Se crean los paneles*********
@@ -149,9 +151,11 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 
 		panelJugador = new JLayeredPane();// Panel del jugador con la vida etc
 		panelJugador.setBounds(0, 600, 800, 150);
+		
 
 		panelJuego = new JLayeredPane();// Panel donde se ejecuta el juego (MAPA)
 		panelJuego.setBounds(0, 0, 1000, 600);
+		
 
 		// ************Se crean los JLabel con sus imagenes************
 		fondo = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/GREEN.jpg")));
@@ -161,7 +165,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		fondo2.setBounds(0, 0, 800, 100);
 		// fondo2.setBackground(new java.awt.Color(204, 0, 0));
 
-		fondo3 = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/GameMap.png")));
+		fondo3 = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/Mapa3.png")));
 		fondo3.setBounds(0, 0, 1000, 600);
 
 		Titulo2 = new JLabel("PANEL 2");
@@ -226,6 +230,12 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Boton torre4=new BotonT4(tienda,this);
 		Boton torre5=new BotonT5(tienda,this);
 		Boton Comprar=new BotonComprar(tienda,this);
+		Comprar.setFocusable(false);
+		torre1.setFocusable(false);
+		torre2.setFocusable(false);
+		torre3.setFocusable(false);
+		torre4.setFocusable(false);
+		torre5.setFocusable(false);
 
 		agregarBotones(torre1);
 		agregarBotones(torre2);
@@ -239,11 +249,30 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 			panelJuego.add(j, 0);
 
 	}
+	
+	public void eliminarEntidad(JLabel grafico) {
+		panelJuego.remove(grafico);
+		panelJuego.revalidate();
+		panelJuego.repaint();	
+	}
 
 	// Agrega los botones al panel de torres
 	public void agregarBotones(JButton B) {
 		panelTorres.add(B, 0);
 
 	}
+
+	 public void keyPressed(KeyEvent e) {
+	  int key = e.getKeyCode();
+	  if (key == KeyEvent.VK_A)
+		  j.eliminarEntidades();
+	 }
+	 
+	 public void keyReleased(KeyEvent e) {
+	 }
+	 
+	 public void keyTyped(KeyEvent e) {
+	 }
+	 
 
 }// Fin GUI
