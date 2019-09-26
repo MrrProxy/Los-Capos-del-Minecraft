@@ -1,20 +1,16 @@
 package Hilo;
 
-import java.util.LinkedList;
-
-import javax.swing.JLabel;
-
-import Enemigo.Enemigo;
-import Entidad.Entidad;
 import Juego.Juego;
+import Mapa.Nivel;
 
 public class HiloPrincipal extends Thread {
 	//Atributos
 		
-		private LinkedList<Enemigo> enemigos;
-		private LinkedList<Entidad> entidades;
-		private LinkedList<Enemigo> elimEnemigos;
-		private LinkedList<Entidad> elimEntidades;
+//		private LinkedList<Enemigo> enemigos;
+//		private LinkedList<Entidad> entidades;
+//		private LinkedList<Enemigo> elimEnemigos;
+//		private LinkedList<Entidad> elimEntidades;
+		private Nivel nivel;
 		private static HiloPrincipal instaceHiloPrincipal;
 		
 		public static HiloPrincipal getInstace() {
@@ -25,9 +21,7 @@ public class HiloPrincipal extends Thread {
 		
 		//Constructor
 		private HiloPrincipal(){
-			Juego juego = Juego.getInstance();
-			//enemigos = juego.obtenerEnemigos();
-			entidades = juego.obtenerEntidades();
+			nivel = new Nivel();
 		}
 		
 		//Metodos
@@ -37,13 +31,12 @@ public class HiloPrincipal extends Thread {
 			Juego juego = Juego.getInstance();
 			while(true) {
 				try {
-					Thread.sleep(10);
+					Thread.sleep(70);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-		
-				//elimEnemigos = new LinkedList<Enemigo>();
-				//elimEntidades = new LinkedList<Entidad>();
+				
+				nivel.cargarEntidadesAlJuego();
 				juego.Accionar();
 				
 			}
@@ -140,7 +133,7 @@ public class HiloPrincipal extends Thread {
 	 * @param l2 label de entidad 2.
 	 * @return verdadero si colisionan, caso contrario falso.
 	 */
-	private boolean colisionan(JLabel l1, JLabel l2) {
+	/*private boolean colisionan(JLabel l1, JLabel l2) {
 		boolean colisionan = false;
 		
 		int x_centro = l1.getX() + l1.getWidth();
@@ -153,7 +146,7 @@ public class HiloPrincipal extends Thread {
 				colisionan = true;
 		
 		return colisionan;
-	}
+	}*/
 	
 }
 

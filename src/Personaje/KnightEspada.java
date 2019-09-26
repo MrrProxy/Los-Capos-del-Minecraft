@@ -23,4 +23,10 @@ public class KnightEspada extends Personaje {
 		precioPersonaje=300;
 	}
 
+	@Override
+	public void morir() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -20,7 +20,7 @@ public class Zombie extends Enemigo {
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/WALKING_GOBLIN_1.gif"));
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/WALKING_GOBLIN_1.gif"));
 		this.imagen[3] = null;
-		velocidad=1;
+		velocidad=6;
 		puntosVida=10;
 		monedas=10;
 

@@ -1,16 +1,12 @@
 package Juego;
 
-import java.awt.Point;
 import java.util.LinkedList;
-
 import javax.swing.JLabel;
-
 import Disparos.Disparo;
-import Enemigo.Zombie;
 import Entidad.Entidad;
 import GUI.GUI;
+import Hilo.HiloPrincipal;
 import Mapa.Mapa;
-import Enemigo.Enemigo;
 
 /**
  * Clase Juego .
@@ -21,13 +17,11 @@ import Enemigo.Enemigo;
 public class Juego {
 	protected int cantMonedas = 10000;
 	protected Mapa map;
+	private HiloPrincipal tiempo;
 	private GUI gui;
-	private Entidad malos;
-	int i = 0;
 	private LinkedList<Entidad> entidades;
-	private LinkedList<Enemigo> enemigos;
-	private LinkedList<Disparo> disparos;
-	private LinkedList<Entidad> eliminados;
+	private LinkedList<Entidad> aEliminar;
+	private LinkedList<Entidad> aAgregar;
 
 	private static Juego instance;
 
@@ -42,67 +36,64 @@ public class Juego {
 
 	}
 
-//	
-//	public boolean agregarEntidad(Entidad e){
-//		boolean toReturn= map.agregarEntidadMap(e);
-//		return toReturn;
-//				
-//	}
-
 	public void establecerGrafica(GUI g) {
 		if (gui == null)
 			gui = g;
 	}
+
 	// Inicia el juego
 
 	public void iniciarJuego() {
+		
 		map = new Mapa();
-		System.out.println("Cantidad de monedas con la cual empieza el juego: "+cantMonedas);
+		
 		entidades = new LinkedList<Entidad>();
-		disparos=new LinkedList<Disparo>();
-		eliminados = new LinkedList<Entidad>();
+		aAgregar = new LinkedList<Entidad>();
+		aEliminar = new LinkedList<Entidad>();
+		
+		tiempo = HiloPrincipal.getInstace();
+		tiempo.start();
+	
 
-		int x = 40;
-		for (int i = 0; i < 6; i++) {
-			int valorX = (int) (1 * 800);
-			malos = new Zombie(new Point(valorX, x), 42, 42);
-			entidades.addLast(malos);
-			gui.agregarAlJuego(malos.getGrafico(1));
-			x += 95;
-		}
 	}
 
 	public synchronized void Accionar() {
-		synchronized (entidades) {
+		if (!entidades.isEmpty()) {
 			for (Entidad e : entidades) {
-				if (e.getVida()!=0)
+				if (e.getVida() != 0)
 					e.Accionar();
 				else
-					eliminados.addLast(e);
+					aEliminar.addLast(e);
 			}
-			
-			for (Entidad e: eliminados) {
+		}
+		if (!aAgregar.isEmpty()) {
+			for (Entidad e : aAgregar) {
+				entidades.add(e);
+				gui.agregarAlJuego(e.getGrafico(1));
+			}
+			aAgregar=new LinkedList<Entidad>();
+		}
+		if (!aEliminar.isEmpty()) {
+			for (Entidad e : aEliminar) {
 				entidades.remove(e);
 				gui.eliminarEntidad(e.getGrafico(1));
 				gui.remove(e.getGrafico(1));
 			}
-			
-			eliminados= new LinkedList<>();
-
+			aEliminar = new LinkedList<Entidad>();
 		}
+
+		
+
 	}
 
 	public void agregarEntidad(Entidad e) {
 		if (e != null) {
-			entidades.add(e);
-			gui.agregarAlJuego(e.getGrafico(1));
-			
-
+			aAgregar.add(e);
 		}
 	}
 
 	public void agregarGrafica(Entidad e) {
-		JLabel j = e.getGrafico(3);
+		JLabel j = e.getGrafico(0);
 		gui.agregarAlJuego(j);
 	}
 
@@ -124,50 +115,16 @@ public class Juego {
 		cantMonedas = monedas;
 	}
 
-	public LinkedList<Disparo> obtenerDisparos() {
-		return disparos;
-	}
 
 	public LinkedList<Entidad> obtenerEntidades() {
 		return entidades;
 	}
 
-	public void agregarEnemigo(Enemigo e) {
-		if (e != null) {
-			enemigos.add(e);
-			gui.add(e.getGrafico(1), 0);
-		}
-	}
-
 	public void eliminarEntidades() {
-		for(Entidad e: entidades) {
+		for (Entidad e : entidades) {
 			e.morir();
-			cantMonedas=cantMonedas+e.getMonedas();
-		}
-		System.out.println("Monedas:" +cantMonedas);
-	}
-
-
-	public void addDisparoEnemigo(Disparo dE) {
-		if (dE != null) {
-			synchronized (disparos) {
-				disparos.add(dE);
-			}
-		}
-	}
-	
-	public void eliminarDisparo(Disparo dE) {
-			for(Disparo d: disparos) {
-				if(d.equals(dE))
-					disparos.remove(d);
+			cantMonedas = cantMonedas + e.getMonedas();
 		}
 	}
 
-	public void addDisparoJugador(Disparo dJ) {
-		if (dJ != null) {
-			synchronized (disparos) {
-				disparos.add(dJ);
-			}
-		}
-	}
 }// Fin clase Juego

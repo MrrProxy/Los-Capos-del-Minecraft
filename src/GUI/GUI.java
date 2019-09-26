@@ -15,7 +15,6 @@ import Tienda.BotonT3;
 import Tienda.BotonT4;
 import Tienda.BotonT5;
 import Tienda.TiendaJuego;
-import Hilo.HiloPrincipal;
 
 /**
  * Clase GUI .
@@ -32,9 +31,7 @@ public class GUI extends JFrame implements KeyListener {// Interfaz grafica del 
 
 	// Atributos de la GUI
 	private Juego j;
-	private HiloPrincipal tiempo;
 	private TiendaJuego tienda;
-
 	// ****Labels****
 	private JLabel fondo;
 	private JLabel fondo2;
@@ -152,17 +149,18 @@ public class GUI extends JFrame implements KeyListener {// Interfaz grafica del 
 		panelJugador = new JLayeredPane();// Panel del jugador con la vida etc
 		panelJugador.setBounds(0, 600, 800, 150);
 		
+		panelJugador.setBounds(0, 600, 1000, 120);
 
 		panelJuego = new JLayeredPane();// Panel donde se ejecuta el juego (MAPA)
 		panelJuego.setBounds(0, 0, 1000, 600);
 		
 
 		// ************Se crean los JLabel con sus imagenes************
-		fondo = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/GREEN.jpg")));
-		fondo.setBounds(0, 0, 800, 600);
+		fondo = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/FondoTorres.png")));
+		fondo.setBounds(0, 0, 200, 700);
 
-		fondo2 = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/JugadorFondo.png")));
-		fondo2.setBounds(0, 0, 800, 100);
+		fondo2 = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/FondoJugador1.png")));
+		fondo2.setBounds(0, 0, 1000, 120);
 		// fondo2.setBackground(new java.awt.Color(204, 0, 0));
 
 		fondo3 = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/Mapa3.png")));
@@ -175,7 +173,7 @@ public class GUI extends JFrame implements KeyListener {// Interfaz grafica del 
 		Titulo2.setFont(new java.awt.Font("cambria", 15, 40));
 
 		// Se agregan los JLabel a sus respectivos paneles
-		panelTorres.add(fondo, 0);
+		panelTorres.add(fondo, -1);
 		panelJugador.add(fondo2, -1);
 		panelJuego.add(fondo3, -1);
 
@@ -197,8 +195,7 @@ public class GUI extends JFrame implements KeyListener {// Interfaz grafica del 
 		tienda = TiendaJuego.getInstance();
 		crearBotones();
 		
-		tiempo = HiloPrincipal.getInstace();
-		tiempo.start();
+	
 
 	}// FIN iniciarJuego
 

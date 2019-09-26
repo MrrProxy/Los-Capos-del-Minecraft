@@ -143,13 +143,9 @@ public abstract class Entidad {
 		 * @param e Entidad
 		 * @throws InterruptedException 
 		 */
-		public void Accionar()  {
-			
-		}
+		public abstract void Accionar(); 
+		public abstract void morir(); 
 		
-		public void morir() {
-			
-		}
 		
 		/**
 		 * Devuelve el precio de la torre que se desea comprar
@@ -165,8 +161,10 @@ public abstract class Entidad {
 		 */
 		public void setPrecioPersonaje(int precio) {
 			precioPersonaje=precio;
-			
 		}
+		
+		//public abstract Entidad Visiti(); 
+		
 		
 	
 }

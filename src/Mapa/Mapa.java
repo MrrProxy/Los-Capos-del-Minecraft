@@ -11,9 +11,12 @@ import Entidad.Entidad;
 public class Mapa {
 
 	// Atributos mapa
-	protected Entidad[][] Celdas;
 
 	// Constructor
 	public Mapa() {
 	}
+	
+	
+	
+	
 }

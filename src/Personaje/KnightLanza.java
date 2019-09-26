@@ -38,4 +38,10 @@ public class KnightLanza extends Personaje {
 		DisparoMago nuevo= new DisparoMago(new Point(pos.x+50,pos.y),46,16,15,15);
 		return nuevo;
 	}
+
+	@Override
+	public void morir() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -41,7 +41,8 @@ public abstract class Enemigo extends Entidad {
 		 * @param v velocidad con la que se desplaza el enemigo
 		 */
 		public void Accionar(){
-			pos.x-=velocidad;
+			Point point=new Point(this.getPosition().x-velocidad,this.getPosition().y);
+			pos=point;
 			setGrafico(1);
 			
 			

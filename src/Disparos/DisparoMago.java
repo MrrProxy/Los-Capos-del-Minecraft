@@ -12,14 +12,18 @@ public class DisparoMago extends Disparo {
 		this.alcance=alcance;
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/DisparoMago.gif"));
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/DisparoMago.gif"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/Arrow.png"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/DisparoMago.gif"));
 		this.imagen[3] = null;
-		
-		velocidad=10;
+		puntosVida=1;
+		velocidad=6;
 
 	}
-	public void mover() {
+	public void Accionar() {
 		this.pos.x+=velocidad;
 		setGrafico(1);
+	}
+	@Override
+	public void morir() {
+		
 	}
 }

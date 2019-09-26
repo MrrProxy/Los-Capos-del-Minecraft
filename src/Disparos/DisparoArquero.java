@@ -9,18 +9,23 @@ public class DisparoArquero extends Disparo{
 		super(p,x,y);
 		this.daño=daño;
 		this.alcance=alcance;
-		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/DisparoMago.gif"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/DisparoMago.gif"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/Arrow.png"));
+		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/flecha.png"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/flecha.png"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/flecha.png"));
 		this.imagen[3] = null;
-		
-		velocidad=1;
+		puntosVida=1;
+		velocidad=10;
 
 	}
 	
-	public void mover() {
+	public void Accionar() {
 		this.pos.x+=velocidad;
 		setGrafico(2);
+	}
+
+	@Override
+	public void morir() {
+		
 	}
 
 }

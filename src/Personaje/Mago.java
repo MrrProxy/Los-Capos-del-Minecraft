@@ -1,15 +1,12 @@
 package Personaje;
 
 import java.awt.Point;
-
 import javax.swing.ImageIcon;
-
-import Disparos.Disparo;
 import Disparos.DisparoMago;
 import Juego.Juego;
 
 /**
- * Clase SteveRed que extiende de Personaje.
+ * Clase Mago que extiende de Personaje.
  * 
  * @author Aldana Case(104870),Biernat Diego (105974) , Emanuel Somoza (112100).
  *
@@ -32,19 +29,17 @@ public class Mago extends Personaje {
 		if (tiempoEntreDisparo == 0) {
 			Point point = new Point(this.getPosition());
 			disparo = new DisparoMago(point, 50, 50, 50, 50);
-			juego.addDisparoJugador(disparo);
-			juego.agregarGrafica(disparo);
-			for (Disparo d : juego.obtenerDisparos()) {
-				d.mover();
-			}
-			tiempoEntreDisparo = 20;
-		} else {
+			juego.agregarEntidad(disparo);
+			tiempoEntreDisparo = 100;
+		} 
 			tiempoEntreDisparo--;
-			for (Disparo d : juego.obtenerDisparos()) {
-				d.mover();
-			}
-		}
 
+	}
+
+	@Override
+	public void morir() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
