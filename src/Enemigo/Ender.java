@@ -12,14 +12,17 @@ import javax.swing.ImageIcon;
 public class Ender extends Enemigo {
 	
 	//Constructor
-	protected Ender(Point p, int ancho, int alto) {
+	public Ender(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
+		
+		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/FallenAngel0_running.gif"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/FallenAngel0_running.gif"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/FallenAngel0_running.gif"));
+		this.imagen[3] = null;
+		velocidad=6;
+		puntosVida=10;
+		monedas=10;
+
 	}
-	
-	//Devuelve el grafico del enemigo
-	public ImageIcon obtenerGrafico(){
-		return new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Ender.jpg"));
-	}
-	
 
 }

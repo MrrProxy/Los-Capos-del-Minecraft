@@ -2,7 +2,6 @@ package Juego;
 
 import java.util.LinkedList;
 import javax.swing.JLabel;
-import Disparos.Disparo;
 import Entidad.Entidad;
 import GUI.GUI;
 import Hilo.HiloPrincipal;
@@ -35,11 +34,11 @@ public class Juego {
 		return instance;
 
 	}
-
 	public void establecerGrafica(GUI g) {
 		if (gui == null)
 			gui = g;
 	}
+
 
 	// Inicia el juego
 
@@ -116,7 +115,7 @@ public class Juego {
 	}
 
 
-	public LinkedList<Entidad> obtenerEntidades() {
+	public LinkedList<Entidad> getEntidades() {
 		return entidades;
 	}
 

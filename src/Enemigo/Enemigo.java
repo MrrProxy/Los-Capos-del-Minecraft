@@ -44,6 +44,9 @@ public abstract class Enemigo extends Entidad {
 			Point point=new Point(this.getPosition().x-velocidad,this.getPosition().y);
 			pos=point;
 			setGrafico(1);
+			if(this.getPosition().x<400) {
+				morir();
+			}
 			
 			
 		}

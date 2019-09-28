@@ -11,14 +11,17 @@ import javax.swing.ImageIcon;
  */
 public class Bruja extends Enemigo {
 	
-	protected Bruja(Point p, int ancho, int alto) {
+	public Bruja(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
-	}
-	
-	//Devuelve el grafico del enemigo
-	public ImageIcon obtenerGrafico(){
-		return new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Bruja.jpg"));
-	}
+		
+		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemPiedra_Running.gif"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemPiedra_Running.gif"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemPiedra_Running.gif"));
+		this.imagen[3] = null;
+		velocidad=6;
+		puntosVida=10;
+		monedas=10;
 
+	}
 
 }

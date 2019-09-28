@@ -12,13 +12,16 @@ import javax.swing.ImageIcon;
 public class Esqueleto extends Enemigo {
 	
 	//Constructor
-	protected Esqueleto(Point p, int ancho, int alto) {
+	public Esqueleto(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
-	}
-	
-	//Devuelve el grafico del enemigo
-	public ImageIcon obtenerGrafico(){
-		return new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Esqueleto.jpg"));
+		
+		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperMan_Running.gif"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperMan_Running.gif"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperMan_Running.gif"));
+		this.imagen[3] = null;
+		velocidad=6;
+		puntosVida=10;
+		monedas=10;
 	}
 
 }

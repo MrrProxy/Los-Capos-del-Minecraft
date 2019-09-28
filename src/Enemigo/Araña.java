@@ -14,11 +14,14 @@ public class Araña extends Enemigo{
 	//Constructor
 	public Araña(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
-	}
-	
-	//Devuelve el grafico del enemigo
-	public ImageIcon obtenerGrafico(){
-		return new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Araña.jpg"));
-	}
+		
+		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperManRed_Running.gif"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperManRed_Running.gif"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperManRed_Running.gif"));
+		this.imagen[3] = null;
+		velocidad=6;
+		puntosVida=10;
+		monedas=10;
 
+	}
 }

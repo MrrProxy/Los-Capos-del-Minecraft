@@ -1,5 +1,8 @@
 package Hilo;
 
+import java.util.LinkedList;
+
+import Entidad.Entidad;
 import Juego.Juego;
 import Mapa.Nivel;
 
@@ -12,6 +15,7 @@ public class HiloPrincipal extends Thread {
 //		private LinkedList<Entidad> elimEntidades;
 		private Nivel nivel;
 		private static HiloPrincipal instaceHiloPrincipal;
+		Juego juego;
 		
 		public static HiloPrincipal getInstace() {
 			if(instaceHiloPrincipal==null)
@@ -22,13 +26,14 @@ public class HiloPrincipal extends Thread {
 		//Constructor
 		private HiloPrincipal(){
 			nivel = new Nivel();
+			juego = Juego.getInstance();
 		}
 		
 		//Metodos
 		
 		@Override
 		public void run() {
-			Juego juego = Juego.getInstance();
+			
 			while(true) {
 				try {
 					Thread.sleep(70);
@@ -38,115 +43,46 @@ public class HiloPrincipal extends Thread {
 				
 				nivel.cargarEntidadesAlJuego();
 				juego.Accionar();
+				colisionador();
 				
 			}
 			
 		}
 	
-	//Metodos Privados
+		public synchronized void colisionador() {
+			LinkedList<Entidad> entidades=new LinkedList<Entidad>(juego.getEntidades());
+			Entidad aux=entidades.getFirst();
+			for(Entidad e : entidades) {
+					if(colisionan(aux,e)) {
+						e.morir();
+						aux.morir();
+					}
+				
+			}
+			
 	
-	/**
-	 * Colisiona a los enemigos con las entidades y el jugador.
-	 *
-	private void colisionarEnemigos() {
-		for(Enemigo enem : enemigos) {
-			enem.mover();
-			synchronized(entidades) {
-			//Colisionar entidades
-			for(Entidad ent: entidades) {
-				if(colisionan(enem.getGrafico(1), ent.getGrafico(1))) {
-					enem.colisionar(ent);
-				}	
-			}
-			}
-			//colisionar Jugador
-			Juego juego = Juego.getInstance();
-			if(colisionan(enem.getGrafico(1), juego.obtenerJugador().getGrafico())) {
-				enem.colisionar(juego.obtenerJugador());
-				verificarVidaJugador();
-			}
-			//agregar enemigo sin vida a eliminar
-			if(enem.estoyMuerto()) {
-				elimEnemigos.add(enem);
-			}
 		}
-	}
-
-	**
-	 * Colisiona las entidades con los enemigos y jugador.
-	 *
-	private void colisionarEntidades() {
-		synchronized(entidades) {
-		for(Entidad ent : entidades) {
-			ent.mover();
-			
-			//Colisionar entidades con enemigos
-			for(Enemigo enem : enemigos) {
-				if(colisionan(ent.getGrafico(), enem.getGrafico())) {
-					ent.colisionar(enem);
-				}					
-			}
-			
-			//Colisionar entidades con entidades
-			for(Entidad ent2: entidades) {
-				if(colisionan(ent.getGrafico(), ent2.getGrafico())) {
-					ent.colisionar(ent2);
-				}	
-			}
-			
-			//colisionar Jugador
-			JuegoHilo juego = JuegoHilo.getInstance();
-			if(colisionan(ent.getGrafico(), juego.obtenerJugador().getGrafico())) {
-				ent.colisionar(juego.obtenerJugador());
-				verificarVidaJugador();
-			}
-			
-			//agregar entidad sin vida a eliminar
-			if(ent.estoyMuerto()) {
-				elimEntidades.add(ent);
-			}
-		}
-		}
-	}
-	
-	/**
-	 * Elimina del juego a los enemigos muertos.
-	 *
-	private void elimEnemigos() {
-		Juego juego = Juego.getInstance();
-		for(Enemigo enem : elimEnemigos) {
-			juego.eliminarEnemigo(enem);
-		}
-	}
-	
-	//Elimina del juego a las entidades muertas.
-	private void elimEntidades() {
-		Juego juego = JuegoHilo.getInstance();
-		for(Entidad ent : elimEntidades) {
-			juego.eliminarEntidad(ent);
-		}
-	}
-	*/
+		
 	/**
 	 * Devuelve verdadero si las entidades colisionan, caso contrario falso.
 	 * @param l1 label de entidad 1.
 	 * @param l2 label de entidad 2.
 	 * @return verdadero si colisionan, caso contrario falso.
 	 */
-	/*private boolean colisionan(JLabel l1, JLabel l2) {
+	private boolean colisionan(Entidad l1, Entidad l2) {
 		boolean colisionan = false;
 		
-		int x_centro = l1.getX() + l1.getWidth();
-		int y_centro = l1.getY() + l1.getHeight();
-		int x_centro2 = l2.getX() + l2.getWidth();
-		int y_centro2 = l2.getY() + l2.getHeight();
+		int x_centro = l1.getPosition().x+ l1.anchoEntidad();
+		int y_centro = l1.getPosition().y+ l1.altoEntidad();
+		int x_centro2 = l2.getPosition().x+ l2.anchoEntidad();
+		int y_centro2 = l2.getPosition().y+ l2.altoEntidad();
 		
-		if((x_centro > l2.getX()) && (x_centro < x_centro2))
-			if((y_centro > l2.getY()) && (y_centro < y_centro2)) 
+		if((x_centro > l2.getPosition().x) && (x_centro < x_centro2))
+			if((y_centro > l2.getPosition().y) && (y_centro < y_centro2)) 
 				colisionan = true;
 		
 		return colisionan;
-	}*/
+	}
 	
 }
 

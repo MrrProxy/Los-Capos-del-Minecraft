@@ -5,6 +5,9 @@ import java.awt.Point;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
+import GUI.GUI;
+import Sonidos.Sonidos;
+
 /**
  * Clase abstracta Entidad.
  * @author Aldana Case(104870),Biernat Diego (105974) , Emanuel Somoza (112100).
@@ -23,6 +26,8 @@ public abstract class Entidad {
 	protected int danioImpacto;
 	protected int velocidad;
 	protected int precioPersonaje;
+	protected GUI gui;
+	protected Sonidos sonidos;
 
 	
 
@@ -32,6 +37,7 @@ public abstract class Entidad {
 		this.width = width;
 		this.height = height;
 		this.imagen = new Icon[4];
+		sonidos=Sonidos.getInstace();
 	}
 	
 		//******METODOS******

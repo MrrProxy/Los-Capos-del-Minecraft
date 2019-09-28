@@ -30,7 +30,8 @@ public class Mago extends Personaje {
 			Point point = new Point(this.getPosition());
 			disparo = new DisparoMago(point, 50, 50, 50, 50);
 			juego.agregarEntidad(disparo);
-			tiempoEntreDisparo = 100;
+			tiempoEntreDisparo = 30;
+			//sonidos.playSoundEffect("sound1");
 		} 
 			tiempoEntreDisparo--;
 

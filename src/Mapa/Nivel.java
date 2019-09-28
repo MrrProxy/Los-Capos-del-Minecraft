@@ -6,7 +6,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import Enemigo.Araña;
+import Enemigo.Bruja;
+import Enemigo.Creeper;
+import Enemigo.Ender;
 import Enemigo.Enemigo;
+import Enemigo.Esqueleto;
 import Enemigo.Zombie;
 import Entidad.Entidad;
 import Juego.Juego;
@@ -165,19 +170,22 @@ public class Nivel extends Mapa {
 		Enemigo e = null;
 		switch (tipo) {
 		case 'a':
-			e = new Zombie(p, 70, 70);
+			e = new Araña(p, 70, 70);
 			break;
 		case 'b':
-			e = new Zombie(p, 70, 70);
+			e = new Bruja(p, 70, 70);
 			break;
 		case 'c':
-			e = new Zombie(p, 70, 70);
+			e = new Creeper(p, 70, 70);
 			break;
 		case 'd':
-			e = new Zombie(p, 70, 70);
+			e = new Ender(p, 70, 70);
 			break;
 		case 'e':
-			e = new Zombie(p, 70, 70);
+			e = new Esqueleto(p, 70, 70);
+			break;
+		case 'f':
+			e=new Zombie(p, 70, 70);
 			break;
 		}
 		return e;

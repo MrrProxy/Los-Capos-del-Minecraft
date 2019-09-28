@@ -2,13 +2,13 @@ package GUI;
 
 import java.awt.event.*;
 import java.awt.*;
-
 import javax.swing.*;
-
 import Entidad.Entidad;
 import Juego.Juego;
+import Sonidos.Sonidos;
 import Tienda.Boton;
 import Tienda.BotonComprar;
+import Tienda.BotonSonido;
 import Tienda.BotonT1;
 import Tienda.BotonT2;
 import Tienda.BotonT3;
@@ -22,7 +22,7 @@ import Tienda.TiendaJuego;
  * @author Aldana Case(104870),Biernat Diego (105974) , Emanuel Somoza (112100).
  *
  */
-public class GUI extends JFrame implements KeyListener {// Interfaz grafica del juego
+public class GUI extends JFrame  {// Interfaz grafica del juego
 
 	private static final long serialVersionUID = 1L;
 	// Frame y panel
@@ -37,6 +37,9 @@ public class GUI extends JFrame implements KeyListener {// Interfaz grafica del 
 	private JLabel fondo2;
 	private JLabel fondo3;
 	private JLabel Titulo2;
+	
+	// ****Sonidos****
+	private Sonidos sonidos;
 	// ****Botones****
 	private JButton startButton;
 
@@ -73,6 +76,7 @@ public class GUI extends JFrame implements KeyListener {// Interfaz grafica del 
 	 */
 
 	private GUI() {
+		sonidos=Sonidos.getInstace();
 		iniciar();
 	}
 
@@ -107,12 +111,16 @@ public class GUI extends JFrame implements KeyListener {// Interfaz grafica del 
 		startButton.setFocusPainted(false);
 		startButton.setBorderPainted(true);
 		frameInicio.add(startButton, 0);// Agrega el boton al frame
-
+		
+		sonidos.crearSonidos();
+		
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/** Elimina la ventana anterior */
 				frameInicio.dispose();
 				iniciarJuego();
+				sonidos.playLoop(2);
+				
 			}
 
 		});
@@ -135,7 +143,6 @@ public class GUI extends JFrame implements KeyListener {// Interfaz grafica del 
 		frameJuego.setResizable(false);
 		frameJuego.setTitle("Proyecto de TDP 2019");
 		frameJuego.setVisible(true);
-		frameJuego.addKeyListener(this);
 		// frameJuego.setBackground(Color.RED);
 
 		// *********Se crean los paneles*********
@@ -227,19 +234,21 @@ public class GUI extends JFrame implements KeyListener {// Interfaz grafica del 
 		Boton torre4=new BotonT4(tienda,this);
 		Boton torre5=new BotonT5(tienda,this);
 		Boton Comprar=new BotonComprar(tienda,this);
+		Boton Sonido=new BotonSonido(tienda,this);
 		Comprar.setFocusable(false);
 		torre1.setFocusable(false);
 		torre2.setFocusable(false);
 		torre3.setFocusable(false);
 		torre4.setFocusable(false);
 		torre5.setFocusable(false);
-
+		
 		agregarBotones(torre1);
 		agregarBotones(torre2);
 		agregarBotones(torre3);
 		agregarBotones(torre4);
 		agregarBotones(torre5);
 		agregarBotones(Comprar);
+		agregarBotones(Sonido);
 	}
 	public void agregarAlJuego(JLabel j) {
 		if (j != null)
@@ -258,18 +267,4 @@ public class GUI extends JFrame implements KeyListener {// Interfaz grafica del 
 		panelTorres.add(B, 0);
 
 	}
-
-	 public void keyPressed(KeyEvent e) {
-	  int key = e.getKeyCode();
-	  if (key == KeyEvent.VK_A)
-		  j.eliminarEntidades();
-	 }
-	 
-	 public void keyReleased(KeyEvent e) {
-	 }
-	 
-	 public void keyTyped(KeyEvent e) {
-	 }
-	 
-
 }// Fin GUI

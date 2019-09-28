@@ -12,13 +12,17 @@ import javax.swing.ImageIcon;
 public class Creeper extends Enemigo {
 	
 	//Constructor
-	protected Creeper(Point p, int ancho, int alto) {
+	public Creeper(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
+		
+		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemHielo_Running.gif"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemHielo_Running.gif"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemHielo_Running.gif"));
+		this.imagen[3] = null;
+		velocidad=6;
+		puntosVida=10;
+		monedas=10;
+
 	}
 	
-	//Devuelve el grafico del enemigo
-	public ImageIcon obtenerGrafico(){
-		return new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Creeper.jpg"));
-	}
-
 }
