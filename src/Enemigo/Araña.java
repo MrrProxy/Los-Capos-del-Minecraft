@@ -22,6 +22,12 @@ public class Araña extends Enemigo{
 		velocidad=6;
 		puntosVida=10;
 		monedas=10;
+		puntaje=10;
+	}
 
+	@Override
+	public void Aceptar() {
+		// TODO Auto-generated method stub
+		
 	}
 }

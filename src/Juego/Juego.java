@@ -16,6 +16,7 @@ import Mapa.Mapa;
 public class Juego {
 	protected int cantMonedas = 10000;
 	protected Mapa map;
+	protected int puntaje;
 	private HiloPrincipal tiempo;
 	private GUI gui;
 	private LinkedList<Entidad> entidades;
@@ -34,25 +35,24 @@ public class Juego {
 		return instance;
 
 	}
+
 	public void establecerGrafica(GUI g) {
 		if (gui == null)
 			gui = g;
 	}
 
-
 	// Inicia el juego
 
 	public void iniciarJuego() {
-		
+
 		map = new Mapa();
-		
+
 		entidades = new LinkedList<Entidad>();
 		aAgregar = new LinkedList<Entidad>();
 		aEliminar = new LinkedList<Entidad>();
-		
+
 		tiempo = HiloPrincipal.getInstace();
 		tiempo.start();
-	
 
 	}
 
@@ -68,26 +68,30 @@ public class Juego {
 		if (!aAgregar.isEmpty()) {
 			for (Entidad e : aAgregar) {
 				entidades.add(e);
+				gui.actualizarEstadisticas(puntaje, cantMonedas);
 				gui.agregarAlJuego(e.getGrafico(1));
 			}
-			aAgregar=new LinkedList<Entidad>();
+			aAgregar = new LinkedList<Entidad>();
 		}
 		if (!aEliminar.isEmpty()) {
 			for (Entidad e : aEliminar) {
 				entidades.remove(e);
+				cantMonedas = cantMonedas + e.getMonedas();
+				puntaje =puntaje+ e.getPuntaje();
+				gui.actualizarEstadisticas(puntaje, cantMonedas);
 				gui.eliminarEntidad(e.getGrafico(1));
 				gui.remove(e.getGrafico(1));
 			}
 			aEliminar = new LinkedList<Entidad>();
 		}
 
-		
-
 	}
 
 	public void agregarEntidad(Entidad e) {
 		if (e != null) {
-			aAgregar.add(e);
+			if (map.puedoAgregar(e, entidades))
+				aAgregar.add(e);
+
 		}
 	}
 
@@ -113,7 +117,24 @@ public class Juego {
 	public void setCantMonedas(int monedas) {
 		cantMonedas = monedas;
 	}
+	
+	/**
+	 * Devuelve el puntaje
+	 * 
+	 * @return puntaje
+	 */
+	public int getPuntaje() {
+		return cantMonedas;
+	}
 
+	/**
+	 * Actualiza el puntaje
+	 * 
+	 * @param puntaje
+	 */
+	public void setPuntaje(int puntaje) {
+		this.puntaje = puntaje;
+	}
 
 	public LinkedList<Entidad> getEntidades() {
 		return entidades;
@@ -122,7 +143,6 @@ public class Juego {
 	public void eliminarEntidades() {
 		for (Entidad e : entidades) {
 			e.morir();
-			cantMonedas = cantMonedas + e.getMonedas();
 		}
 	}
 

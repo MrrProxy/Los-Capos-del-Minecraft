@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import Disparos.Disparo;
 import Entidad.Entidad;
+import Visitor.VisitorPersonaje;
 
 /**
  * Clase abstracta Personaje.
@@ -21,6 +22,7 @@ public abstract class Personaje extends Entidad {
 	// Constructor
 	protected Personaje(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
+		miVisitor=new VisitorPersonaje();
 	}
 
 	public void Accionar() {

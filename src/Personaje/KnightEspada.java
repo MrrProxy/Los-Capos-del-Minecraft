@@ -29,4 +29,10 @@ public class KnightEspada extends Personaje {
 		
 	}
 
+	@Override
+	public void Aceptar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

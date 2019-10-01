@@ -22,7 +22,7 @@ import Tienda.TiendaJuego;
  * @author Aldana Case(104870),Biernat Diego (105974) , Emanuel Somoza (112100).
  *
  */
-public class GUI extends JFrame  {// Interfaz grafica del juego
+public class GUI extends JFrame {// Interfaz grafica del juego
 
 	private static final long serialVersionUID = 1L;
 	// Frame y panel
@@ -36,8 +36,9 @@ public class GUI extends JFrame  {// Interfaz grafica del juego
 	private JLabel fondo;
 	private JLabel fondo2;
 	private JLabel fondo3;
-	private JLabel Titulo2;
-	
+	private JLabel Monedas;
+	private JLabel Puntaje;
+
 	// ****Sonidos****
 	private Sonidos sonidos;
 	// ****Botones****
@@ -76,7 +77,7 @@ public class GUI extends JFrame  {// Interfaz grafica del juego
 	 */
 
 	private GUI() {
-		sonidos=Sonidos.getInstace();
+		sonidos = Sonidos.getInstace();
 		iniciar();
 	}
 
@@ -111,16 +112,16 @@ public class GUI extends JFrame  {// Interfaz grafica del juego
 		startButton.setFocusPainted(false);
 		startButton.setBorderPainted(true);
 		frameInicio.add(startButton, 0);// Agrega el boton al frame
-		
+
 		sonidos.crearSonidos();
-		
+
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/** Elimina la ventana anterior */
 				frameInicio.dispose();
 				iniciarJuego();
 				sonidos.playLoop(2);
-				
+
 			}
 
 		});
@@ -143,7 +144,6 @@ public class GUI extends JFrame  {// Interfaz grafica del juego
 		frameJuego.setResizable(false);
 		frameJuego.setTitle("Proyecto de TDP 2019");
 		frameJuego.setVisible(true);
-		// frameJuego.setBackground(Color.RED);
 
 		// *********Se crean los paneles*********
 		panelPrincipal = new JLayeredPane();// Panel juego principal
@@ -154,13 +154,10 @@ public class GUI extends JFrame  {// Interfaz grafica del juego
 		panelTorres.setBounds(1000, 0, 200, 700);
 
 		panelJugador = new JLayeredPane();// Panel del jugador con la vida etc
-		panelJugador.setBounds(0, 600, 800, 150);
-		
 		panelJugador.setBounds(0, 600, 1000, 120);
 
 		panelJuego = new JLayeredPane();// Panel donde se ejecuta el juego (MAPA)
 		panelJuego.setBounds(0, 0, 1000, 600);
-		
 
 		// ************Se crean los JLabel con sus imagenes************
 		fondo = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/FondoTorres.png")));
@@ -173,19 +170,30 @@ public class GUI extends JFrame  {// Interfaz grafica del juego
 		fondo3 = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/Mapa3.png")));
 		fondo3.setBounds(0, 0, 1000, 600);
 
-		Titulo2 = new JLabel("PANEL 2");
-		Titulo2.setBounds(0, 0, 400, 100);
-		Titulo2.setForeground(Color.BLACK);
-		Titulo2.setBackground(new java.awt.Color(0, 0, 0));
-		Titulo2.setFont(new java.awt.Font("cambria", 15, 40));
+		Puntaje = new JLabel("Puntaje : 0");
+		Puntaje.setBounds(300, 0, 200, 50);
+		Puntaje.setBackground(new java.awt.Color(255, 215, 0));		
+		Puntaje.setForeground(new java.awt.Color(255, 255, 255));
+		Puntaje.setFont(new java.awt.Font("cambria", 15, 20));
+		Puntaje.setVisible(true);
+
+		Monedas = new JLabel("Monedas : 10000");
+		Monedas.setBounds(0, 0, 200, 50);
+		Monedas.setForeground(new java.awt.Color(255, 215, 0));
+		Monedas.setBackground(new java.awt.Color(255, 215, 0));
+		Monedas.setFont(new java.awt.Font("cambria", 15, 20));
+		Monedas.setVisible(true);
 
 		// Se agregan los JLabel a sus respectivos paneles
+		panelJugador.add(Puntaje,0);
+		panelJugador.add(Monedas,0);
 		panelTorres.add(fondo, -1);
 		panelJugador.add(fondo2, -1);
 		panelJuego.add(fondo3, -1);
-
+		//panelJuego.add(Monedas,0);
+		//panelJuego.add(Puntaje,0);
 		
-
+		
 		// Se setea el panel principal con el contenedor del frame y se agregan los
 		// demas paneles al panel principal
 		frameJuego.setContentPane(panelPrincipal);
@@ -197,12 +205,10 @@ public class GUI extends JFrame  {// Interfaz grafica del juego
 		j = Juego.getInstance();
 		j.establecerGrafica(this);
 		j.iniciarJuego();
-		
+
 		// Se crean los botones
 		tienda = TiendaJuego.getInstance();
 		crearBotones();
-		
-	
 
 	}// FIN iniciarJuego
 
@@ -216,10 +222,52 @@ public class GUI extends JFrame  {// Interfaz grafica del juego
 				if (cont == 0) {
 					int x = e.getX();
 					int y = e.getY();
-					if (x > 400)
+					switch (y / 100) {
+					case 0:
+						y = 30;
+						break;
+					case 1:
+						y = 100;
+						break;
+					case 2:
+						y = 200;
+						break;
+					case 3:
+						y = 300;
+						break;
+					case 4:
+						y = 400;
+						break;
+					case 5:
+						y = 500;
+						break;
+					case 6:
+						y = 600;
+						break;
+					}
+					switch (x / 100) {
+					case 0:
+						x = 0;
+						break;
+					case 1:
+						x = 100;
+						break;
+					case 2:
+						x = 200;
+						break;
+					case 3:
+						x = 300;
+						break;
+					case 4:
 						x = 400;
-					if (y < 100)
-						y = 40;
+						break;
+					case 5:
+						x = 500;
+						break;
+
+					}
+					if (x > 500)
+						x = 500;
 					tienda.agregarEntidad(x, y);
 					cont++;
 				}
@@ -227,21 +275,22 @@ public class GUI extends JFrame  {// Interfaz grafica del juego
 		});
 
 	}
+
 	public void crearBotones() {
-		Boton torre1=new BotonT1(tienda,this);
-		Boton torre2=new BotonT2(tienda,this);
-		Boton torre3=new BotonT3(tienda,this);
-		Boton torre4=new BotonT4(tienda,this);
-		Boton torre5=new BotonT5(tienda,this);
-		Boton Comprar=new BotonComprar(tienda,this);
-		Boton Sonido=new BotonSonido(tienda,this);
+		Boton torre1 = new BotonT1(tienda, this);
+		Boton torre2 = new BotonT2(tienda, this);
+		Boton torre3 = new BotonT3(tienda, this);
+		Boton torre4 = new BotonT4(tienda, this);
+		Boton torre5 = new BotonT5(tienda, this);
+		Boton Comprar = new BotonComprar(tienda, this);
+		Boton Sonido = new BotonSonido(tienda, this);
 		Comprar.setFocusable(false);
 		torre1.setFocusable(false);
 		torre2.setFocusable(false);
 		torre3.setFocusable(false);
 		torre4.setFocusable(false);
 		torre5.setFocusable(false);
-		
+
 		agregarBotones(torre1);
 		agregarBotones(torre2);
 		agregarBotones(torre3);
@@ -250,21 +299,28 @@ public class GUI extends JFrame  {// Interfaz grafica del juego
 		agregarBotones(Comprar);
 		agregarBotones(Sonido);
 	}
+
 	public void agregarAlJuego(JLabel j) {
 		if (j != null)
 			panelJuego.add(j, 0);
+			//panelJuego.repaint();
 
 	}
-	
+
 	public void eliminarEntidad(JLabel grafico) {
 		panelJuego.remove(grafico);
 		panelJuego.revalidate();
-		panelJuego.repaint();	
+		panelJuego.repaint();
 	}
 
 	// Agrega los botones al panel de torres
 	public void agregarBotones(JButton B) {
 		panelTorres.add(B, 0);
+	}
+
+	public void actualizarEstadisticas(int puntaje, int cantMonedas) {
+		Puntaje.setText("Puntaje : " + puntaje);
+		Monedas.setText("Monedas : " + cantMonedas);
 
 	}
 }// Fin GUI

@@ -6,10 +6,10 @@ import javax.swing.ImageIcon;
 
 public class DisparoMago extends Disparo {
 	
-	public DisparoMago(Point p, int x, int y, int daño, int alcance) {
-		super(p,x,y);
+	public DisparoMago(Point p, int ancho, int alto, int daño, int alcance) {
+		super(p,ancho,alto);
 		this.daño=daño;
-		this.alcance=alcance;
+		this.alcance=alcance+this.pos.x;
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/DisparoMago.gif"));
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/DisparoMago.gif"));
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/DisparoMago.gif"));
@@ -21,9 +21,16 @@ public class DisparoMago extends Disparo {
 	public void Accionar() {
 		this.pos.x+=velocidad;
 		setGrafico(1);
+		if(this.pos.x>=this.alcance)
+			this.morir();
 	}
 	@Override
 	public void morir() {
+		this.puntosVida=0;
+	}
+	@Override
+	public void Aceptar() {
+		// TODO Auto-generated method stub
 		
 	}
 }

@@ -1,6 +1,7 @@
 package Personaje;
 
 import java.awt.Point;
+
 import javax.swing.ImageIcon;
 import Disparos.DisparoMago;
 import Juego.Juego;
@@ -28,10 +29,12 @@ public class Mago extends Personaje {
 		Juego juego = Juego.getInstance();
 		if (tiempoEntreDisparo == 0) {
 			Point point = new Point(this.getPosition());
-			disparo = new DisparoMago(point, 50, 50, 50, 50);
+			point.x =(int) (point.getX()+this.anchoEntidad());
+			disparo = new DisparoMago(point, 50, 50, 50, 200);
 			juego.agregarEntidad(disparo);
 			tiempoEntreDisparo = 30;
 			//sonidos.playSoundEffect("sound1");
+			//
 		} 
 			tiempoEntreDisparo--;
 
@@ -39,6 +42,12 @@ public class Mago extends Personaje {
 
 	@Override
 	public void morir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Aceptar() {
 		// TODO Auto-generated method stub
 		
 	}

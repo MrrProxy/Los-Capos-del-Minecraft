@@ -30,9 +30,10 @@ public class Arquero extends Personaje {
 		Juego juego = Juego.getInstance();
 		if (tiempoEntreDisparo == 0) {
 			Point point = new Point(this.getPosition());
-			disparo = new DisparoArquero(point, 50, 50, 50, 50);
+			point.x =(int) (point.getX()+this.anchoEntidad());
+			disparo = new DisparoArquero(point, 50, 50, 50, 350);
 			juego.agregarEntidad(disparo);
-			tiempoEntreDisparo = 100;
+			tiempoEntreDisparo = 20;
 		}
 		tiempoEntreDisparo--;
 
@@ -40,6 +41,12 @@ public class Arquero extends Personaje {
 
 	@Override
 	public void morir() {
+	}
+
+	@Override
+	public void Aceptar() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

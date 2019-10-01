@@ -8,7 +8,7 @@ public class DisparoArquero extends Disparo{
 	public DisparoArquero(Point p, int x, int y, int daño, int alcance) {
 		super(p,x,y);
 		this.daño=daño;
-		this.alcance=alcance;
+		this.alcance=this.pos.x+alcance;
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/flecha.png"));
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/flecha.png"));
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/flecha.png"));
@@ -20,11 +20,19 @@ public class DisparoArquero extends Disparo{
 	
 	public void Accionar() {
 		this.pos.x+=velocidad;
-		setGrafico(2);
+		setGrafico(1);
+		if(this.pos.x>=alcance)
+			this.morir();
 	}
 
 	@Override
 	public void morir() {
+		this.puntosVida=0;
+	}
+
+	@Override
+	public void Aceptar() {
+		// TODO Auto-generated method stub
 		
 	}
 

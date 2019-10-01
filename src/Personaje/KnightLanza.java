@@ -44,4 +44,10 @@ public class KnightLanza extends Personaje {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void Aceptar() {
+		// TODO Auto-generated method stub
+		
+	}
 }

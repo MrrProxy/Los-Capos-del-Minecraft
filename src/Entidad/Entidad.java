@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 
 import GUI.GUI;
 import Sonidos.Sonidos;
+import Visitor.Visitor;
 
 /**
  * Clase abstracta Entidad.
@@ -28,6 +29,7 @@ public abstract class Entidad {
 	protected int precioPersonaje;
 	protected GUI gui;
 	protected Sonidos sonidos;
+	protected Visitor miVisitor;
 
 	
 
@@ -147,10 +149,10 @@ public abstract class Entidad {
 		/**
 		 * Produce todas las acciones de las entidades
 		 * @param e Entidad
-		 * @throws InterruptedException 
 		 */
 		public abstract void Accionar(); 
 		public abstract void morir(); 
+		public abstract void Aceptar();
 		
 		
 		/**
@@ -167,6 +169,9 @@ public abstract class Entidad {
 		 */
 		public void setPrecioPersonaje(int precio) {
 			precioPersonaje=precio;
+		}
+		public int getPuntaje() {
+			return 0;
 		}
 		
 		//public abstract Entidad Visiti(); 

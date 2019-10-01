@@ -30,5 +30,11 @@ public class KnightHacha extends Personaje {
 		
 	}
 
+	@Override
+	public void Aceptar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

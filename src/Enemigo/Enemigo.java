@@ -3,7 +3,6 @@ package Enemigo;
 import java.awt.Point;
 
 import Entidad.Entidad;
-import GUI.GUI;
 
 /**
  * Clase abstracta Enemigo.
@@ -14,6 +13,7 @@ import GUI.GUI;
 public abstract class Enemigo extends Entidad {
 	
 	//Atributos especificos de un enemigo
+	protected int puntaje;
 	
 	//Constructor
 		protected Enemigo(Point p, int ancho , int alto) {
@@ -53,9 +53,13 @@ public abstract class Enemigo extends Entidad {
 		
 		public void morir() {
 			puntosVida=0;
+			
+			
 		}
 		
-		
+		public int getPuntaje() {
+			return puntaje;
+		}
 		
 
 }
