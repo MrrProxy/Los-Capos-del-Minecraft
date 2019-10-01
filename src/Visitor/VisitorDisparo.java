@@ -4,7 +4,7 @@ import Disparos.Disparo;
 import Enemigo.Enemigo;
 import Personaje.Personaje;
 
-public class VisitorPersonaje extends Visitor{
+public class VisitorDisparo extends Visitor{
 
 	@Override
 	public void afectar(Personaje p) {
@@ -14,10 +14,8 @@ public class VisitorPersonaje extends Visitor{
 
 	@Override
 	public void afectar(Enemigo e) {
-		e.recibirDaño(e.getDanio());
-		e.modoActual(1, 0);
-		System.out.println("Entre a afectar  enemigo  en visitor personaje");
-
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override

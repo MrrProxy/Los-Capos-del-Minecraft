@@ -30,6 +30,7 @@ public abstract class Entidad {
 	protected GUI gui;
 	protected Sonidos sonidos;
 	protected Visitor miVisitor;
+	protected int graficoActual;
 
 	
 
@@ -40,6 +41,7 @@ public abstract class Entidad {
 		this.height = height;
 		this.imagen = new Icon[4];
 		sonidos=Sonidos.getInstace();
+		graficoActual=0;
 	}
 	
 		//******METODOS******
@@ -152,7 +154,7 @@ public abstract class Entidad {
 		 */
 		public abstract void Accionar(); 
 		public abstract void morir(); 
-		public abstract void Aceptar();
+		public abstract void Aceptar(Visitor v);
 		
 		
 		/**
@@ -173,6 +175,15 @@ public abstract class Entidad {
 		public int getPuntaje() {
 			return 0;
 		}
+		
+		public void recibirDaño(int daño) {
+			puntosVida-=daño;
+			
+		}
+		public Visitor getVisitor() {
+			return miVisitor;
+		}
+		
 		
 		//public abstract Entidad Visiti(); 
 		

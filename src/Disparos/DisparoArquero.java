@@ -3,6 +3,8 @@ package Disparos;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
+import Visitor.Visitor;
+
 public class DisparoArquero extends Disparo{
 	
 	public DisparoArquero(Point p, int x, int y, int daño, int alcance) {
@@ -31,7 +33,8 @@ public class DisparoArquero extends Disparo{
 	}
 
 	@Override
-	public void Aceptar() {
+	public void Aceptar(Visitor v) {
+		v.afectar(this);
 		// TODO Auto-generated method stub
 		
 	}

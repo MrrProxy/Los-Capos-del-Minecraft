@@ -4,6 +4,8 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
+import Visitor.Visitor;
+
 /**
  * Clase Ender que extiende de Enemigo.
  * @author Aldana Case(104870),Biernat Diego (105974) , Emanuel Somoza (112100).
@@ -23,12 +25,12 @@ public class Ender extends Enemigo {
 		puntosVida=10;
 		monedas=10;
 		puntaje=10;
+		this.danioImpacto=5;
 
 	}
 
-	@Override
-	public void Aceptar() {
-		// TODO Auto-generated method stub
+	public void Aceptar(Visitor v) {
+		v.afectar(this);
 		
 	}
 

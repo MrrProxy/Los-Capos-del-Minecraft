@@ -8,6 +8,9 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void afectar(Personaje p) {
+		p.recibirDaño(p.getDanio());
+		
+		System.out.println("Entre a afectar personaje en visitor enemigo");
 	}
 
 	@Override

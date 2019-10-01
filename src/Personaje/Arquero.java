@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 
 import Disparos.DisparoArquero;
 import Juego.Juego;
+import Visitor.Visitor;
 
 /**
  * Clase Arquero que extiende de Personaje.
@@ -24,6 +25,7 @@ public class Arquero extends Personaje {
 		this.imagen[3] = null;
 		puntosVida = 200;
 		precioPersonaje = 300;
+		this.danioImpacto=5;
 	}
 
 	public void Accionar() {
@@ -43,9 +45,8 @@ public class Arquero extends Personaje {
 	public void morir() {
 	}
 
-	@Override
-	public void Aceptar() {
-		// TODO Auto-generated method stub
+	public void Aceptar(Visitor v) {
+		v.afectar(this);
 		
 	}
 

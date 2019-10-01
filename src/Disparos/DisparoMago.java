@@ -4,6 +4,8 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
+import Visitor.Visitor;
+
 public class DisparoMago extends Disparo {
 	
 	public DisparoMago(Point p, int ancho, int alto, int daño, int alcance) {
@@ -28,9 +30,8 @@ public class DisparoMago extends Disparo {
 	public void morir() {
 		this.puntosVida=0;
 	}
-	@Override
-	public void Aceptar() {
-		// TODO Auto-generated method stub
+	public void Aceptar(Visitor v) {
+		v.afectar(this);
 		
 	}
 }
