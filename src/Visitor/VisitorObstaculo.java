@@ -2,9 +2,14 @@ package Visitor;
 
 import Disparos.Disparo;
 import Enemigo.Enemigo;
+import Objetos.Obstaculo;
 import Personaje.Personaje;
 
-public class VisitorObjeto extends Visitor{
+public class VisitorObstaculo extends Visitor{
+	
+	public VisitorObstaculo(Obstaculo o){
+		super(o);
+	}
 
 	@Override
 	public void afectar(Personaje p) {

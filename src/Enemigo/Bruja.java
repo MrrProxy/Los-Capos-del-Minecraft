@@ -4,6 +4,8 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
+import Visitor.Visitor;
+
 /**
  * Clase Bruja que extiende de Enemigo.
  * @author Aldana Case(104870),Biernat Diego (105974) , Emanuel Somoza (112100).
@@ -26,7 +28,7 @@ public class Bruja extends Enemigo {
 	}
 
 	@Override
-	public void Aceptar() {
+	public void Aceptar(Visitor v) {
 		// TODO Auto-generated method stub
 		
 	}

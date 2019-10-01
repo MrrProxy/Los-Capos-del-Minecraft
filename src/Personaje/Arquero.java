@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 
 import Disparos.DisparoArquero;
 import Juego.Juego;
+import Visitor.Visitor;
 
 /**
  * Clase Arquero que extiende de Personaje.
@@ -31,7 +32,7 @@ public class Arquero extends Personaje {
 		if (tiempoEntreDisparo == 0) {
 			Point point = new Point(this.getPosition());
 			point.x =(int) (point.getX()+this.anchoEntidad());
-			disparo = new DisparoArquero(point, 50, 50, 50, 350);
+			disparo = new DisparoArquero(point, 50, 50, 7000, 350);
 			juego.agregarEntidad(disparo);
 			tiempoEntreDisparo = 20;
 		}
@@ -44,7 +45,7 @@ public class Arquero extends Personaje {
 	}
 
 	@Override
-	public void Aceptar() {
+	public void Aceptar(Visitor v) {
 		// TODO Auto-generated method stub
 		
 	}

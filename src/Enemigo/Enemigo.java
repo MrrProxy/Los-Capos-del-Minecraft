@@ -3,6 +3,7 @@ package Enemigo;
 import java.awt.Point;
 
 import Entidad.Entidad;
+import Visitor.VisitorEnemigo;
 
 /**
  * Clase abstracta Enemigo.
@@ -18,6 +19,7 @@ public abstract class Enemigo extends Entidad {
 	//Constructor
 		protected Enemigo(Point p, int ancho , int alto) {
 			super(p, ancho, alto);
+			miVisitor= new VisitorEnemigo(this);
 		}
 		
 		/**
@@ -44,12 +46,12 @@ public abstract class Enemigo extends Entidad {
 			Point point=new Point(this.getPosition().x-velocidad,this.getPosition().y);
 			pos=point;
 			setGrafico(1);
-			if(this.getPosition().x<400) {
-				morir();
+			//if(this.getPosition().x<400) {
+			//	morir();
 			}
 			
 			
-		}
+		//}
 		
 		public void morir() {
 			puntosVida=0;

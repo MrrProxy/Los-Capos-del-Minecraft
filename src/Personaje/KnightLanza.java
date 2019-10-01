@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 
 import Disparos.Disparo;
 import Disparos.DisparoMago;
+import Visitor.Visitor;
 
 /**
  * Clase SteveDiamante que extiende de Personaje.
@@ -46,7 +47,7 @@ public class KnightLanza extends Personaje {
 	}
 
 	@Override
-	public void Aceptar() {
+	public void Aceptar(Visitor v) {
 		// TODO Auto-generated method stub
 		
 	}

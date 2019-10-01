@@ -5,6 +5,10 @@ import Enemigo.Enemigo;
 import Personaje.Personaje;
 
 public class VisitorPersonaje extends Visitor{
+	
+	public VisitorPersonaje(Personaje p){
+		super(p);
+	}
 
 	@Override
 	public void afectar(Personaje p) {

@@ -4,6 +4,8 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
+import Visitor.Visitor;
+
 /**
  * Clase SteveHierro que extiende de Personaje.
  * 
@@ -31,7 +33,7 @@ public class KnightHacha extends Personaje {
 	}
 
 	@Override
-	public void Aceptar() {
+	public void Aceptar(Visitor v) {
 		// TODO Auto-generated method stub
 		
 	}

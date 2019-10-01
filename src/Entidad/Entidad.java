@@ -144,6 +144,10 @@ public abstract class Entidad {
 			return width;
 		}
 		
+		public void recibirDaño(int daño){
+			puntosVida=puntosVida-daño;
+		}
+		
 		
 	
 		/**
@@ -152,7 +156,7 @@ public abstract class Entidad {
 		 */
 		public abstract void Accionar(); 
 		public abstract void morir(); 
-		public abstract void Aceptar();
+		public abstract void Aceptar(Visitor v);
 		
 		
 		/**
@@ -174,6 +178,9 @@ public abstract class Entidad {
 			return 0;
 		}
 		
+		public Visitor getVisitor(){
+			return miVisitor;
+		}
 		//public abstract Entidad Visiti(); 
 		
 		

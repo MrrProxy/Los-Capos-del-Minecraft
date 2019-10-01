@@ -5,6 +5,7 @@ import java.awt.Point;
 import javax.swing.ImageIcon;
 import Disparos.DisparoMago;
 import Juego.Juego;
+import Visitor.Visitor;
 
 /**
  * Clase Mago que extiende de Personaje.
@@ -47,7 +48,7 @@ public class Mago extends Personaje {
 	}
 
 	@Override
-	public void Aceptar() {
+	public void Aceptar(Visitor v) {
 		// TODO Auto-generated method stub
 		
 	}

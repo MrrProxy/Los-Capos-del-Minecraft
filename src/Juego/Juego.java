@@ -55,12 +55,17 @@ public class Juego {
 		tiempo.start();
 
 	}
+	
 
 	public synchronized void Accionar() {
 		if (!entidades.isEmpty()) {
 			for (Entidad e : entidades) {
-				if (e.getVida() != 0)
+				if (e.getVida() > 0){
 					e.Accionar();
+					for (Entidad ee: entidades)
+						if (e!=ee && map.chocan(e,ee))
+							e.Aceptar(ee.getVisitor());
+				}
 				else
 					aEliminar.addLast(e);
 			}

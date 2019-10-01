@@ -36,7 +36,7 @@ public class Mapa {
 	 * @param e2 entidad2
 	 * @return verdadero si colisionan, caso contrario falso.
 	 */
-	private boolean chocan(Entidad e1, Entidad e2) {
+	public boolean chocan(Entidad e1, Entidad e2) {
 
 		boolean colisionan = false;
 		Rectangle rectangle=new Rectangle(e1.getPosition().x,e1.getPosition().y,e1.anchoEntidad(),e1.altoEntidad());

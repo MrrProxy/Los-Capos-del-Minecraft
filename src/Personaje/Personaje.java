@@ -22,7 +22,7 @@ public abstract class Personaje extends Entidad {
 	// Constructor
 	protected Personaje(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
-		miVisitor=new VisitorPersonaje();
+		miVisitor= new VisitorPersonaje(this);
 	}
 
 	public void Accionar() {
