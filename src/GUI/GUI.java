@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.event.*;
+import java.util.TimerTask;
 import java.awt.*;
 import javax.swing.*;
 import Entidad.Entidad;
@@ -308,9 +309,12 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	}
 
 	public void eliminarEntidad(JLabel grafico) {
-		panelJuego.remove(grafico);
-		panelJuego.revalidate();
-		panelJuego.repaint();
+		Timer timer = new Timer (4000, new ActionListener (){
+		    public void actionPerformed(ActionEvent e) {
+		    	panelJuego.remove(grafico);
+		    }
+		});
+		timer.start();
 	}
 
 	// Agrega los botones al panel de torres

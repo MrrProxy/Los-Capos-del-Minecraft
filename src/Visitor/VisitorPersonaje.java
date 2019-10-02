@@ -5,24 +5,28 @@ import Enemigo.Enemigo;
 import Personaje.Personaje;
 
 public class VisitorPersonaje extends Visitor{
+	
+	public VisitorPersonaje(Personaje p){
+		super(p);
+	}
 
-	@Override
 	public void afectar(Personaje p) {
-		// TODO Auto-generated method stub
-		
 	}
 
-	@Override
 	public void afectar(Enemigo e) {
-		e.recibirDaño(e.getDanio());
-		e.modoActual(1, 0);
-		System.out.println("Entre a afectar  enemigo  en visitor personaje");
+		miEntidad.recibirDaño(e.getDanio());
+		miEntidad.modoActual(1, 0);
+		if(miEntidad.getVida()<=0)
+			e.modoActual(0, e.getVelocidadInicial());
+		else {
+			e.modoActual(1, 0);
+		}
 
 	}
 
-	@Override
 	public void afectar(Disparo d) {
-		// TODO Auto-generated method stub
+		d.morir();
+		miEntidad.recibirDaño(d.getDanio());
 		
 	}
 

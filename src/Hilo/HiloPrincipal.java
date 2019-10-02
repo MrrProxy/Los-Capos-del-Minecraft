@@ -43,25 +43,13 @@ public class HiloPrincipal extends Thread {
 				
 				nivel.cargarEntidadesAlJuego();
 				juego.Accionar();
-				colisionador();
+
 				
 			}
 			
 		}
 	
-		public synchronized void colisionador() {
-			LinkedList<Entidad> entidades=new LinkedList<Entidad>(juego.getEntidades());
-			Entidad aux=entidades.getFirst();
-			for(Entidad e : entidades) {
-					if(colisionan(aux,e)) {
-						e.morir();
-						aux.morir();
-					}
-				
-			}
-			
-	
-		}
+		
 		
 	/**
 	 * Devuelve verdadero si las entidades colisionan, caso contrario falso.

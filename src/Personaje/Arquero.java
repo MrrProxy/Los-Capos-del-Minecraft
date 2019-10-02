@@ -21,20 +21,22 @@ public class Arquero extends Personaje {
 		super(p, ancho, alto);
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ESTATICO_ARQUERO_1.gif"));
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ESTATICO_ARQUERO_1.gif"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ESTATICO_ARQUERO_1.gif"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/DIE_ARQUERO_1.gif"));
 		this.imagen[3] = null;
 		puntosVida = 200;
 		precioPersonaje = 300;
-		this.danioImpacto=5;
+		danioImpacto=5;
+		alcance=350;
 	}
 
 	public void Accionar() {
 		Juego juego = Juego.getInstance();
 		if (tiempoEntreDisparo == 0) {
+			setGrafico(graficoActual);
 			Point point = new Point(this.getPosition());
 			point.x =(int) (point.getX()+this.anchoEntidad());
-			disparo = new DisparoArquero(point, 50, 50, 50, 350);
-			juego.agregarEntidad(disparo);
+			disparo = new DisparoArquero(point, 50, 50, danioImpacto, alcance);
+			juego.agregarEntidad(disparo,true);
 			tiempoEntreDisparo = 20;
 		}
 		tiempoEntreDisparo--;
@@ -47,7 +49,6 @@ public class Arquero extends Personaje {
 
 	public void Aceptar(Visitor v) {
 		v.afectar(this);
-		
 	}
 
 }

@@ -10,11 +10,11 @@ public class DisparoMago extends Disparo {
 	
 	public DisparoMago(Point p, int ancho, int alto, int daño, int alcance) {
 		super(p,ancho,alto);
-		this.daño=daño;
+		danioImpacto=daño;
 		this.alcance=alcance+this.pos.x;
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/DisparoMago.gif"));
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/DisparoMago.gif"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/DisparoMago.gif"));
+		this.imagen[2] = null;
 		this.imagen[3] = null;
 		puntosVida=1;
 		velocidad=6;

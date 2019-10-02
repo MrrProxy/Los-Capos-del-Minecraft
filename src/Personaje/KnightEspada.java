@@ -13,27 +13,21 @@ import Visitor.Visitor;
  *
  */
 public class KnightEspada extends Personaje {
-	
-	//Constructor
+
+	// Constructor
 	public KnightEspada(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ESTATICO_KNIGHT_3.gif"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ESTATICO_KNIGHT_3.gif"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ESTATICO_KNIGHT_3.gif"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ATTACK_KNIGHT_3.gif"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/DIE_KNIGHT_3.gif"));
 		this.imagen[3] = null;
-		puntosVida=200;
-		precioPersonaje=300;
-	}
-
-	@Override
-	public void morir() {
-		// TODO Auto-generated method stub
-		
+		puntosVida = 500;
+		precioPersonaje = 300;
+		danioImpacto=20;
 	}
 
 	public void Aceptar(Visitor v) {
 		v.afectar(this);
-		
 	}
-
+	
 }

@@ -61,14 +61,11 @@ public class Juego {
 			for (Entidad e1 : entidades) {
 				if (e1.getVida() > 0) {
 					e1.Accionar();
-					for(Entidad e2 : entidades) {
-						if(e1!=e2 && map.chocan(e1, e2))
+					for (Entidad e2 : entidades)
+						if (e1 != e2 && map.chocan(e1, e2)) {
 							e1.Aceptar(e2.getVisitor());
-					
-					}
-					
-				}
-				else
+						}
+				} else
 					aEliminar.addLast(e1);
 			}
 		}
@@ -76,7 +73,7 @@ public class Juego {
 			for (Entidad e : aAgregar) {
 				entidades.add(e);
 				gui.actualizarEstadisticas(puntaje, cantMonedas);
-				gui.agregarAlJuego(e.getGrafico(1));
+				gui.agregarAlJuego(e.getGrafico(0));
 			}
 			aAgregar = new LinkedList<Entidad>();
 		}
@@ -84,20 +81,24 @@ public class Juego {
 			for (Entidad e : aEliminar) {
 				entidades.remove(e);
 				cantMonedas = cantMonedas + e.getMonedas();
-				puntaje =puntaje+ e.getPuntaje();
+				puntaje = puntaje + e.getPuntaje();
+				e.setGrafico(2);
 				gui.actualizarEstadisticas(puntaje, cantMonedas);
-				gui.eliminarEntidad(e.getGrafico(1));
-				gui.remove(e.getGrafico(1));
+				gui.eliminarEntidad(e.getGrafico(2));
 			}
 			aEliminar = new LinkedList<Entidad>();
 		}
 
 	}
 
-	public void agregarEntidad(Entidad e) {
+	public void agregarEntidad(Entidad e, boolean agregar) {
 		if (e != null) {
-			if (map.puedoAgregar(e, entidades))
+			if (agregar == false) {
+				if (map.puedoAgregar(e, entidades))
+					aAgregar.add(e);
+			} else {
 				aAgregar.add(e);
+			}
 
 		}
 	}
@@ -124,7 +125,7 @@ public class Juego {
 	public void setCantMonedas(int monedas) {
 		cantMonedas = monedas;
 	}
-	
+
 	/**
 	 * Devuelve el puntaje
 	 * 

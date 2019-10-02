@@ -31,6 +31,7 @@ public abstract class Entidad {
 	protected Sonidos sonidos;
 	protected Visitor miVisitor;
 	protected int graficoActual;
+	protected int alcance;
 
 	
 
@@ -145,16 +146,17 @@ public abstract class Entidad {
 		public int anchoEntidad() {
 			return width;
 		}
-		
-		
-	
 		/**
 		 * Produce todas las acciones de las entidades
 		 * @param e Entidad
 		 */
 		public abstract void Accionar(); 
-		public abstract void morir(); 
 		public abstract void Aceptar(Visitor v);
+		
+		public  void morir() {
+			puntosVida=0;
+		}
+		
 		
 		
 		/**
@@ -183,10 +185,14 @@ public abstract class Entidad {
 		public Visitor getVisitor() {
 			return miVisitor;
 		}
+		public void modoActual(int graficoActual,int velocidadActual) {
+			this.graficoActual=graficoActual;
+			this.velocidad=velocidadActual;
+		}
 		
-		
-		//public abstract Entidad Visiti(); 
-		
+		public int getAlcance() {
+			return alcance;
+		}
 		
 	
 }

@@ -9,7 +9,7 @@ import java.io.IOException;
 import Enemigo.Araña;
 import Enemigo.Bruja;
 import Enemigo.Creeper;
-import Enemigo.Ender;
+import Enemigo.FallenAngel;
 import Enemigo.Enemigo;
 import Enemigo.Esqueleto;
 import Enemigo.Zombie;
@@ -120,8 +120,8 @@ public class Nivel extends Mapa {
 							i++;
 					Point p = new Point(x, y);
 					Entidad enem = crearEnemigo(tipo, p);
-					juego.agregarEntidad(enem);
-					tiempoDeEspera=15;
+					juego.agregarEntidad(enem,false);
+					tiempoDeEspera=30;
 					}
 				}
 			
@@ -179,7 +179,7 @@ public class Nivel extends Mapa {
 			e = new Creeper(p, 70, 70);
 			break;
 		case 'd':
-			e = new Ender(p, 70, 70);
+			e = new FallenAngel(p, 70, 70);
 			break;
 		case 'e':
 			e = new Esqueleto(p, 70, 70);

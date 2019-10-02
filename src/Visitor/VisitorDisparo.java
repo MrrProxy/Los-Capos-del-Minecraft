@@ -2,26 +2,24 @@ package Visitor;
 
 import Disparos.Disparo;
 import Enemigo.Enemigo;
+import Entidad.Entidad;
 import Personaje.Personaje;
 
-public class VisitorDisparo extends Visitor{
+public class VisitorDisparo extends Visitor {
 
-	@Override
+	public VisitorDisparo(Entidad e) {
+		super(e);
+	}
+
 	public void afectar(Personaje p) {
-		// TODO Auto-generated method stub
-		
 	}
 
-	@Override
 	public void afectar(Enemigo e) {
-		// TODO Auto-generated method stub
-		
 	}
 
-	@Override
 	public void afectar(Disparo d) {
-		// TODO Auto-generated method stub
-		
 	}
+	
+	
 
 }

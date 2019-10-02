@@ -14,42 +14,43 @@ import Visitor.Visitor;
  *
  */
 public class Mago extends Personaje {
-	
-	//Constructor
+
+	// Constructor
 	public Mago(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ESTATICO_MAGO_1.gif"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ESTATICO_MAGO_1.gif"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ESTATICO_MAGO_1.gif"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ATTACK_MAGO_1.gif"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/DIE_MAGO_1.gif"));
 		this.imagen[3] = null;
-		puntosVida=200;
-		precioPersonaje=600;
+		puntosVida = 2000;
+		precioPersonaje = 600;
+		danioImpacto=5;
+		alcance=500;
 	}
-	
+
 	public void Accionar() {
 		Juego juego = Juego.getInstance();
 		if (tiempoEntreDisparo == 0) {
 			Point point = new Point(this.getPosition());
-			point.x =(int) (point.getX()+this.anchoEntidad());
-			disparo = new DisparoMago(point, 50, 50, 50, 200);
-			juego.agregarEntidad(disparo);
+			point.x = (int) (point.getX() + this.anchoEntidad());
+			disparo = new DisparoMago(point, 50, 50, danioImpacto, alcance);
+			juego.agregarEntidad(disparo,true);
 			tiempoEntreDisparo = 30;
-			//sonidos.playSoundEffect("sound1");
+			// sonidos.playSoundEffect("sound1");
 			//
-		} 
-			tiempoEntreDisparo--;
+		}
+		tiempoEntreDisparo--;
 
 	}
 
 	@Override
 	public void morir() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void Aceptar(Visitor v) {
 		v.afectar(this);
-		
 	}
 
 }

@@ -25,7 +25,7 @@ public class HiloOleadas extends Thread {
 	public void run() {
 		while (true) {
 			try {
-				Thread.sleep(120);
+				Thread.sleep(600);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
