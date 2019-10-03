@@ -14,6 +14,7 @@ import Enemigo.Enemigo;
 import Enemigo.Esqueleto;
 import Enemigo.Zombie;
 import Entidad.Entidad;
+import Hilo.HiloOleadas;
 import Juego.Juego;
 
 /**
@@ -28,13 +29,13 @@ public class Nivel extends Mapa {
 	private static int N_Inicial = 1;
 	private static int N_Final = 3;
 	private int tiempoDeEspera=0;
-
 	// Atributos de instancia
 	private int N_Actual;
 
 	// Constructor
 	public Nivel() {
 		N_Actual = N_Inicial;
+		
 	}
 
 	// Metodos
@@ -115,9 +116,10 @@ public class Nivel extends Mapa {
 						y = leerVariable(i, sCurrentLine);
 						i = i + 3;
 					}
-					if (i < sCurrentLine.length())
+					if (i < sCurrentLine.length()) {
 						if (sCurrentLine.charAt(i) == ' ')
 							i++;
+					}
 					Point p = new Point(x, y);
 					Entidad enem = crearEnemigo(tipo, p);
 					juego.agregarEntidad(enem,false);

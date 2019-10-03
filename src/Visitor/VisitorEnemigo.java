@@ -23,7 +23,12 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void afectar(Enemigo e) {
-		e.modoActual(0, 0);
+		if(e.getVida()<=0)
+			miEntidad.modoActual(0, e.getVelocidadInicial());
+		else {
+			e.modoActual(0, 0);
+			
+		}
 	}
 
 	@Override

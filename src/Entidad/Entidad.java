@@ -193,6 +193,9 @@ public abstract class Entidad {
 		public int getAlcance() {
 			return alcance;
 		}
+		public int getVelocidadInicial() {
+			return 0;
+		}
 		
 	
 }
