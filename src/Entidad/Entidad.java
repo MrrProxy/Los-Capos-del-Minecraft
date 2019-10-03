@@ -207,5 +207,9 @@ public abstract class Entidad {
 			return 0;
 		}
 		
+		public void setGraficoActual(int g){
+			this.graficoActual=g;
+		}
+		
 	
 }
