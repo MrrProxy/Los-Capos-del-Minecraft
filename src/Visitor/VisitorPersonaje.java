@@ -19,7 +19,6 @@ public class VisitorPersonaje extends Visitor{
 
 	public void afectar(Enemigo e) {
 		miEntidad.recibirDaño(e.getDanio()*2);
-		System.out.println(miEntidad.getVida());
 		e.setAvanzar(false);
 		miEntidad.setGraficoActual(1);
 		e.setGraficoActual(1);
@@ -37,8 +36,8 @@ public class VisitorPersonaje extends Visitor{
 	}
 
 	public void afectar(Disparo d) {
-		d.morir();
-		miEntidad.recibirDaño(d.getDanio());
+		//d.morir();
+		//miEntidad.recibirDaño(d.getDanio());
 		
 	}
 
