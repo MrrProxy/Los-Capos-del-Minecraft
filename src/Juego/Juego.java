@@ -55,6 +55,11 @@ public class Juego {
 		tiempo.start();
 
 	}
+	
+	public void refreshMovement(){
+		for (Entidad e : entidades)
+			e.setAvanzar(true);
+	}
 
 
 	public synchronized void Accionar() {
@@ -63,19 +68,20 @@ public class Juego {
 				boolean chocan=false;
 				if (e1.getVida() > 0) {
 					for (Entidad e2 : entidades)
-						if (e1 != e2 && map.chocan(e1, e2)) {
+						if (e1 != e2 && map.chocan(e1, e2))
 							e1.Aceptar(e2.getVisitor());
-						}
 					e1.Accionar();
 					
 				} else
 					aEliminar.addLast(e1);
+					
 				
 			}
+			refreshMovement();
 		}
 		if (!aAgregar.isEmpty()) {
 			for (Entidad e : aAgregar) {
-				entidades.add(e);
+				entidades.addFirst(e);
 				gui.actualizarEstadisticas(puntaje, cantMonedas);
 				gui.agregarAlJuego(e.getGrafico(0));
 			}

@@ -2,23 +2,31 @@ package Visitor;
 
 import Disparos.Disparo;
 import Enemigo.Enemigo;
+import Juego.Juego;
 import Personaje.Personaje;
 
 public class VisitorPersonaje extends Visitor{
+	
+	Juego j;
 		
 	public VisitorPersonaje(Personaje p){
 		super(p);
+		j = j.getInstance();
 	}
 
 	public void afectar(Personaje p) {
 	}
 
 	public void afectar(Enemigo e) {
-		miEntidad.recibirDaño(e.getDanio());
+		miEntidad.recibirDaño(e.getDanio()*2);
 		System.out.println(miEntidad.getVida());
 		e.setAvanzar(false);
-		if (miEntidad.getVida()<=0)
+		miEntidad.setGraficoActual(1);
+		e.setGraficoActual(1);
+		if (miEntidad.getVida()<=0){
 			e.setAvanzar(true);
+			e.setGraficoActual(0);
+		}
 	//	miEntidad.modoActual(1, 0);
 		/*if(miEntidad.getVida()<=0)
 			e.modoActual(0, e.getVelocidadInicial());

@@ -12,7 +12,7 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void afectar(Personaje p) {
-		//miEntidad.recibirDaño(p.getDanio());
+		miEntidad.recibirDaño(p.getDanio());
 		/*if(miEntidad.getVida()<=0)
 			p.modoActual(0, 0);
 		else {
@@ -23,11 +23,11 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void afectar(Enemigo e) {
-		e.setAvanzar(false);
+		//e.setAvanzar(false);
 		if (miEntidad.getPosition().getX()<e.getPosition().getX())
 			e.setAvanzar(false);
-		else
-			e.setAvanzar(true);
+		/*else
+			e.setAvanzar(true);*/
 			
 	}
 

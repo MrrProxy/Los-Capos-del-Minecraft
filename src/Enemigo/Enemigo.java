@@ -55,7 +55,7 @@ public abstract class Enemigo extends Entidad {
 	 */
 	public void Accionar() {
 			if (puedoAvanzar){
-				Point point = new Point(this.getPosition().x - velocidad, this.getPosition().y);
+				Point point = new Point(this.getPosition().x - velocidad, this.getPosition().y);	
 				pos = point;
 				setGrafico(graficoActual);
 			}

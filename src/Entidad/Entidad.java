@@ -204,5 +204,9 @@ public abstract class Entidad {
 			return alcance;
 		}
 		
+		public void setGraficoActual(int g){
+			this.graficoActual=g;
+		}
+		
 	
 }
