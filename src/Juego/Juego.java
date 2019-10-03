@@ -56,17 +56,21 @@ public class Juego {
 
 	}
 
+
 	public synchronized void Accionar() {
 		if (!entidades.isEmpty()) {
 			for (Entidad e1 : entidades) {
+				boolean chocan=false;
 				if (e1.getVida() > 0) {
-					e1.Accionar();
 					for (Entidad e2 : entidades)
 						if (e1 != e2 && map.chocan(e1, e2)) {
 							e1.Aceptar(e2.getVisitor());
 						}
+					e1.Accionar();
+					
 				} else
 					aEliminar.addLast(e1);
+				
 			}
 		}
 		if (!aAgregar.isEmpty()) {
