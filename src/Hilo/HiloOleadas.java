@@ -19,16 +19,19 @@ public class HiloOleadas extends Thread {
 	
 	private HiloOleadas() {
 		this.elJuego = Juego.getInstance();
+		nivel = new Nivel();
 	}
 
 	// Hilo
 	public void run() {
 		while (true) {
 			try {
-				Thread.sleep(600);
+				Thread.sleep(120);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			//nivel.cargarEntidadesAlJuego();
+			
 			
 		}
 	}

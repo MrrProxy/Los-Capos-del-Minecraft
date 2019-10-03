@@ -32,17 +32,27 @@ public abstract class Entidad {
 	protected Visitor miVisitor;
 	protected int graficoActual;
 	protected int alcance;
+	protected boolean puedoAvanzar;
 
 	
 
 	// constructor
-	protected Entidad(Point p, int width, int height) {//Recive todos los componentes del enemigo no recive velocidad
+	protected Entidad(Point p, int width, int height) {//Recibe todos los componentes del enemigo no recive velocidad
 		pos = p;
 		this.width = width;
 		this.height = height;
 		this.imagen = new Icon[4];
 		sonidos=Sonidos.getInstace();
 		graficoActual=0;
+		puedoAvanzar=true;
+	}
+	
+	public void setAvanzar(boolean avanzar){
+		puedoAvanzar=avanzar;
+	}
+	
+	public boolean getAvanzar(){
+		return puedoAvanzar;
 	}
 	
 		//******METODOS******

@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import javax.swing.JLabel;
 import Entidad.Entidad;
 import GUI.GUI;
+import Hilo.HiloOleadas;
 import Hilo.HiloPrincipal;
 import Mapa.Mapa;
 
@@ -18,6 +19,7 @@ public class Juego {
 	protected Mapa map;
 	protected int puntaje;
 	private HiloPrincipal tiempo;
+	private HiloOleadas tiempo2;
 	private GUI gui;
 	private LinkedList<Entidad> entidades;
 	private LinkedList<Entidad> aEliminar;
@@ -53,6 +55,8 @@ public class Juego {
 
 		tiempo = HiloPrincipal.getInstace();
 		tiempo.start();
+		tiempo2 = HiloOleadas.getInstace();
+		tiempo2.start();
 
 	}
 
@@ -66,8 +70,15 @@ public class Juego {
 							e1.Aceptar(e2.getVisitor());
 						}
 					}
+					for (Entidad e2 : entidades)
+						if (e1 != e2 && map.chocan(e1, e2)) {
+							e1.Aceptar(e2.getVisitor());
+						}
+					e1.Accionar();
+
 				} else
 					aEliminar.addLast(e1);
+
 			}
 		}
 		if (!aAgregar.isEmpty()) {
@@ -94,20 +105,20 @@ public class Juego {
 
 	public void agregarEntidad(Entidad e, boolean agregar) {
 		if (e != null) {
-			if (agregar == false) {
-				if (map.puedoAgregar(e, entidades))
+			if (!agregar) {
+				if (map.puedoAgregar(e, entidades)) {
 					aAgregar.add(e);
-			} else {
-				aAgregar.add(e);
+				}
 			}
-
+			if (agregar)
+				aAgregar.add(e);
 		}
 	}
 
-	public void agregarGrafica(Entidad e) {
-		JLabel j = e.getGrafico(0);
-		gui.agregarAlJuego(j);
-	}
+//	public void agregarGrafica(Entidad e) {
+//		JLabel j = e.getGrafico(0);
+//		gui.agregarAlJuego(j);
+//	}
 
 	/**
 	 * Devuelve las monedas disponibles

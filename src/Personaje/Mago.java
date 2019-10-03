@@ -32,7 +32,6 @@ public class Mago extends Personaje {
 		Juego juego = Juego.getInstance();
 		if (tiempoEntreDisparo == 0) {
 			Point point = new Point(this.getPosition());
-			point.x = (int) (point.getX() + this.anchoEntidad());
 			disparo = new DisparoMago(point, 50, 50, danioImpacto, alcance);
 			juego.agregarEntidad(disparo,true);
 			tiempoEntreDisparo = 30;

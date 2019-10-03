@@ -36,41 +36,17 @@ public class HiloPrincipal extends Thread {
 			
 			while(true) {
 				try {
-					Thread.sleep(70);
+					Thread.sleep(100);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 				
-				nivel.cargarEntidadesAlJuego();
+				//nivel.cargarEntidadesAlJuego();
 				juego.Accionar();
 
 				
 			}
 			
 		}
-	
-		
-		
-	/**
-	 * Devuelve verdadero si las entidades colisionan, caso contrario falso.
-	 * @param l1 label de entidad 1.
-	 * @param l2 label de entidad 2.
-	 * @return verdadero si colisionan, caso contrario falso.
-	 */
-	private boolean colisionan(Entidad l1, Entidad l2) {
-		boolean colisionan = false;
-		
-		int x_centro = l1.getPosition().x+ l1.anchoEntidad();
-		int y_centro = l1.getPosition().y+ l1.altoEntidad();
-		int x_centro2 = l2.getPosition().x+ l2.anchoEntidad();
-		int y_centro2 = l2.getPosition().y+ l2.altoEntidad();
-		
-		if((x_centro > l2.getPosition().x) && (x_centro < x_centro2))
-			if((y_centro > l2.getPosition().y) && (y_centro < y_centro2)) 
-				colisionan = true;
-		
-		return colisionan;
-	}
-	
 }
 

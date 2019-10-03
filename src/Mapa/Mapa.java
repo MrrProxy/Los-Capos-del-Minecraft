@@ -46,18 +46,4 @@ public class Mapa {
 		return colisionan;
 	}
 
-//	public boolean hayAlguienAdelante(Entidad e1, Entidad e2) {
-//		boolean ocupado = false;
-//		if (e2.getPosition().x <=e1.getPosition().x) {
-//			Rectangle rectangle = new Rectangle(e1.getPosition().x, e1.getPosition().y, e1.anchoEntidad(),
-//					e1.altoEntidad());
-//			Rectangle rectangle2 = new Rectangle(e2.getPosition().x, e2.getPosition().y, e2.anchoEntidad(),
-//					e2.altoEntidad());
-//			System.out.println("Entre "+rectangle.intersects(rectangle2));
-//			ocupado=rectangle.intersects(rectangle2);
-//		}
-//		return ocupado;
-//
-//	}
-
 }
