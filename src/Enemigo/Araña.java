@@ -22,7 +22,7 @@ public class Araña extends Enemigo {
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperManRed_Running.gif"));
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperManRed_Running.gif"));
 		this.imagen[3] = null;
-		velocidad = 6;
+		velocidad = 1;
 		puntosVida = 1000;
 		monedas = 10;
 		puntaje = 10;

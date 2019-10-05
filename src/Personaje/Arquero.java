@@ -34,7 +34,6 @@ public class Arquero extends Personaje {
 		if (tiempoEntreDisparo == 0) {
 			setGrafico(graficoActual);
 			Point point = new Point(this.getPosition());
-			point.x =(int) (point.getX()+this.anchoEntidad());
 			disparo = new DisparoArquero(point, 50, 50, danioImpacto, alcance);
 			juego.agregarEntidad(disparo,true);
 			tiempoEntreDisparo = 20;

@@ -1,18 +1,11 @@
 package Hilo;
 
-import java.util.LinkedList;
-
-import Entidad.Entidad;
 import Juego.Juego;
 import Mapa.Nivel;
 
 public class HiloPrincipal extends Thread {
 	//Atributos
 		
-//		private LinkedList<Enemigo> enemigos;
-//		private LinkedList<Entidad> entidades;
-//		private LinkedList<Enemigo> elimEnemigos;
-//		private LinkedList<Entidad> elimEntidades;
 		private Nivel nivel;
 		private static HiloPrincipal instaceHiloPrincipal;
 		Juego juego;
@@ -40,8 +33,7 @@ public class HiloPrincipal extends Thread {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				
-				//nivel.cargarEntidadesAlJuego();
+				nivel.cargarEntidadesAlJuego();
 				juego.Accionar();
 
 				

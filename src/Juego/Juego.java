@@ -1,5 +1,6 @@
 package Juego;
 
+import java.lang.invoke.VolatileCallSite;
 import java.util.LinkedList;
 import javax.swing.JLabel;
 import Entidad.Entidad;
@@ -59,11 +60,6 @@ public class Juego {
 		tiempo2.start();
 
 	}
-	
-	public void refreshMovement(){
-		for (Entidad e : entidades)
-			e.setAvanzar(true);
-	}
 
 	public synchronized void Accionar() {
 		if (!entidades.isEmpty()) {
@@ -75,16 +71,11 @@ public class Juego {
 							e1.Aceptar(e2.getVisitor());
 						}
 					}
-					for (Entidad e2 : entidades)
-						if (e1 != e2 && map.chocan(e1, e2))
-							e1.Aceptar(e2.getVisitor());
-					e1.Accionar();
-
 				} else
 					aEliminar.addLast(e1);
 			}
-			refreshMovement();
 		}
+
 		if (!aAgregar.isEmpty()) {
 			for (Entidad e : aAgregar) {
 				entidades.addFirst(e);
@@ -108,14 +99,14 @@ public class Juego {
 	}
 
 	public void agregarEntidad(Entidad e, boolean agregar) {
-		if (e != null) {
-			if (!agregar) {
+		if (agregar)
+			aAgregar.add(e);
+		else {
+			if (e != null) {
 				if (map.puedoAgregar(e, entidades)) {
 					aAgregar.add(e);
 				}
 			}
-			if (agregar)
-				aAgregar.add(e);
 		}
 	}
 

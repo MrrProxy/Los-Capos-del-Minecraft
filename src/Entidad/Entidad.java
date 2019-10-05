@@ -167,8 +167,6 @@ public abstract class Entidad {
 			puntosVida=0;
 		}
 		
-		
-		
 		/**
 		 * Devuelve el precio de la torre que se desea comprar
 		 * @return Precio del personaje

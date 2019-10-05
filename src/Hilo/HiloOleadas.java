@@ -30,7 +30,7 @@ public class HiloOleadas extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			//nivel.cargarEntidadesAlJuego();
+			
 			
 			
 		}
