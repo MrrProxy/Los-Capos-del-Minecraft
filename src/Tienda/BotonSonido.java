@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import Entidad.Entidad;
 import GUI.GUI;
 import Sonidos.Sonidos;
+import Sonidos.SonidosMp3;
 
 public class BotonSonido extends Boton {
 	
@@ -25,8 +26,14 @@ public class BotonSonido extends Boton {
 
 	// Accion del boton Comprar
 	protected void accionarBoton() {
-		Sonidos sonidos=Sonidos.getInstace();
-		sonidos.stopSound(2);
+		SonidosMp3 sonidos=new SonidosMp3();
+		System.out.print("q mierda pasa");
+		try {
+			sonidos.Stop();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	protected ImageIcon getIconoBoton() {

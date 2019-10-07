@@ -1,15 +1,13 @@
 package GUI;
 
 import java.awt.event.*;
-import java.util.TimerTask;
 import java.awt.*;
 import javax.swing.*;
 import Entidad.Entidad;
 import Juego.Juego;
-import Sonidos.Sonidos;
+import Sonidos.SonidosMp3;
 import Tienda.Boton;
 import Tienda.BotonComprar;
-import Tienda.BotonSonido;
 import Tienda.BotonT1;
 import Tienda.BotonT2;
 import Tienda.BotonT3;
@@ -41,7 +39,6 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	private JLabel Puntaje;
 
 	// ****Sonidos****
-	private Sonidos sonidos;
 	// ****Botones****
 	private JButton startButton;
 
@@ -78,7 +75,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	 */
 
 	private GUI() {
-		sonidos = Sonidos.getInstace();
+		//sonidos = Sonidos.getInstace();
 		iniciar();
 	}
 
@@ -114,14 +111,22 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		startButton.setBorderPainted(true);
 		frameInicio.add(startButton, 0);// Agrega el boton al frame
 
-		sonidos.crearSonidos();
+		//sonidos.crearSonidos();
 
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/** Elimina la ventana anterior */
 				frameInicio.dispose();
 				iniciarJuego();
-				sonidos.playLoop(2);
+				//sonidos.playLoop(2);
+				SonidosMp3 mp3=new SonidosMp3();
+				try {
+					mp3.AbrirFichero("bsound1");
+					//mp3.Play();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			}
 
@@ -284,7 +289,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Boton torre4 = new BotonT4(tienda, this);
 		Boton torre5 = new BotonT5(tienda, this);
 		Boton Comprar = new BotonComprar(tienda, this);
-		Boton Sonido = new BotonSonido(tienda, this);
+		//Boton Sonido = new BotonSonido(tienda, this);
 		Comprar.setFocusable(false);
 		torre1.setFocusable(false);
 		torre2.setFocusable(false);
@@ -298,7 +303,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		agregarBotones(torre4);
 		agregarBotones(torre5);
 		agregarBotones(Comprar);
-		agregarBotones(Sonido);
+		//agregarBotones(Sonido);
 	}
 
 	public void agregarAlJuego(JLabel j) {
