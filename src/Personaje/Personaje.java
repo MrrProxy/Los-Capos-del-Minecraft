@@ -27,7 +27,5 @@ public abstract class Personaje extends Entidad {
 
 	public void Accionar() {
 		setGrafico(graficoActual);
-		
-
 	}
 }

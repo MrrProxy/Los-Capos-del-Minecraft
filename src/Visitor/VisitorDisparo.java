@@ -12,12 +12,17 @@ public class VisitorDisparo extends Visitor {
 	}
 
 	public void afectar(Personaje p) {
+		miEntidad.Accionar();
 	}
 
 	public void afectar(Enemigo e) {
+		miEntidad.Accionar();
+		e.recibirDaño(miEntidad.getDanio());
+		miEntidad.morir();
 	}
 
 	public void afectar(Disparo d) {
+		miEntidad.Accionar();
 	}
 	
 	

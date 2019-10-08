@@ -1,6 +1,7 @@
 package Entidad;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -198,6 +199,10 @@ public abstract class Entidad {
 			this.velocidad=velocidadActual;
 		}
 		
+		public Rectangle getRectangle() {
+			return new Rectangle(this.getPosition().x + this.velocidad, this.getPosition().y, this.anchoEntidad(),
+					this.altoEntidad());
+		}
 		public int getAlcance() {
 			return alcance;
 		}

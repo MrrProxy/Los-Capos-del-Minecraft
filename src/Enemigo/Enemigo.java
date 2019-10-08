@@ -1,6 +1,7 @@
 package Enemigo;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 
 import Entidad.Entidad;
 import Visitor.VisitorEnemigo;
@@ -37,6 +38,11 @@ public abstract class Enemigo extends Entidad {
 	public int getVelocidadInicial() {
 		return velocidadInicial;
 	}
+	
+	public Rectangle getRectangle() {
+		return new Rectangle(this.getPosition().x - this.velocidad, this.getPosition().y, this.anchoEntidad(),
+				this.altoEntidad());
+	}
 
 	/**
 	 * Establece la velocidad de desplazamiento de la entidad por la recibida como
@@ -59,7 +65,6 @@ public abstract class Enemigo extends Entidad {
 				pos = point;
 			}
 			setGrafico(graficoActual);
-		
 	}
 
 	public void morir() {

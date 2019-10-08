@@ -37,10 +37,8 @@ public class Mapa {
 	public boolean chocan(Entidad e1, Entidad e2) {
 
 		boolean colisionan;
-		Rectangle rectangle = new Rectangle(e1.getPosition().x, e1.getPosition().y, e1.anchoEntidad(),
-				e1.altoEntidad());
-		Rectangle rectangle2 = new Rectangle(e2.getPosition().x, e2.getPosition().y, e2.anchoEntidad(),
-				e2.altoEntidad());
+		Rectangle rectangle = e1.getRectangle();
+		Rectangle rectangle2 = e2.getRectangle();
 		colisionan=rectangle.intersects(rectangle2);
 
 		return colisionan;

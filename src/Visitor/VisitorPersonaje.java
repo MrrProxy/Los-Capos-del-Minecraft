@@ -14,14 +14,15 @@ public class VisitorPersonaje extends Visitor{
 	}
 
 	public void afectar(Enemigo e) {
-		miEntidad.recibirDaño(e.getDanio()*2);
-		e.setAvanzar(false);
+		//e.recibirDaño(miEntidad.getDanio());
+		//e.setAvanzar(false);
 		miEntidad.setGraficoActual(1);
 		
 		if (miEntidad.getVida()<=0){
-			e.setAvanzar(true);
+			//e.setAvanzar(true);
 			e.setGraficoActual(0);
 		}
+		miEntidad.Accionar();
 	}
 
 	public void afectar(Disparo d) {

@@ -65,14 +65,21 @@ public class Juego {
 		if (!entidades.isEmpty()) {
 			for (Entidad e1 : entidades) {
 				if (e1.getVida() > 0) {
-					e1.Accionar();
+					boolean choco = false;
 					for (Entidad e2 : entidades) {
 						if (e1 != e2 && map.chocan(e1, e2)) {
 							e1.Aceptar(e2.getVisitor());
+							choco = true;
 						}
 					}
-				} else
+					if(!choco) {
+						e1.Accionar();
+						// Avanzar
+					}
+				} else {
+					System.out.println("Hola");
 					aEliminar.addLast(e1);
+				}
 			}
 		}
 
