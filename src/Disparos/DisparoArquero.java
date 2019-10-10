@@ -21,10 +21,7 @@ public class DisparoArquero extends Disparo{
 	}
 	
 	public void Accionar() {
-		this.pos.x+=velocidad;
-		setGrafico(1);
-		if(this.pos.x>=alcance)
-			this.morir();
+		
 	}
 
 	@Override
@@ -35,7 +32,13 @@ public class DisparoArquero extends Disparo{
 	@Override
 	public void Aceptar(Visitor v) {
 		v.afectar(this);
-		
+	}
+	
+	public void mover() {
+		this.pos.x+=velocidad;
+		setGrafico(1);
+		if(this.pos.x>=alcance)
+			this.morir();
 	}
 
 }

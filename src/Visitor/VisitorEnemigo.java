@@ -5,8 +5,8 @@ import Enemigo.Enemigo;
 import Personaje.Personaje;
 
 public class VisitorEnemigo extends Visitor {
-	
-	public VisitorEnemigo(Enemigo e){
+
+	public VisitorEnemigo(Enemigo e) {
 		super(e);
 	}
 
@@ -14,19 +14,21 @@ public class VisitorEnemigo extends Visitor {
 	public void afectar(Personaje p) {
 		p.recibirDaño(miEntidad.getDanio());
 		miEntidad.setGraficoActual(1);
+		if (p.getVida() < 0) {
+			miEntidad.setGrafico(0);
+		}
+
 	}
 
 	@Override
 	public void afectar(Enemigo e) {
-		//if (miEntidad.getPosition().getX()<e.getPosition().getX())
-			//e.setAvanzar(false);
-		
+		// if (miEntidad.getPosition().getX()<e.getPosition().getX())
+		// e.setAvanzar(false);
+
 	}
 
 	@Override
 	public void afectar(Disparo d) {
-		//miEntidad.recibirDaño(d.getDanio());
-		//d.morir();
 	}
 
 }

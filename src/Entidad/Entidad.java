@@ -7,7 +7,6 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 
 import GUI.GUI;
-import Sonidos.Sonidos;
 import Visitor.Visitor;
 
 /**
@@ -29,7 +28,6 @@ public abstract class Entidad {
 	protected int velocidad;
 	protected int precioPersonaje;
 	protected GUI gui;
-	protected Sonidos sonidos;
 	protected Visitor miVisitor;
 	protected int graficoActual;
 	protected int alcance;
@@ -43,7 +41,6 @@ public abstract class Entidad {
 		this.width = width;
 		this.height = height;
 		this.imagen = new Icon[4];
-		sonidos=Sonidos.getInstace();
 		graficoActual=0;
 		puedoAvanzar=true;
 	}
@@ -194,10 +191,6 @@ public abstract class Entidad {
 		public Visitor getVisitor() {
 			return miVisitor;
 		}
-		public void modoActual(int graficoActual,int velocidadActual) {
-			this.graficoActual=graficoActual;
-			this.velocidad=velocidadActual;
-		}
 		
 		public Rectangle getRectangle() {
 			return new Rectangle(this.getPosition().x + this.velocidad, this.getPosition().y, this.anchoEntidad(),
@@ -212,6 +205,9 @@ public abstract class Entidad {
 		
 		public void setGraficoActual(int g){
 			this.graficoActual=g;
+		}
+		public void mover() {
+			
 		}
 		
 	

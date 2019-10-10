@@ -19,8 +19,11 @@ public class Mapa {
 
 	public boolean puedoAgregar(Entidad entidad, LinkedList<Entidad> listaEntidades) {
 		boolean toReturn = true;
+		Rectangle rectangle = entidad.getRectangle();
+		Rectangle rectangle2;
 		for (Entidad e : listaEntidades) {
-			if (chocan(e, entidad)) {
+			rectangle2 = e.getRectangle();
+			if (rectangle.intersects(rectangle2)) {
 				toReturn = false;
 			}
 		}
@@ -36,12 +39,17 @@ public class Mapa {
 	 */
 	public boolean chocan(Entidad e1, Entidad e2) {
 
-		boolean colisionan;
+		boolean colisionan=false;
+		boolean salida=false;
 		Rectangle rectangle = e1.getRectangle();
 		Rectangle rectangle2 = e2.getRectangle();
 		colisionan=rectangle.intersects(rectangle2);
+		if(rectangle2.x<rectangle.x && colisionan)//Controlo si choca adelante
+			salida=true;
+			
 
-		return colisionan;
+		return salida;
 	}
+	
 
 }

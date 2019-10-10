@@ -25,7 +25,7 @@ public class FallenAngel extends Enemigo {
 		puntosVida=1000;
 		monedas=10;
 		puntaje=10;
-		this.danioImpacto = 5;
+		this.danioImpacto = 50;
 		velocidadInicial=velocidad;
 
 

@@ -1,8 +1,9 @@
 package Juego;
 
-import java.lang.invoke.VolatileCallSite;
 import java.util.LinkedList;
-import javax.swing.JLabel;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+
 import Entidad.Entidad;
 import GUI.GUI;
 import Hilo.HiloOleadas;
@@ -53,6 +54,10 @@ public class Juego {
 		entidades = new LinkedList<Entidad>();
 		aAgregar = new LinkedList<Entidad>();
 		aEliminar = new LinkedList<Entidad>();
+		
+		LogManager.getLogManager().reset();
+		Logger globalLogger = Logger.getLogger(java.util.logging.Logger.GLOBAL_LOGGER_NAME);
+		globalLogger.setLevel(java.util.logging.Level.OFF);
 
 		tiempo = HiloPrincipal.getInstace();
 		tiempo.start();
@@ -74,10 +79,9 @@ public class Juego {
 					}
 					if(!choco) {
 						e1.Accionar();
-						// Avanzar
 					}
+					e1.mover();
 				} else {
-					System.out.println("Hola");
 					aEliminar.addLast(e1);
 				}
 			}

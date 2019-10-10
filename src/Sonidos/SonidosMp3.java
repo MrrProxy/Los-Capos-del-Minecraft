@@ -1,15 +1,20 @@
 package Sonidos;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 import javazoom.jlgui.basicplayer.BasicPlayer;
+import javazoom.jlgui.basicplayer.BasicPlayerException;
 
 public class SonidosMp3 {
-	private BasicPlayer player=new BasicPlayer(); ;
+	private BasicPlayer player ;
 	
 	
 	public SonidosMp3() {
+		player = new BasicPlayer();
+
+		
 	}
 
 	
@@ -18,17 +23,28 @@ public class SonidosMp3 {
 	}
 		 
 
-	public void AbrirFichero( String url) throws Exception {
-	//	File f = new File(getClass().getClassLoader().getResource("/zMusica/" + url + ".mp3").toURI());
-		//FileInputStream fis = new FileInputStream(f);
-		//InputStream audioSrc = getClass().getResourceAsStream("/zMusica/" + url + ".wav");
-		//File fileNAct = new File(this.getClass().getResource("/zMusica/"+path+".mp3").getPath());
-		//player.open(fis);
-		//player.play();
+	public void AbrirFichero( String url) {
+		File fileNAct = new File(this.getClass().getResource("/zMusica/"+url+".mp3").getPath());
+		try {
+			player.open(fileNAct);
+			player.play();
+		} catch (BasicPlayerException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void Pausa() throws Exception {
-		player.pause();
+	public void Pausa() {
+		try {
+			if(player.getStatus() == BasicPlayer.PAUSED ) {
+				player.resume();
+			}
+			else {
+				player.pause();
+			}
+				
+		} catch (BasicPlayerException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void Continuar() throws Exception {

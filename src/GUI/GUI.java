@@ -14,6 +14,7 @@ import Tienda.BotonT3;
 import Tienda.BotonT4;
 import Tienda.BotonT5;
 import Tienda.TiendaJuego;
+import javazoom.spi.mpeg.sampled.file.tag.MP3MetadataParser;
 
 /**
  * Clase GUI .
@@ -31,6 +32,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	// Atributos de la GUI
 	private Juego j;
 	private TiendaJuego tienda;
+	private SonidosMp3 mp3;
 	// ****Labels****
 	private JLabel fondo;
 	private JLabel fondo2;
@@ -41,6 +43,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	// ****Sonidos****
 	// ****Botones****
 	private JButton startButton;
+	private JButton botonSonido;
 
 	private static GUI instance;
 
@@ -119,7 +122,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 				frameInicio.dispose();
 				iniciarJuego();
 				//sonidos.playLoop(2);
-				SonidosMp3 mp3=new SonidosMp3();
+				mp3=new SonidosMp3();
 				try {
 					mp3.AbrirFichero("bsound1");
 					//mp3.Play();
@@ -189,6 +192,21 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Monedas.setBackground(new java.awt.Color(255, 215, 0));
 		Monedas.setFont(new java.awt.Font("cambria", 15, 20));
 		Monedas.setVisible(true);
+		
+		botonSonido = new JButton("Sonido");// Crea el boton
+		botonSonido.setBounds(820, 0, 180, 50);
+		botonSonido.setForeground(new java.awt.Color(155, 017, 030));
+		botonSonido.setBackground(new java.awt.Color(0, 0, 0));
+		botonSonido.setFont(new java.awt.Font("cambria", 10, 20));
+		botonSonido.setHorizontalAlignment(SwingConstants.CENTER);
+		botonSonido.setFocusPainted(false);
+		botonSonido.setBorderPainted(true);
+
+		botonSonido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mp3.Pausa();
+			}
+		});
 
 		// Se agregan los JLabel a sus respectivos paneles
 		panelJugador.add(Puntaje,0);
@@ -196,9 +214,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		panelTorres.add(fondo, -1);
 		panelJugador.add(fondo2, -1);
 		panelJuego.add(fondo3, -1);
-		//panelJuego.add(Monedas,0);
-		//panelJuego.add(Puntaje,0);
-		
+		panelJugador.add(botonSonido,0);
 		
 		// Se setea el panel principal con el contenedor del frame y se agregan los
 		// demas paneles al panel principal
@@ -290,6 +306,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Boton torre5 = new BotonT5(tienda, this);
 		Boton Comprar = new BotonComprar(tienda, this);
 		//Boton Sonido = new BotonSonido(tienda, this);
+		
 		Comprar.setFocusable(false);
 		torre1.setFocusable(false);
 		torre2.setFocusable(false);

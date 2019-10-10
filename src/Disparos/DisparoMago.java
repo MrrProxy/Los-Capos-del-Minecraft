@@ -20,13 +20,7 @@ public class DisparoMago extends Disparo {
 		velocidad=6;
 
 	}
-	public void Accionar() {
-		this.pos.x+=velocidad;
-		setGrafico(1);
-		if(this.pos.x>=this.alcance)
-			this.morir();
-	}
-	@Override
+	
 	public void morir() {
 		this.puntosVida=0;
 	}
@@ -34,4 +28,12 @@ public class DisparoMago extends Disparo {
 		v.afectar(this);
 		
 	}
+	public void mover() {
+		this.pos.x+=velocidad;
+		setGrafico(1);
+		if(this.pos.x>=alcance)
+			this.morir();
+	}
+
+	public void Accionar() {}
 }
