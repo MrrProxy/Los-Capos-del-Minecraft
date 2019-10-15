@@ -31,16 +31,6 @@ public class Mapa {
 	}
 	
 	
-	public boolean chocan(Entidad e1, Entidad e2) {
-
-		boolean colisionan;
-		Rectangle rectangle = e1.getRectangle();
-		Rectangle rectangle2 = e2.getRectangle();
-		colisionan=rectangle.intersects(rectangle2);
-			
-
-		return colisionan;
-	}
 	
 
 }

@@ -1,6 +1,7 @@
 package Hilo;
 
 import Juego.Juego;
+import Mapa.Nivel;
 
 public class HiloPrincipal extends Thread {
 	// Atributos
@@ -8,7 +9,8 @@ public class HiloPrincipal extends Thread {
 	private static HiloPrincipal instaceHiloPrincipal;
 	private Juego juego;
 	private boolean ejecutar;
-
+	private Nivel nivel;
+	
 	public static HiloPrincipal getInstace() {
 		if (instaceHiloPrincipal == null)
 			instaceHiloPrincipal = new HiloPrincipal();
@@ -17,6 +19,7 @@ public class HiloPrincipal extends Thread {
 
 	// Constructor
 	private HiloPrincipal() {
+		nivel = Nivel.getInstance();
 		juego = Juego.getInstance();
 		ejecutar=true;
 	}
@@ -25,6 +28,7 @@ public class HiloPrincipal extends Thread {
 
 	@Override
 	public void run() {
+		nivel.cargarObstaculos();
 
 		while (ejecutar) {
 			try {
@@ -33,15 +37,13 @@ public class HiloPrincipal extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			// nivel.cargarEntidadesAlJuego();
 			juego.Accionar();
 
 		}
-
 	}
-	
+
 	public void setEjecutar(boolean b) {
-		ejecutar=b;
-		
+		ejecutar = b;
+
 	}
 }

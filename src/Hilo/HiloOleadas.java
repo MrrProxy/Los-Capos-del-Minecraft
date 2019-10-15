@@ -30,9 +30,6 @@ public class HiloOleadas extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-//			if(nivel.obtenerNivelActual()==1) {
-//				nivel.cargarEntidadesAlJuego();
-//			}
 			nivel.agregarEnemigos();
 			
 			

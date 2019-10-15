@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 
 import Entidad.Entidad;
 import Mapa.Nivel;
+import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 
 /**
@@ -69,7 +70,7 @@ public abstract class Enemigo extends Entidad {
 		if(this.getPosition().x<-100) {
 //			System.out.println("murio enemigo ...");
 			this.puntosVida=0;
-			juego.setVida(50, false);
+			juego.setVida(10, false);
 		}
 	}
 
@@ -81,6 +82,10 @@ public abstract class Enemigo extends Entidad {
 
 	public int getPuntaje() {
 		return puntaje;
+	}
+	
+	public void Aceptar(Visitor v) {
+		v.afectar(this);
 	}
 
 	public boolean chocan(Entidad e2) {

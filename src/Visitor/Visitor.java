@@ -3,6 +3,7 @@ package Visitor;
 import Disparos.Disparo;
 import Enemigo.Enemigo;
 import Entidad.Entidad;
+import Objetos.Obstaculo;
 import Personaje.Personaje;
 
 public abstract class Visitor {
@@ -16,7 +17,7 @@ public abstract class Visitor {
 	public abstract void afectar(Personaje p);
 	public abstract void afectar(Enemigo e);
 	public abstract void afectar(Disparo d);
-	//public abstract void afectar(Objeto o);
+	public abstract void afectar(Obstaculo o);
 	//public abstract void 
 
 }

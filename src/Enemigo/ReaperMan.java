@@ -30,8 +30,4 @@ public class ReaperMan extends Enemigo {
 
 	}
 
-	public void Aceptar(Visitor v) {
-		v.afectar(this);
-	}
-
 }

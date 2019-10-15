@@ -336,6 +336,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 			}
 		});
 		timer.start();
+
 	}
 
 	// Agrega los botones al panel de torres
@@ -357,14 +358,15 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		framePerdi.setLocationRelativeTo(null);
 		framePerdi.setLayout(null);
 		framePerdi.setResizable(false);
-		JLabel imagenganeButton=new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/gameOver.png")));
-		imagenganeButton.setBounds(0,0,640,480);
-		framePerdi.add(imagenganeButton,0);
+		JLabel imagenganeButton = new JLabel(
+				new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/gameOver.png")));
+		imagenganeButton.setBounds(0, 0, 640, 480);
+		framePerdi.add(imagenganeButton, 0);
 		mp3.AbrirFichero("SadViolin");
 		framePerdi.setTitle("Perdiste");
 		framePerdi.setVisible(true);
 		framePerdi.setBackground(Color.BLACK);
-	
+
 	}
 
 	public void ganar() {
@@ -373,19 +375,19 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		frameGane.setBounds(0, 0, 600, 600);
 		frameGane.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameGane.setLocationRelativeTo(null);
-		JLabel imagenganeButton=new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/tenor.gif")));
-		imagenganeButton.setBounds(100,100,400,400);
+		JLabel imagenganeButton = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/tenor.gif")));
+		imagenganeButton.setBounds(100, 100, 400, 400);
 		frameGane.setLayout(null);
 		frameGane.setResizable(false);
 		frameGane.setTitle("Ganaste");
 		frameGane.setVisible(true);
-		frameGane.add(imagenganeButton,0);
+		frameGane.add(imagenganeButton, 0);
 		mp3.AbrirFichero("smokeEvd");
 	}
 
 	private void terminarJuego() {
 		frameJuego.dispose();
-		
+
 	}
 
 }// Fin GUI

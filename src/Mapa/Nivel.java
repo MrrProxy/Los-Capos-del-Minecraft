@@ -16,8 +16,8 @@ import Enemigo.Enemigo;
 import Enemigo.ReaperMan;
 import Enemigo.Goblin;
 import Entidad.Entidad;
-import Hilo.HiloOleadas;
 import Juego.Juego;
+import Objetos.Obstaculo;
 
 /**
  * Clase Nivel extiende Mapa .
@@ -88,20 +88,22 @@ public class Nivel extends Mapa {
 		return haySig;
 	}
 
-	/**
-	 * Carga las entidades correspondientes al juego de acuerdo al nivel actual,
-	 * requiere que se establezca el siguiente nivel.
-	 */
-	public void cargarEntidadesAlJuego() {
-		cargarEnemigos();
-		// cargarObstaculos();
-	}
 
 	// Metodos privados
 
 	/**
 	 * Carga los enemigos al juego.
+	 * 
 	 */
+	public void cargarObstaculos() {
+		Juego juego = Juego.getInstance();
+		
+		Point p = new Point(400, 320);
+		Obstaculo o = new Obstaculo(p,38,37);
+		juego.agregarEntidad(o,false);
+		
+		
+	}
 	private void cargarEnemigos() {
 		BufferedReader br = null;
 		File fileNAct = new File(

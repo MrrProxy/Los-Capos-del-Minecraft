@@ -2,6 +2,7 @@ package Visitor;
 
 import Disparos.Disparo;
 import Enemigo.Enemigo;
+import Objetos.Obstaculo;
 import Personaje.Personaje;
 
 public class VisitorEnemigo extends Visitor {
@@ -23,6 +24,15 @@ public class VisitorEnemigo extends Visitor {
 	@Override
 	public void afectar(Disparo d) {
 		
+	}
+	
+	public void afectar(Obstaculo o) {
+		o.recibirDaño(miEntidad.getDanio());
+		//miEntidad.setGraficoActual(1);
+		//if (o.getVida() < 0) {
+		
+		
+		//}
 	}
 
 }

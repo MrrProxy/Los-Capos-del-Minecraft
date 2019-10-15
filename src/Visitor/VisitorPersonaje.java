@@ -2,6 +2,7 @@ package Visitor;
 
 import Disparos.Disparo;
 import Enemigo.Enemigo;
+import Objetos.Obstaculo;
 import Personaje.Personaje;
 
 public class VisitorPersonaje extends Visitor{
@@ -23,6 +24,12 @@ public class VisitorPersonaje extends Visitor{
 	}
 
 	public void afectar(Disparo d) {
+		
+	}
+
+	@Override
+	public void afectar(Obstaculo o) {
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -31,8 +31,4 @@ public class FallenAngel extends Enemigo {
 
 	}
 
-	public void Aceptar(Visitor v) {
-		v.afectar(this);
-	}
-
 }

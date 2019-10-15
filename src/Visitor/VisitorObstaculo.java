@@ -29,4 +29,10 @@ public class VisitorObstaculo extends Visitor{
 		
 	}
 
+	@Override
+	public void afectar(Obstaculo o) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

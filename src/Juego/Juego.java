@@ -63,6 +63,7 @@ public class Juego {
 		globalLogger.setLevel(java.util.logging.Level.WARNING);
 
 		tiempo = HiloPrincipal.getInstace();
+		//tiempo.setEjecutar(true);
 		tiempo.start();
 		tiempo2 = HiloOleadas.getInstace();
 		tiempo2.start();
@@ -105,7 +106,7 @@ public class Juego {
 				puntaje = puntaje + e.getPuntaje();
 				e.setGrafico(2);
 				gui.actualizarEstadisticas(puntaje, cantMonedas);
-				gui.eliminarEntidad(e.getGrafico(2));
+				gui.eliminarEntidad(e.getGrafico(0));
 			}
 			aEliminar = new LinkedList<Entidad>();
 		}
