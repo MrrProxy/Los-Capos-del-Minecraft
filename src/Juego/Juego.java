@@ -80,7 +80,7 @@ public class Juego {
 					if(!choco) {
 						e1.Accionar();
 					}
-					e1.mover();
+					//e1.mover();
 				} else {
 					aEliminar.addLast(e1);
 				}
@@ -100,9 +100,9 @@ public class Juego {
 				entidades.remove(e);
 				cantMonedas = cantMonedas + e.getMonedas();
 				puntaje = puntaje + e.getPuntaje();
-				e.setGrafico(2);
+				//e.setGrafico(2);
 				gui.actualizarEstadisticas(puntaje, cantMonedas);
-				gui.eliminarEntidad(e.getGrafico(2));
+				gui.eliminarEntidad(e.getGrafico(0));
 			}
 			aEliminar = new LinkedList<Entidad>();
 		}

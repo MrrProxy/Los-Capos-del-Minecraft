@@ -12,10 +12,10 @@ import Visitor.Visitor;
  * @author Aldana Case(104870),Biernat Diego (105974) , Emanuel Somoza (112100).
  *
  */
-public class Esqueleto extends Enemigo {
+public class ReaperMan extends Enemigo {
 
 	// Constructor
-	public Esqueleto(Point p, int ancho, int alto) {
+	public ReaperMan(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperMan_Running.gif"));
@@ -28,10 +28,6 @@ public class Esqueleto extends Enemigo {
 		puntaje = 10;
 		velocidadInicial=velocidad;
 
-	}
-
-	public void Aceptar(Visitor v) {
-		v.afectar(this);
 	}
 
 }

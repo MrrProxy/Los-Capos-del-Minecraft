@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import Entidad.Entidad;
+import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 
 /**
@@ -72,6 +73,11 @@ public abstract class Enemigo extends Entidad {
 
 	public int getPuntaje() {
 		return puntaje;
+	}
+	
+	public void Aceptar(Visitor v) {
+		v.afectar(this);
+		System.out.println("queondabebetos");
 	}
 
 }

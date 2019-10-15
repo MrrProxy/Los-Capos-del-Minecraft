@@ -29,9 +29,4 @@ public class Bruja extends Enemigo {
 
 
 	}
-
-	public void Aceptar(Visitor v) {
-		v.afectar(this);
-
-	}
 }

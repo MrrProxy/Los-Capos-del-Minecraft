@@ -12,10 +12,10 @@ import Visitor.Visitor;
  * @author Aldana Case(104870),Biernat Diego (105974) , Emanuel Somoza (112100).
  *
  */
-public class Araña extends Enemigo {
+public class ReaperManRed extends Enemigo {
 
 	// Constructor
-	public Araña(Point p, int ancho, int alto) {
+	public ReaperManRed(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperManRed_Running.gif"));
@@ -30,7 +30,4 @@ public class Araña extends Enemigo {
 
 	}
 
-	public void Aceptar(Visitor v) {
-		v.afectar(this);
-	}
 }

@@ -43,12 +43,11 @@ public class Mapa {
 		boolean salida=false;
 		Rectangle rectangle = e1.getRectangle();
 		Rectangle rectangle2 = e2.getRectangle();
-		colisionan=rectangle.intersects(rectangle2);
+		colisionan=rectangle.intersects(rectangle2) || rectangle2.intersects(rectangle);
 		if(rectangle2.x<rectangle.x && colisionan)//Controlo si choca adelante
-			salida=true;
-			
+			salida=true;	
 
-		return salida;
+		return colisionan;
 	}
 	
 

@@ -6,16 +6,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import Enemigo.Araña;
-import Enemigo.Bruja;
-import Enemigo.Creeper;
-import Enemigo.FallenAngel;
-import Enemigo.Enemigo;
-import Enemigo.Esqueleto;
-import Enemigo.Zombie;
+import Enemigo.*;
 import Entidad.Entidad;
 import Hilo.HiloOleadas;
 import Juego.Juego;
+import Objetos.Obstaculo;
 
 /**
  * Clase Nivel extiende Mapa .
@@ -79,14 +74,24 @@ public class Nivel extends Mapa {
 	 */
 	public void cargarEntidadesAlJuego() {
 		cargarEnemigos();
-		// cargarObstaculos();
+		//cargarObstaculos();
 	}
 
 	// Metodos privados
 
 	/**
 	 * Carga los enemigos al juego.
+	 * 
 	 */
+	public void cargarObstaculos() {
+		Juego juego = Juego.getInstance();
+		
+		Point p = new Point(400, 320);
+		Obstaculo o = new Obstaculo(p,38,37);
+		juego.agregarEntidad(o,false);
+		
+		
+	}
 	private void cargarEnemigos() {
 		Juego juego = Juego.getInstance();
 
@@ -172,7 +177,7 @@ public class Nivel extends Mapa {
 		Enemigo e = null;
 		switch (tipo) {
 		case 'a':
-			e = new Araña(p, 70, 70);
+			e = new ReaperManRed(p, 70, 70);
 			break;
 		case 'b':
 			e = new Bruja(p, 70, 70);
@@ -184,7 +189,7 @@ public class Nivel extends Mapa {
 			e = new FallenAngel(p, 70, 70);
 			break;
 		case 'e':
-			e = new Esqueleto(p, 70, 70);
+			e = new ReaperMan(p, 70, 70);
 			break;
 		case 'f':
 			e=new Zombie(p, 70, 70);

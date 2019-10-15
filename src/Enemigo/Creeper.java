@@ -31,9 +31,5 @@ public class Creeper extends Enemigo {
 
 	}
 
-	public void Aceptar(Visitor v) {
-		v.afectar(this);
-
-	}
 
 }
