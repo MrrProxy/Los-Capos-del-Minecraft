@@ -15,11 +15,11 @@ public class VisitorPersonaje extends Visitor{
 
 	public void afectar(Enemigo e) {
 		e.recibirDaño(miEntidad.getDanio());
-		miEntidad.setGraficoActual(1);
+		miEntidad.setGrafico(1);
 		if(e.getVida()<=0) {
 			miEntidad.setGrafico(0);
 		}
-		miEntidad.Accionar();
+		
 	}
 
 	public void afectar(Disparo d) {

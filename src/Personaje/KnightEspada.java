@@ -21,9 +21,9 @@ public class KnightEspada extends Personaje {
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ATTACK_KNIGHT_3.gif"));
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/DIE_KNIGHT_3.gif"));
 		this.imagen[3] = null;
-		puntosVida = 500;
+		puntosVida = 50000;
 		precioPersonaje = 300;
-		danioImpacto=20;
+		danioImpacto=200;
 	}
 
 	public void Aceptar(Visitor v) {

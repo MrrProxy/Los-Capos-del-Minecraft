@@ -5,14 +5,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Random;
 
-import Enemigo.Araña;
-import Enemigo.Bruja;
-import Enemigo.Creeper;
+import Enemigo.ReaperManRed;
+import Enemigo.GolemPiedra;
+import Enemigo.GolemHielo;
 import Enemigo.FallenAngel;
 import Enemigo.Enemigo;
-import Enemigo.Esqueleto;
-import Enemigo.Zombie;
+import Enemigo.ReaperMan;
+import Enemigo.Goblin;
 import Entidad.Entidad;
 import Hilo.HiloOleadas;
 import Juego.Juego;
@@ -26,16 +28,29 @@ import Juego.Juego;
 public class Nivel extends Mapa {
 
 	// Atributos de clase
-	private static int N_Inicial = 1;
-	private static int N_Final = 3;
-	private int tiempoDeEspera=0;
+	private static int N_Final = 2;
 	// Atributos de instancia
 	private int N_Actual;
+	private LinkedList<Entidad> enemigos;
+	private Juego juego;
+	private int cantEnemigos;
+	private int cantEnemigosMuertos = 0;;
+
+	private static Nivel instance;
+
+	public static Nivel getInstance() {
+		if (instance == null)
+			instance = new Nivel();
+		return instance;
+
+	}
 
 	// Constructor
-	public Nivel() {
-		N_Actual = N_Inicial;
-		
+	private Nivel() {
+		N_Actual = 0;
+		enemigos = new LinkedList<Entidad>();
+		juego = Juego.getInstance();
+
 	}
 
 	// Metodos
@@ -88,8 +103,6 @@ public class Nivel extends Mapa {
 	 * Carga los enemigos al juego.
 	 */
 	private void cargarEnemigos() {
-		Juego juego = Juego.getInstance();
-
 		BufferedReader br = null;
 		File fileNAct = new File(
 				this.getClass().getResource("/zNiveles/Mapa/n" + N_Actual + "_enemigos.txt").getPath());
@@ -97,19 +110,18 @@ public class Nivel extends Mapa {
 		try {
 			String sCurrentLine;
 			br = new BufferedReader(new FileReader(fileNAct));
-			
+
 			// Para cada linea del archivo
-			if(tiempoDeEspera==0) {
 			while ((sCurrentLine = br.readLine()) != null) {
 				// Para cada letra de la linea
 				int i = 0;
-				
+
 				while (i < sCurrentLine.length()) {
 					char tipo = sCurrentLine.charAt(i); // Obtengo tipo de enemmigo
 					int x = 0;
 					int y = 0;
 					i++;
-					
+
 					while (i < sCurrentLine.length() && sCurrentLine.charAt(i) != ' ') {
 						x = leerVariable(i, sCurrentLine);
 						i = i + 3;
@@ -122,13 +134,11 @@ public class Nivel extends Mapa {
 					}
 					Point p = new Point(x, y);
 					Entidad enem = crearEnemigo(tipo, p);
-					juego.agregarEntidad(enem,false);
-					tiempoDeEspera=30;
-					}
+					enemigos.addLast(enem);
 				}
-			
+
 			}
-			tiempoDeEspera--;
+			cantEnemigos = enemigos.size();
 
 		} catch (IOException u) { // Esto es por si ocurre un error
 			u.printStackTrace();
@@ -140,11 +150,11 @@ public class Nivel extends Mapa {
 				ex.printStackTrace();
 			}
 		}
-		// asignarPowerUps(list);
 	}
 
 	/**
 	 * Lee desde el archivo la coordenada X o Y de tres numeros.
+	 * 
 	 * @param i            posiciÃ³n en la linea.
 	 * @param sCurrentLine linea de archivo.
 	 * @return variable.
@@ -160,6 +170,37 @@ public class Nivel extends Mapa {
 		return Integer.parseInt(variable);
 	}
 
+	public void agregarEnemigos() {
+		Random random = new Random();
+		int r = random.nextInt(4) + 1;
+		while (!enemigos.isEmpty() && r != 0) {
+			juego.agregarEntidad(enemigos.getFirst(), true);
+			enemigos.removeFirst();
+			r--;
+		}
+		if (enemigos.isEmpty() && N_Actual < N_Final && cantEnemigosMuertos == cantEnemigos) {
+//			try {
+//				HiloOleadas.sleep(10000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+			N_Actual += 1;
+			cargarEnemigos();
+			cantEnemigosMuertos = 0;
+		} else {
+			if (N_Actual >= N_Final && cantEnemigosMuertos == cantEnemigos) {
+				juego.terminarJuego(true);
+			}
+		}
+
+	}
+
+	// suma 1 a la cantidad de muertos de enemigos
+	public void sumarEnemigosMuertos() {
+		cantEnemigosMuertos++;
+
+	}
+
 	/**
 	 * Crea un enemigo de acuerdo al tipo que se recibe y con la posicion recibida
 	 * por parametro.
@@ -172,26 +213,25 @@ public class Nivel extends Mapa {
 		Enemigo e = null;
 		switch (tipo) {
 		case 'a':
-			e = new Araña(p, 70, 70);
+			e = new ReaperManRed(p, 70, 70);
 			break;
 		case 'b':
-			e = new Bruja(p, 70, 70);
+			e = new GolemPiedra(p, 70, 70);
 			break;
 		case 'c':
-			e = new Creeper(p, 70, 70);
+			e = new GolemHielo(p, 70, 70);
 			break;
 		case 'd':
 			e = new FallenAngel(p, 70, 70);
 			break;
 		case 'e':
-			e = new Esqueleto(p, 70, 70);
+			e = new ReaperMan(p, 70, 70);
 			break;
 		case 'f':
-			e=new Zombie(p, 70, 70);
+			e = new Goblin(p, 70, 70);
 			break;
 		}
 		return e;
 	}
-
 
 }

@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import Entidad.Entidad;
+import Mapa.Nivel;
 import Visitor.VisitorEnemigo;
 
 /**
@@ -18,11 +19,13 @@ public abstract class Enemigo extends Entidad {
 	// Atributos especificos de un enemigo
 	protected int puntaje;
 	protected int velocidadInicial;
+	protected Nivel nivel;//Es necesario para actualizar las muertes 
 
 	// Constructor
 	protected Enemigo(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 		miVisitor = new VisitorEnemigo(this);
+		nivel =Nivel.getInstance();
 
 	}
 
@@ -62,11 +65,17 @@ public abstract class Enemigo extends Entidad {
 	public void Accionar() {
 		Point point = new Point(this.getPosition().x - velocidad, this.getPosition().y);
 		pos = point;
-		setGrafico(graficoActual);
+		setGrafico(0);
+		if(this.getPosition().x<-100) {
+//			System.out.println("murio enemigo ...");
+			this.puntosVida=0;
+			juego.setVida(50, false);
+		}
 	}
 
 	public void morir() {
 		puntosVida = 0;
+		nivel.sumarEnemigosMuertos();
 
 	}
 
@@ -74,4 +83,17 @@ public abstract class Enemigo extends Entidad {
 		return puntaje;
 	}
 
+	public boolean chocan(Entidad e2) {
+
+		boolean colisionan=false;
+		boolean salida=false;
+		Rectangle rectangle = this.getRectangle();
+		Rectangle rectangle2 = e2.getRectangle();
+		colisionan=rectangle.intersects(rectangle2);
+		if(rectangle2.x<rectangle.x && colisionan) {//Controlo si choca adelante
+			salida=true;
+		}
+		return salida;
+	}
+	
 }

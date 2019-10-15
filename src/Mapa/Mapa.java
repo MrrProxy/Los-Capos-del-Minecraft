@@ -29,26 +29,17 @@ public class Mapa {
 		}
 		return toReturn;
 	}
-
-	/**
-	 * Devuelve verdadero si las entidades colisionan, caso contrario falso.
-	 * 
-	 * @param e1 entidad1
-	 * @param e2 entidad2
-	 * @return verdadero si colisionan, caso contrario falso.
-	 */
+	
+	
 	public boolean chocan(Entidad e1, Entidad e2) {
 
-		boolean colisionan=false;
-		boolean salida=false;
+		boolean colisionan;
 		Rectangle rectangle = e1.getRectangle();
 		Rectangle rectangle2 = e2.getRectangle();
 		colisionan=rectangle.intersects(rectangle2);
-		if(rectangle2.x<rectangle.x && colisionan)//Controlo si choca adelante
-			salida=true;
 			
 
-		return salida;
+		return colisionan;
 	}
 	
 

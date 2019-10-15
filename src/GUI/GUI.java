@@ -14,7 +14,6 @@ import Tienda.BotonT3;
 import Tienda.BotonT4;
 import Tienda.BotonT5;
 import Tienda.TiendaJuego;
-import javazoom.spi.mpeg.sampled.file.tag.MP3MetadataParser;
 
 /**
  * Clase GUI .
@@ -26,7 +25,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 
 	private static final long serialVersionUID = 1L;
 	// Frame y panel
-	private JFrame frameInicio, frameJuego;
+	private JFrame frameInicio, frameJuego, frameGane, framePerdi;
 	private JLayeredPane panel, panelPrincipal, panelJuego, panelTorres, panelJugador;
 
 	// Atributos de la GUI
@@ -78,7 +77,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	 */
 
 	private GUI() {
-		//sonidos = Sonidos.getInstace();
+		// sonidos = Sonidos.getInstace();
 		iniciar();
 	}
 
@@ -114,18 +113,18 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		startButton.setBorderPainted(true);
 		frameInicio.add(startButton, 0);// Agrega el boton al frame
 
-		//sonidos.crearSonidos();
+		// sonidos.crearSonidos();
 
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/** Elimina la ventana anterior */
 				frameInicio.dispose();
 				iniciarJuego();
-				//sonidos.playLoop(2);
-				mp3=new SonidosMp3();
+				// sonidos.playLoop(2);
+				mp3 = new SonidosMp3();
 				try {
 					mp3.AbrirFichero("bsound1");
-					//mp3.Play();
+					// mp3.Play();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -181,7 +180,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 
 		Puntaje = new JLabel("Puntaje : 0");
 		Puntaje.setBounds(300, 0, 200, 50);
-		Puntaje.setBackground(new java.awt.Color(255, 215, 0));		
+		Puntaje.setBackground(new java.awt.Color(255, 215, 0));
 		Puntaje.setForeground(new java.awt.Color(255, 255, 255));
 		Puntaje.setFont(new java.awt.Font("cambria", 15, 20));
 		Puntaje.setVisible(true);
@@ -192,7 +191,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Monedas.setBackground(new java.awt.Color(255, 215, 0));
 		Monedas.setFont(new java.awt.Font("cambria", 15, 20));
 		Monedas.setVisible(true);
-		
+
 		botonSonido = new JButton("Sonido");// Crea el boton
 		botonSonido.setBounds(820, 0, 180, 50);
 		botonSonido.setForeground(new java.awt.Color(155, 017, 030));
@@ -209,13 +208,13 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		});
 
 		// Se agregan los JLabel a sus respectivos paneles
-		panelJugador.add(Puntaje,0);
-		panelJugador.add(Monedas,0);
+		panelJugador.add(Puntaje, 0);
+		panelJugador.add(Monedas, 0);
 		panelTorres.add(fondo, -1);
 		panelJugador.add(fondo2, -1);
 		panelJuego.add(fondo3, -1);
-		panelJugador.add(botonSonido,0);
-		
+		panelJugador.add(botonSonido, 0);
+
 		// Se setea el panel principal con el contenedor del frame y se agregan los
 		// demas paneles al panel principal
 		frameJuego.setContentPane(panelPrincipal);
@@ -305,8 +304,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Boton torre4 = new BotonT4(tienda, this);
 		Boton torre5 = new BotonT5(tienda, this);
 		Boton Comprar = new BotonComprar(tienda, this);
-		//Boton Sonido = new BotonSonido(tienda, this);
-		
+
 		Comprar.setFocusable(false);
 		torre1.setFocusable(false);
 		torre2.setFocusable(false);
@@ -320,21 +318,22 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		agregarBotones(torre4);
 		agregarBotones(torre5);
 		agregarBotones(Comprar);
-		//agregarBotones(Sonido);
+		// agregarBotones(Sonido);
 	}
 
 	public void agregarAlJuego(JLabel j) {
 		if (j != null)
 			panelJuego.add(j, 0);
-			//panelJuego.repaint();
+		// panelJuego.repaint();
 
 	}
 
 	public void eliminarEntidad(JLabel grafico) {
-		Timer timer = new Timer (4000, new ActionListener (){
-		    public void actionPerformed(ActionEvent e) {
-		    	panelJuego.remove(grafico);
-		    }
+		Timer timer = new Timer(4000, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelJuego.remove(grafico);
+				panelJuego.repaint();
+			}
 		});
 		timer.start();
 	}
@@ -349,4 +348,44 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Monedas.setText("Monedas : " + cantMonedas);
 
 	}
+
+	public void perder() {
+		terminarJuego();
+		framePerdi = new JFrame();// Crea la ventana donde se desarrolla el juego
+		framePerdi.setBounds(0, 0, 600, 480);
+		framePerdi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		framePerdi.setLocationRelativeTo(null);
+		framePerdi.setLayout(null);
+		framePerdi.setResizable(false);
+		JLabel imagenganeButton=new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/gameOver.png")));
+		imagenganeButton.setBounds(0,0,640,480);
+		framePerdi.add(imagenganeButton,0);
+		mp3.AbrirFichero("SadViolin");
+		framePerdi.setTitle("Perdiste");
+		framePerdi.setVisible(true);
+		framePerdi.setBackground(Color.BLACK);
+	
+	}
+
+	public void ganar() {
+		terminarJuego();
+		frameGane = new JFrame();// Crea la ventana donde se desarrolla el juego
+		frameGane.setBounds(0, 0, 600, 600);
+		frameGane.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frameGane.setLocationRelativeTo(null);
+		JLabel imagenganeButton=new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/tenor.gif")));
+		imagenganeButton.setBounds(100,100,400,400);
+		frameGane.setLayout(null);
+		frameGane.setResizable(false);
+		frameGane.setTitle("Ganaste");
+		frameGane.setVisible(true);
+		frameGane.add(imagenganeButton,0);
+		mp3.AbrirFichero("smokeEvd");
+	}
+
+	private void terminarJuego() {
+		frameJuego.dispose();
+		
+	}
+
 }// Fin GUI

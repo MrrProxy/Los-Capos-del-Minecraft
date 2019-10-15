@@ -7,6 +7,7 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 
 import GUI.GUI;
+import Juego.Juego;
 import Visitor.Visitor;
 
 /**
@@ -19,19 +20,20 @@ public abstract class Entidad {
 	//Atributos especificos de una entidad
 	protected int width ;
 	protected int height;
-	protected JLabel grafico;
-	protected Icon imagen[];
 	protected int monedas;
 	protected int puntosVida;
-	protected Point pos;
 	protected int danioImpacto;
 	protected int velocidad;
 	protected int precioPersonaje;
-	protected GUI gui;
-	protected Visitor miVisitor;
-	protected int graficoActual;
 	protected int alcance;
 	protected boolean puedoAvanzar;
+	protected Point pos;
+	protected JLabel grafico;
+	protected GUI gui;
+	protected Juego juego;
+	protected Visitor miVisitor;
+	protected Icon imagen[];
+
 
 	
 
@@ -41,17 +43,9 @@ public abstract class Entidad {
 		this.width = width;
 		this.height = height;
 		this.imagen = new Icon[4];
-		graficoActual=0;
-		puedoAvanzar=true;
+		juego=Juego.getInstance();
 	}
 	
-	public void setAvanzar(boolean avanzar){
-		puedoAvanzar=avanzar;
-	}
-	
-	public boolean getAvanzar(){
-		return puedoAvanzar;
-	}
 	
 		//******METODOS******
 		/**
@@ -199,15 +193,20 @@ public abstract class Entidad {
 		public int getAlcance() {
 			return alcance;
 		}
-		public int getVelocidadInicial() {
-			return 0;
-		}
 		
-		public void setGraficoActual(int g){
-			this.graficoActual=g;
-		}
-		public void mover() {
-			
+		/**
+		 * Devuelve verdadero si las entidades colisionan, caso contrario falso.
+		 * 
+		 * @param e2 entidad2
+		 * @return verdadero si colisionan, caso contrario falso.
+		 */
+		public boolean chocan( Entidad e2) {
+
+			boolean colisionan;
+			Rectangle rectangle = this.getRectangle();
+			Rectangle rectangle2 = e2.getRectangle();
+			colisionan=rectangle.intersects(rectangle2);
+			return colisionan;
 		}
 		
 	

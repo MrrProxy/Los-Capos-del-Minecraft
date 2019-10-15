@@ -45,7 +45,6 @@ public class TiendaJuego {
 		if (this.nextToAdd != null) {
 			this.nextToAdd.setPosition(new Point(x, y));
 			this.juego.agregarEntidad(this.nextToAdd,false);
-			this.juego.setCantMonedas(this.juego.getCantMonedas() - nextToAdd.getPrecioPersonaje());
 			
 			this.nextToAdd = null;
 		}

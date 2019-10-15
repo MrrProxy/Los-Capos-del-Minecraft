@@ -39,8 +39,6 @@ public class Mago extends Personaje {
 			tiempoEntreDisparo = 30;
 			mp3.AbrirFichero("battle015");
 
-			// sonidos.playSoundEffect("sound1");
-			//
 		}
 		tiempoEntreDisparo--;
 

@@ -17,7 +17,8 @@ import Mapa.Mapa;
  *
  */
 public class Juego {
-	protected int cantMonedas = 10000;
+	protected int cantMonedas;
+	public int VidaJugador;
 	protected Mapa map;
 	protected int puntaje;
 	private HiloPrincipal tiempo;
@@ -30,7 +31,9 @@ public class Juego {
 	private static Juego instance;
 
 	private Juego() {
-
+		VidaJugador= 100;
+		cantMonedas=1000;
+		puntaje=0;
 	}
 
 	public static Juego getInstance() {
@@ -57,7 +60,7 @@ public class Juego {
 		
 		LogManager.getLogManager().reset();
 		Logger globalLogger = Logger.getLogger(java.util.logging.Logger.GLOBAL_LOGGER_NAME);
-		globalLogger.setLevel(java.util.logging.Level.OFF);
+		globalLogger.setLevel(java.util.logging.Level.WARNING);
 
 		tiempo = HiloPrincipal.getInstace();
 		tiempo.start();
@@ -72,16 +75,16 @@ public class Juego {
 				if (e1.getVida() > 0) {
 					boolean choco = false;
 					for (Entidad e2 : entidades) {
-						if (e1 != e2 && map.chocan(e1, e2)) {
+						if (e1 != e2 && e1.chocan(e2)) {
 							e1.Aceptar(e2.getVisitor());
-							choco = true;
+								choco = true;
 						}
 					}
 					if(!choco) {
 						e1.Accionar();
 					}
-					e1.mover();
 				} else {
+					e1.morir();
 					aEliminar.addLast(e1);
 				}
 			}
@@ -121,11 +124,6 @@ public class Juego {
 		}
 	}
 
-//	public void agregarGrafica(Entidad e) {
-//		JLabel j = e.getGrafico(0);
-//		gui.agregarAlJuego(j);
-//	}
-
 	/**
 	 * Devuelve las monedas disponibles
 	 * 
@@ -146,7 +144,6 @@ public class Juego {
 
 	/**
 	 * Devuelve el puntaje
-	 * 
 	 * @return puntaje
 	 */
 	public int getPuntaje() {
@@ -155,7 +152,6 @@ public class Juego {
 
 	/**
 	 * Actualiza el puntaje
-	 * 
 	 * @param puntaje
 	 */
 	public void setPuntaje(int puntaje) {
@@ -165,11 +161,44 @@ public class Juego {
 	public LinkedList<Entidad> getEntidades() {
 		return entidades;
 	}
-
-	public void eliminarEntidades() {
-		for (Entidad e : entidades) {
-			e.morir();
+	
+	/**Suma o resta la vida del jugador
+	 * 
+	 * @param int i vida a sumar o restar
+	 */
+	public void setVida(int i,boolean sumar) {
+		if(VidaJugador<100 && sumar) {
+			VidaJugador+=i;
+			if(VidaJugador>100) {
+				VidaJugador=100;
+			}
+		}
+		else {
+			if(VidaJugador>0 && !sumar) {
+				VidaJugador-=i;
+				if(VidaJugador<=0) {
+					this.terminarJuego(false);
+				}
+				
+			}
+		}
+		
+	}
+	
+	//Termina el juego
+	public void terminarJuego(boolean gane) {
+		tiempo.setEjecutar(false);
+		tiempo2.setEjecutar(false);
+		aAgregar=new LinkedList<Entidad>();
+		aEliminar=new LinkedList<Entidad>();
+		entidades=new LinkedList<Entidad>();
+		if(!gane) {
+			gui.ganar();
+		}
+		else {
+			gui.ganar();
 		}
 	}
+
 
 }// Fin clase Juego
