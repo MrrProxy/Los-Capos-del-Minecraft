@@ -32,7 +32,7 @@ public class Juego {
 
 	private Juego() {
 		VidaJugador= 100;
-		cantMonedas=1000;
+		cantMonedas=10000;
 		puntaje=0;
 	}
 
@@ -120,6 +120,7 @@ public class Juego {
 			if (e != null) {
 				if (map.puedoAgregar(e, entidades)) {
 					aAgregar.add(e);
+					cantMonedas-=e.getPrecioPersonaje();
 				}
 			}
 		}

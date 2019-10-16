@@ -19,6 +19,7 @@ public class VisitorDisparo extends Visitor {
 	public void afectar(Enemigo e) {
 		miEntidad.Accionar();
 		e.recibirDaño(miEntidad.getDanio());
+		e.Accionar();
 		miEntidad.morir();	
 
 	}
@@ -29,7 +30,7 @@ public class VisitorDisparo extends Visitor {
 
 	@Override
 	public void afectar(Obstaculo o) {
-		// TODO Auto-generated method stub
+		miEntidad.Accionar();
 		
 	}
 	

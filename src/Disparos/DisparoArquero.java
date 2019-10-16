@@ -7,11 +7,13 @@ import Visitor.Visitor;
 
 public class DisparoArquero extends Disparo {
 
+	private final int MOVIMIENTO = 1;
+	
 	public DisparoArquero(Point p, int x, int y, int daño, int alcance) {
 		super(p, x, y);
 		danioImpacto = daño;
 		this.alcance = this.pos.x + alcance;
-		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/flecha.png"));
+		this.imagen[MOVIMIENTO] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/flecha.png"));
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Disparo/flecha.png"));
 		this.imagen[2] = null;
 		this.imagen[3] = null;
@@ -22,7 +24,7 @@ public class DisparoArquero extends Disparo {
 
 	public void Accionar() {
 		this.pos.x += velocidad;
-		setGrafico(1);
+		setGrafico(MOVIMIENTO);
 		if (this.pos.x >= alcance) {
 			this.morir();
 		}

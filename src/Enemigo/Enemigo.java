@@ -68,7 +68,6 @@ public abstract class Enemigo extends Entidad {
 		pos = point;
 		setGrafico(0);
 		if(this.getPosition().x<-100) {
-//			System.out.println("murio enemigo ...");
 			this.puntosVida=0;
 			juego.setVida(10, false);
 		}

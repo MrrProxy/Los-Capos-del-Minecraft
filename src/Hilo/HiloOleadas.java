@@ -38,6 +38,5 @@ public class HiloOleadas extends Thread {
 	}
 	public void setEjecutar(boolean b) {
 		ejecutar=b;
-		
 	}
 }

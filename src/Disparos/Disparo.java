@@ -12,10 +12,5 @@ public abstract class Disparo extends Entidad {
 		super(p, ancho, alto);
 		miVisitor=new VisitorDisparo(this);
 	}
-	
-	public void mover() {
-	}
-
-
 
 }
