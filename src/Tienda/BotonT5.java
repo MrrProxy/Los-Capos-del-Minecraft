@@ -14,14 +14,14 @@ public class BotonT5 extends Boton {
 	public BotonT5(TiendaJuego tienda,GUI gui) {
 		super(tienda, gui);
 		this.setBounds(0, 400, 200, 100);
-		this.setText("Torre5 ");
 		this.setEnabled(false);
 
 	}
 
 
 	protected ImageIcon getIconoBoton() {
-		return null;
+		return new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/Boton5.png"));
+
 	}
 
 	@Override

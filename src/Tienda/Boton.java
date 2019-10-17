@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
 import Entidad.Entidad;
 import GUI.GUI;
 
@@ -20,12 +22,10 @@ public abstract class Boton extends JButton{
 	protected Boton(TiendaJuego tienda,GUI gui) {
 		this.tienda = tienda;
 		this.gui=gui;
-		//this.setIcon(this.getIconoBoton());
-		this.setForeground(new java.awt.Color(155, 017, 030));
-		this.setBackground(new java.awt.Color(0, 0, 0));
+		this.setIcon(this.getIconoBoton());
 		this.setFont(new java.awt.Font("cambria", 12, 33));
 		this.setHorizontalAlignment(SwingConstants.CENTER);
-		this.setBorderPainted(true);
+		this.setContentAreaFilled( false );		
 		this.setVisible(true);
 		this.setLayout(null);
 		this.tienda.setBoton(this);
@@ -43,7 +43,7 @@ public abstract class Boton extends JButton{
 			this.agregar(toAdd);
 			gui.agregarTorre(toAdd);
 			for (JButton b : tienda.getBoton()) {
-				if (!b.getText().equals("Comprar"))
+				if (b.isEnabled())
 					b.setEnabled(false);
 				else {
 					b.setEnabled(true);

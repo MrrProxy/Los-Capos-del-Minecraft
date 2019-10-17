@@ -14,7 +14,6 @@ public class BotonT3 extends Boton{
 	public BotonT3(TiendaJuego tienda,GUI gui) {
 		super(tienda, gui);
 		this.setBounds(0, 200, 200, 100);
-		this.setText("Torre3 ");
 		this.setEnabled(false);
 
 	}
@@ -23,7 +22,7 @@ public class BotonT3 extends Boton{
 
 
 	protected ImageIcon getIconoBoton() {
-		return null;
+		return new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/Boton3.png"));
 	}
 
 	protected Entidad crearEntidad() {

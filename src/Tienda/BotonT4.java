@@ -13,14 +13,13 @@ public class BotonT4 extends Boton{
 	public BotonT4(TiendaJuego tienda,GUI gui) {
 		super(tienda, gui);
 		this.setBounds(0, 300, 200, 100);
-		this.setText("Torre4 ");
 		this.setEnabled(false);
 
 	}
 	
 
 	protected ImageIcon getIconoBoton() {
-		return null;
+		return new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/Boton4.png"));
 	}
 	
 	protected Entidad crearEntidad() {

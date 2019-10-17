@@ -121,10 +121,14 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 				frameInicio.dispose();
 				iniciarJuego();
 				// sonidos.playLoop(2);
+//				JProgressBar current = new JProgressBar(0, 2000); // Crear un JProgressBar con valores 0-2000
+//				current.setValue(0); // Fijar valor por defecto.
+//				current.setStringPainted(true); // Mostrar valor numérico del progreso de la barra
+//				current.setBounds(300, 550, 400, 100);
+//				frameInicio.add(current);
 				mp3 = new SonidosMp3();
 				try {
 					mp3.AbrirFichero("bsound1");
-					// mp3.Play();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

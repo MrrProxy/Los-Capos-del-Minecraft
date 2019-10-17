@@ -13,13 +13,14 @@ public class BotonT1 extends Boton {
 	public BotonT1(TiendaJuego tienda,GUI gui) {
 		super(tienda, gui);
 		this.setBounds(0, 0, 200, 100);
-		this.setText("Torre1 ");
+		//this.setText("Torre1 ");
+		this.setBorder(null);
 		this.setEnabled(false);
 
 	}
 
 	protected ImageIcon getIconoBoton() {
-		return null;
+		return new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/Boton1.png"));
 	}
 
 	protected Entidad crearEntidad() {

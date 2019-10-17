@@ -16,6 +16,7 @@ import Enemigo.Enemigo;
 import Enemigo.ReaperMan;
 import Enemigo.Goblin;
 import Entidad.Entidad;
+import Hilo.HiloOleadas;
 import Juego.Juego;
 import Objetos.Obstaculo;
 
@@ -181,11 +182,11 @@ public class Nivel extends Mapa {
 			r--;
 		}
 		if (enemigos.isEmpty() && N_Actual < N_Final && cantEnemigosMuertos == cantEnemigos) {
-//			try {
-//				HiloOleadas.sleep(10000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
+			try {
+				HiloOleadas.sleep(10000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			N_Actual += 1;
 			cargarEnemigos();
 			cantEnemigosMuertos = 0;

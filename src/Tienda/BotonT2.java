@@ -13,7 +13,6 @@ public class BotonT2 extends Boton {
 	public BotonT2(TiendaJuego tienda, GUI gui) {
 		super(tienda, gui);
 		this.setBounds(0, 100, 200, 100);
-		this.setText("Torre2 ");
 		this.setEnabled(false);
 
 
@@ -24,7 +23,7 @@ public class BotonT2 extends Boton {
 	}
 
 	protected ImageIcon getIconoBoton() {
-		return null;
+		return new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/Boton2.png"));
 	}
 
 	protected Entidad crearEntidad() {

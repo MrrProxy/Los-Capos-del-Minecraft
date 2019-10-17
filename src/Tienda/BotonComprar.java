@@ -17,7 +17,6 @@ public class BotonComprar extends Boton {
 		super(tienda, gui);
 		this.gui = gui;
 		this.setBounds(0, 600, 200, 100);
-		this.setText("Comprar");
 		this.setEnabled(true);
 
 	}
@@ -27,7 +26,7 @@ public class BotonComprar extends Boton {
 		LinkedList<JButton> buttons = tienda.getBoton();
 		this.setEnabled(false);
 		for (JButton b : buttons) {
-			if (b.getText().equals("Comprar"))
+			if (b.equals(this))
 				b.setEnabled(false);
 			else {
 				b.setEnabled(true);
@@ -36,7 +35,7 @@ public class BotonComprar extends Boton {
 	}
 
 	protected ImageIcon getIconoBoton() {
-		return null;
+		return new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/Boton6.png"));
 	}
 
 	protected Entidad crearEntidad() {
