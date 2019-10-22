@@ -2,9 +2,11 @@ package Enemigo;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.Random;
 
 import Entidad.Entidad;
 import Mapa.Nivel;
+import Objetos.*;
 import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 
@@ -76,7 +78,40 @@ public abstract class Enemigo extends Entidad {
 	public void morir() {
 		puntosVida = 0;
 		nivel.sumarEnemigosMuertos();
+		Random rnd = new Random();
+		int posibilidad= rnd.nextInt(5);
+		if (posibilidad==1) //posibilidad puede ser 0,1,2,3,4. Quiero un 20% prob de soltar premio
+			generarPowerUp();
+		
 
+	}
+	
+	private Premio generarPowerUp(){
+		Premio nuevoPremio = null;
+		System.out.println("Generé un premio!");
+		Random rnd= new Random();
+		int premioElegido= rnd.nextInt(5);
+		switch (premioElegido){
+		case 0:
+			nuevoPremio= new CampoProteccion(pos,width,height);
+			break;
+		case 1:
+			nuevoPremio= new CampoProteccion(pos,width,height);
+			break;
+		case 2:
+			nuevoPremio= new CampoProteccion(pos,width,height);
+			break;
+		case 3:
+			nuevoPremio= new CampoProteccion(pos,width,height);
+			break;
+		case 4:
+			nuevoPremio= new CampoProteccion(pos,width,height);
+			break;
+			
+		}
+		
+		return nuevoPremio;
+		
 	}
 
 	public int getPuntaje() {
