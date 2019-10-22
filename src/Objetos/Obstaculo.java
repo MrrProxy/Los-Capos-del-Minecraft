@@ -16,7 +16,7 @@ public class Obstaculo extends Entidad {
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Objetos/roca.jpg"));
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Objetos/roca.jpg"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Objetos/roca.jpg"));
+		this.imagen[2] = null;
 		this.imagen[3] = null;
 		
 		miVisitor = new VisitorObstaculo(this);

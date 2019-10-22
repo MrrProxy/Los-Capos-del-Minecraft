@@ -4,8 +4,9 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 import Entidad.Entidad;
+import Hilo.HiloOleadas;
 import Juego.Juego;
-import Sonidos.SonidosMp3;
+import Sonidos.sonidosMp3;
 import Tienda.Boton;
 import Tienda.BotonComprar;
 import Tienda.BotonT1;
@@ -31,7 +32,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	// Atributos de la GUI
 	private Juego j;
 	private TiendaJuego tienda;
-	private SonidosMp3 mp3;
+	private sonidosMp3 mp3;
 	// ****Labels****
 	private JLabel fondo;
 	private JLabel fondo2;
@@ -126,9 +127,9 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 //				current.setStringPainted(true); // Mostrar valor numérico del progreso de la barra
 //				current.setBounds(300, 550, 400, 100);
 //				frameInicio.add(current);
-				mp3 = new SonidosMp3();
+				//mp3 = new sonidosMp3();
 				try {
-					mp3.AbrirFichero("bsound1");
+					//mp3.abrirArchivo("bsound1");
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -207,7 +208,9 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 
 		botonSonido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mp3.Pausa();
+				HiloOleadas h=HiloOleadas.getInstace();
+				mp3=h.getSoudtrack();
+				mp3.pausa();
 			}
 		});
 
@@ -328,8 +331,6 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	public void agregarAlJuego(JLabel j) {
 		if (j != null)
 			panelJuego.add(j, 0);
-		// panelJuego.repaint();
-
 	}
 
 	public void eliminarEntidad(JLabel grafico) {
@@ -366,7 +367,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 				new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/gameOver.png")));
 		imagenganeButton.setBounds(0, 0, 640, 480);
 		framePerdi.add(imagenganeButton, 0);
-		mp3.AbrirFichero("SadViolin");
+		mp3.abrirArchivo("SadViolin");
 		framePerdi.setTitle("Perdiste");
 		framePerdi.setVisible(true);
 		framePerdi.setBackground(Color.BLACK);
@@ -386,7 +387,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		frameGane.setTitle("Ganaste");
 		frameGane.setVisible(true);
 		frameGane.add(imagenganeButton, 0);
-		mp3.AbrirFichero("smokeEvd");
+		mp3.abrirArchivo("smokeEvd");
 	}
 
 	private void terminarJuego() {

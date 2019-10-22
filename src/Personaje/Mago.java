@@ -5,7 +5,7 @@ import java.awt.Point;
 import javax.swing.ImageIcon;
 import Disparos.DisparoMago;
 import Juego.Juego;
-import Sonidos.SonidosMp3;
+import Sonidos.sonidosMp3;
 import Visitor.Visitor;
 
 /**
@@ -15,7 +15,7 @@ import Visitor.Visitor;
  *
  */
 public class Mago extends Personaje {
-	SonidosMp3 mp3;
+	sonidosMp3 mp3;
 	// Constructor
 	public Mago(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
@@ -27,7 +27,7 @@ public class Mago extends Personaje {
 		precioPersonaje = 600;
 		danioImpacto=5;
 		alcance=500;
-		 mp3=new SonidosMp3();
+		 mp3=new sonidosMp3();
 	}
 
 	public void Accionar() {
@@ -37,7 +37,7 @@ public class Mago extends Personaje {
 			disparo = new DisparoMago(point, 50, 50, danioImpacto, alcance);
 			juego.agregarEntidad(disparo,true);
 			tiempoEntreDisparo = 30;
-			mp3.AbrirFichero("battle015");
+			mp3.abrirArchivo("battle015");
 
 		}
 		tiempoEntreDisparo--;
@@ -46,7 +46,6 @@ public class Mago extends Personaje {
 
 	@Override
 	public void morir() {
-		// TODO Auto-generated method stub
 
 	}
 

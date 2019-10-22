@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
-
 import Enemigo.ReaperManRed;
 import Enemigo.GolemPiedra;
 import Enemigo.GolemHielo;
@@ -195,7 +194,6 @@ public class Nivel extends Mapa {
 				juego.terminarJuego(true);
 			}
 		}
-
 	}
 
 	// suma 1 a la cantidad de muertos de enemigos

@@ -3,7 +3,6 @@ package Juego;
 import java.util.LinkedList;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
-
 import Entidad.Entidad;
 import GUI.GUI;
 import Hilo.HiloOleadas;
@@ -31,9 +30,9 @@ public class Juego {
 	private static Juego instance;
 
 	private Juego() {
-		VidaJugador= 100;
-		cantMonedas=10000;
-		puntaje=0;
+		VidaJugador = 100;
+		cantMonedas = 10000;
+		puntaje = 0;
 	}
 
 	public static Juego getInstance() {
@@ -57,13 +56,12 @@ public class Juego {
 		entidades = new LinkedList<Entidad>();
 		aAgregar = new LinkedList<Entidad>();
 		aEliminar = new LinkedList<Entidad>();
-		
+
 		LogManager.getLogManager().reset();
 		Logger globalLogger = Logger.getLogger(java.util.logging.Logger.GLOBAL_LOGGER_NAME);
 		globalLogger.setLevel(java.util.logging.Level.WARNING);
 
 		tiempo = HiloPrincipal.getInstace();
-		//tiempo.setEjecutar(true);
 		tiempo.start();
 		tiempo2 = HiloOleadas.getInstace();
 		tiempo2.start();
@@ -78,10 +76,10 @@ public class Juego {
 					for (Entidad e2 : entidades) {
 						if (e1 != e2 && e1.chocan(e2)) {
 							e1.Aceptar(e2.getVisitor());
-								choco = true;
+							choco = true;
 						}
 					}
-					if(!choco) {
+					if (!choco) {
 						e1.Accionar();
 					}
 				} else {
@@ -110,7 +108,6 @@ public class Juego {
 			}
 			aEliminar = new LinkedList<Entidad>();
 		}
-
 	}
 
 	public void agregarEntidad(Entidad e, boolean agregar) {
@@ -120,7 +117,7 @@ public class Juego {
 			if (e != null) {
 				if (map.puedoAgregar(e, entidades)) {
 					aAgregar.add(e);
-					cantMonedas-=e.getPrecioPersonaje();
+					cantMonedas -= e.getPrecioPersonaje();
 				}
 			}
 		}
@@ -146,6 +143,7 @@ public class Juego {
 
 	/**
 	 * Devuelve el puntaje
+	 * 
 	 * @return puntaje
 	 */
 	public int getPuntaje() {
@@ -154,6 +152,7 @@ public class Juego {
 
 	/**
 	 * Actualiza el puntaje
+	 * 
 	 * @param puntaje
 	 */
 	public void setPuntaje(int puntaje) {
@@ -163,44 +162,40 @@ public class Juego {
 	public LinkedList<Entidad> getEntidades() {
 		return entidades;
 	}
-	
-	/**Suma o resta la vida del jugador
+
+	/**
+	 * Suma o resta la vida del jugador
 	 * 
 	 * @param int i vida a sumar o restar
 	 */
-	public void setVida(int i,boolean sumar) {
-		if(VidaJugador<100 && sumar) {
-			VidaJugador+=i;
-			if(VidaJugador>100) {
-				VidaJugador=100;
+	public void setVida(int i, boolean sumar) {
+		if (VidaJugador < 100 && sumar) {
+			VidaJugador += i;
+			if (VidaJugador > 100) {
+				VidaJugador = 100;
 			}
-		}
-		else {
-			if(VidaJugador>0 && !sumar) {
-				VidaJugador-=i;
-				if(VidaJugador<=0) {
+		} else {
+			if (VidaJugador > 0 && !sumar) {
+				VidaJugador -= i;
+				if (VidaJugador <= 0) {
 					this.terminarJuego(false);
 				}
-				
 			}
-		}
-		
-	}
-	
-	//Termina el juego
-	public void terminarJuego(boolean gane) {
-		tiempo.setEjecutar(false);
-		tiempo2.setEjecutar(false);
-		aAgregar=new LinkedList<Entidad>();
-		aEliminar=new LinkedList<Entidad>();
-		entidades=new LinkedList<Entidad>();
-		if(!gane) {
-			gui.ganar();
-		}
-		else {
-			gui.ganar();
 		}
 	}
 
+	// Termina el juego
+	public void terminarJuego(boolean gane) {
+		tiempo.setEjecutar(false);
+		tiempo2.setEjecutar(false);
+		aAgregar = new LinkedList<Entidad>();
+		aEliminar = new LinkedList<Entidad>();
+		entidades = new LinkedList<Entidad>();
+		if (!gane) {
+			gui.perder();
+		} else {
+			gui.ganar();
+		}
+	}
 
 }// Fin clase Juego

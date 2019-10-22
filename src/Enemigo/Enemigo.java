@@ -69,7 +69,7 @@ public abstract class Enemigo extends Entidad {
 		setGrafico(0);
 		if(this.getPosition().x<-100) {
 			this.puntosVida=0;
-			juego.setVida(10, false);
+			juego.setVida(50, false);
 		}
 	}
 
