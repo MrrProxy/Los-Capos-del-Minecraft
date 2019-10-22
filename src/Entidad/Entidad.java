@@ -57,6 +57,10 @@ public abstract class Entidad {
 		public int getMonedas(){
 			return monedas;
 		}
+		
+		public void fuisteClickeado(){
+
+		}
 			
 		
 		/**
@@ -155,7 +159,7 @@ public abstract class Entidad {
 		public abstract void Accionar(); 
 		public abstract void Aceptar(Visitor v);
 		
-		public  void morir() {
+		public void morir() {
 			puntosVida=0;
 		}
 		
@@ -201,12 +205,14 @@ public abstract class Entidad {
 		 * @return verdadero si colisionan, caso contrario falso.
 		 */
 		public boolean chocan( Entidad e2) {
+			
 
 			boolean colisionan;
 			Rectangle rectangle = this.getRectangle();
 			Rectangle rectangle2 = e2.getRectangle();
 			colisionan=rectangle.intersects(rectangle2);
-			return colisionan;
+			
+				return colisionan;
 		}
 		
 	

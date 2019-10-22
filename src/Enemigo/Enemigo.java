@@ -86,31 +86,31 @@ public abstract class Enemigo extends Entidad {
 
 	}
 	
-	private Premio generarPowerUp(){
+	private void generarPowerUp(){
 		Premio nuevoPremio = null;
 		System.out.println("Generé un premio!");
 		Random rnd= new Random();
 		int premioElegido= rnd.nextInt(5);
 		switch (premioElegido){
 		case 0:
-			nuevoPremio= new CampoProteccion(pos,width,height);
+			nuevoPremio= new CampoProteccion(pos,70,70);
 			break;
 		case 1:
-			nuevoPremio= new CampoProteccion(pos,width,height);
+			nuevoPremio= new CampoProteccion(pos,70,70);
 			break;
 		case 2:
-			nuevoPremio= new CampoProteccion(pos,width,height);
+			nuevoPremio= new CampoProteccion(pos,70,70);
 			break;
 		case 3:
-			nuevoPremio= new CampoProteccion(pos,width,height);
+			nuevoPremio= new CampoProteccion(pos,70,70);
 			break;
 		case 4:
-			nuevoPremio= new CampoProteccion(pos,width,height);
+			nuevoPremio= new CampoProteccion(pos,70,70);
 			break;
 			
 		}
 		
-		return nuevoPremio;
+		juego.agregarEntidad(nuevoPremio, true);
 		
 	}
 
