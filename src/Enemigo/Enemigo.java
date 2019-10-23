@@ -22,13 +22,14 @@ public abstract class Enemigo extends Entidad {
 	// Atributos especificos de un enemigo
 	protected int puntaje;
 	protected int velocidadInicial;
-	protected Nivel nivel;//Es necesario para actualizar las muertes 
+	protected Nivel nivel;// Es necesario para actualizar las muertes
 
 	// Constructor
 	protected Enemigo(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 		miVisitor = new VisitorEnemigo(this);
-		nivel =Nivel.getInstance();
+		nivel = Nivel.getInstance();
+		estado=1;
 
 	}
 
@@ -66,12 +67,14 @@ public abstract class Enemigo extends Entidad {
 	 * @param v velocidad con la que se desplaza el enemigo
 	 */
 	public void Accionar() {
-		Point point = new Point(this.getPosition().x - velocidad, this.getPosition().y);
-		pos = point;
-		setGrafico(0);
-		if(this.getPosition().x<-100) {
-			this.puntosVida=0;
-			juego.setVida(50, false);
+		if (estado == 1) {
+			Point point = new Point(this.getPosition().x - velocidad, this.getPosition().y);
+			pos = point;
+			setGrafico(0);
+			if (this.getPosition().x < -100) {
+				this.puntosVida = 0;
+				juego.setVida(50, false);
+			}
 		}
 	}
 
@@ -79,60 +82,59 @@ public abstract class Enemigo extends Entidad {
 		puntosVida = 0;
 		nivel.sumarEnemigosMuertos();
 		Random rnd = new Random();
-		int posibilidad= rnd.nextInt(5);
-		if (posibilidad==1) //posibilidad puede ser 0,1,2,3,4. Quiero un 20% prob de soltar premio
+		int posibilidad = rnd.nextInt(5);
+		if (posibilidad == 1) // posibilidad puede ser 0,1,2,3,4. Quiero un 20% prob de soltar premio
 			generarPowerUp();
-		
 
 	}
-	
-	private Premio generarPowerUp(){
+
+	private Premio generarPowerUp() {
 		Premio nuevoPremio = null;
 		System.out.println("Generé un premio!");
-		Random rnd= new Random();
-		int premioElegido= rnd.nextInt(5);
-		switch (premioElegido){
+		Random rnd = new Random();
+		int premioElegido = rnd.nextInt(5);
+		switch (premioElegido) {
 		case 0:
-			nuevoPremio= new CampoProteccion(pos,width,height);
+			nuevoPremio = new CampoProteccion(pos, width, height);
 			break;
 		case 1:
-			nuevoPremio= new CampoProteccion(pos,width,height);
+			nuevoPremio = new CampoProteccion(pos, width, height);
 			break;
 		case 2:
-			nuevoPremio= new CampoProteccion(pos,width,height);
+			nuevoPremio = new CampoProteccion(pos, width, height);
 			break;
 		case 3:
-			nuevoPremio= new CampoProteccion(pos,width,height);
+			nuevoPremio = new CampoProteccion(pos, width, height);
 			break;
 		case 4:
-			nuevoPremio= new CampoProteccion(pos,width,height);
+			nuevoPremio = new CampoProteccion(pos, width, height);
 			break;
-			
+
 		}
-		
+
 		return nuevoPremio;
-		
+
 	}
 
 	public int getPuntaje() {
 		return puntaje;
 	}
-	
+
 	public void Aceptar(Visitor v) {
 		v.afectar(this);
 	}
 
 	public boolean chocan(Entidad e2) {
 
-		boolean colisionan=false;
-		boolean salida=false;
+		boolean colisionan = false;
+		boolean salida = false;
 		Rectangle rectangle = this.getRectangle();
 		Rectangle rectangle2 = e2.getRectangle();
-		colisionan=rectangle.intersects(rectangle2);
-		if(rectangle2.x<rectangle.x && colisionan) {//Controlo si choca adelante
-			salida=true;
+		colisionan = rectangle.intersects(rectangle2);
+		if (rectangle2.x < rectangle.x && colisionan) {// Controlo si choca adelante
+			salida = true;
 		}
 		return salida;
 	}
-	
+
 }

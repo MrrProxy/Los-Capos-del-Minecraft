@@ -19,7 +19,6 @@ public class VisitorDisparo extends Visitor {
 	public void afectar(Enemigo e) {
 		miEntidad.Accionar();
 		e.recibirDaño(miEntidad.getDanio());
-		e.Accionar();
 		miEntidad.morir();	
 
 	}

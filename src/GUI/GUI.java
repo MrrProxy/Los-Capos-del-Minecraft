@@ -15,6 +15,12 @@ import Tienda.BotonT3;
 import Tienda.BotonT4;
 import Tienda.BotonT5;
 import Tienda.TiendaJuego;
+import TiendaPersonaje.BotonPwup;
+import TiendaPersonaje.PowerUp1;
+import TiendaPersonaje.PowerUp2;
+import TiendaPersonaje.PowerUp3;
+import TiendaPersonaje.PowerUp4;
+import TiendaPersonaje.PowerUp5;
 
 /**
  * Clase GUI .
@@ -252,7 +258,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 					int y = e.getY();
 					switch (y / 100) {
 					case 0:
-						y = 30;
+						y = 0;
 						break;
 					case 1:
 						y = 100;
@@ -311,6 +317,11 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Boton torre4 = new BotonT4(tienda, this);
 		Boton torre5 = new BotonT5(tienda, this);
 		Boton Comprar = new BotonComprar(tienda, this);
+		BotonPwup pwup1=new PowerUp1(this);
+		BotonPwup pwup2=new PowerUp2(this);
+		BotonPwup pwup3=new PowerUp3(this);
+		BotonPwup pwup4=new PowerUp4(this);
+		BotonPwup pwup5=new PowerUp5(this);
 
 		Comprar.setFocusable(false);
 		torre1.setFocusable(false);
@@ -325,7 +336,13 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		agregarBotones(torre4);
 		agregarBotones(torre5);
 		agregarBotones(Comprar);
-		// agregarBotones(Sonido);
+		
+		panelJugador.add(pwup1,1);
+		panelJugador.add(pwup2,1);
+		panelJugador.add(pwup3,1);
+		panelJugador.add(pwup4,1);
+		panelJugador.add(pwup5,1);
+		
 	}
 
 	public void agregarAlJuego(JLabel j) {
@@ -367,6 +384,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 				new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/gameOver.png")));
 		imagenganeButton.setBounds(0, 0, 640, 480);
 		framePerdi.add(imagenganeButton, 0);
+		mp3 =new sonidosMp3();
 		mp3.abrirArchivo("SadViolin");
 		framePerdi.setTitle("Perdiste");
 		framePerdi.setVisible(true);
@@ -387,6 +405,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		frameGane.setTitle("Ganaste");
 		frameGane.setVisible(true);
 		frameGane.add(imagenganeButton, 0);
+		mp3 =new sonidosMp3();
 		mp3.abrirArchivo("smokeEvd");
 	}
 

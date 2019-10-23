@@ -17,6 +17,8 @@ public class VisitorPersonaje extends Visitor{
 	public void afectar(Enemigo e) {
 		e.recibirDaño(miEntidad.getDanio());
 		miEntidad.setGrafico(1);
+		e.setEstado(2);
+		miEntidad.setEstado(2);
 		if(e.getVida()<=0) {
 			miEntidad.setGrafico(0);
 		}

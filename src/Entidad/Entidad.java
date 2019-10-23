@@ -33,6 +33,7 @@ public abstract class Entidad {
 	protected Juego juego;
 	protected Visitor miVisitor;
 	protected Icon imagen[];
+	protected int estado;
 
 
 	
@@ -48,12 +49,11 @@ public abstract class Entidad {
 	
 	
 		//******METODOS******
+	
 		/**
 		 * Devuelve el puntaje de la entidad.
 		 * @return puntaje de la entidad.
 		 */
-	
-		
 		public int getMonedas(){
 			return monedas;
 		}
@@ -209,5 +209,8 @@ public abstract class Entidad {
 			return colisionan;
 		}
 		
+		public void setEstado(int e) {
+			estado=e;
+		}
 	
 }

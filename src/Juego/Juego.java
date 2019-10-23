@@ -71,7 +71,7 @@ public class Juego {
 	public synchronized void Accionar() {
 		if (!entidades.isEmpty()) {
 			for (Entidad e1 : entidades) {
-				if (e1.getVida() > 0) {
+				if (!e1.estoyMuerto()) {
 					boolean choco = false;
 					for (Entidad e2 : entidades) {
 						if (e1 != e2 && e1.chocan(e2)) {
@@ -79,8 +79,9 @@ public class Juego {
 							choco = true;
 						}
 					}
+					e1.Accionar();
 					if (!choco) {
-						e1.Accionar();
+						e1.setEstado(1);
 					}
 				} else {
 					e1.morir();

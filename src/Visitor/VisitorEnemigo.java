@@ -15,6 +15,7 @@ public class VisitorEnemigo extends Visitor {
 	public void afectar(Personaje p) {
 		p.recibirDaño(miEntidad.getDanio());
 		miEntidad.setGrafico(1);
+		p.setEstado(2);
 	}
 
 	@Override

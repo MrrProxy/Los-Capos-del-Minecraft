@@ -33,7 +33,7 @@ public class Arquero extends Personaje {
 
 	public void Accionar() {
 		Juego juego = Juego.getInstance();
-		if (tiempoEntreDisparo == 0) {
+		if (tiempoEntreDisparo == 0 ) {
 			Point point = new Point(this.getPosition());
 			disparo = new DisparoArquero(point, 50, 50, danioImpacto, alcance);
 			juego.agregarEntidad(disparo,true);
@@ -51,13 +51,9 @@ public class Arquero extends Personaje {
 		v.afectar(this);
 	}
 //	public boolean chocan(Entidad e2) {
-//
-//		boolean colisionan=false;
 //		boolean salida=false;
-//		Rectangle rectangle = new Rectangle(this.getPosition().x , this.getPosition().y, this.anchoEntidad()+alcance,this.altoEntidad());;
-//		Rectangle rectangle2 = e2.getRectangle();
-//		colisionan=rectangle.intersects(rectangle2);
-//		if(rectangle2.x>rectangle.x && colisionan) {//Controlo si choca adelante
+//		System.out.println(this.getPosition().y+"=="+e2.getPosition().y);
+//		if(this.getPosition().y==e2.getPosition().y && this.getPosition().x+alcance<=e2.getPosition().x) {//Controlo si choca adelante
 //			salida=true;
 //		}
 //		return salida;
