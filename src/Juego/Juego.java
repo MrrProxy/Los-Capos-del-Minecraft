@@ -1,5 +1,6 @@
 package Juego;
 
+import java.awt.Point;
 import java.util.LinkedList;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
@@ -197,6 +198,15 @@ public class Juego {
 		} else {
 			gui.ganar();
 		}
+	}
+	
+	public void clickEnEntidades(Point punto){
+		
+		for (Entidad e: entidades){
+			if (e.getRectangle().contains(punto))
+				e.fuisteClickeado();
+		}
+		
 	}
 
 }// Fin clase Juego

@@ -234,6 +234,15 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		panelPrincipal.add(panelTorres);
 		panelPrincipal.add(panelJugador);
 		panelPrincipal.add(panelJuego);
+		
+		panelJuego.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				int x = e.getX();
+				int y= e.getY();
+				j.clickEnEntidades(new Point(x,y));
+			}
+		});
 
 		// Inicio el juego
 		j = Juego.getInstance();

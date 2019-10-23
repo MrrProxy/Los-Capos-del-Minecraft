@@ -3,6 +3,7 @@ package Visitor;
 import Disparos.Disparo;
 import Enemigo.Enemigo;
 import Objetos.Obstaculo;
+import Objetos.Premio;
 import Personaje.Personaje;
 
 public class VisitorEnemigo extends Visitor {
@@ -34,6 +35,11 @@ public class VisitorEnemigo extends Visitor {
 		
 		
 		//}
+	}
+
+	@Override
+	public void afectar(Premio p){
+		
 	}
 
 }

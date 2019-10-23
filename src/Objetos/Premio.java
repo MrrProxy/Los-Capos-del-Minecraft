@@ -22,10 +22,14 @@ public class Premio extends Entidad {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void fuisteClickeado(){
+		System.out.println("Click en premio!");
+	}
 
 	@Override
 	public void Aceptar(Visitor v) {
-		// TODO Auto-generated method stub
+		v.afectar(this);
 		
 	}
 

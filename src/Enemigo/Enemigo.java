@@ -89,6 +89,7 @@ public abstract class Enemigo extends Entidad {
 	}
 
 	private Premio generarPowerUp() {
+	
 		Premio nuevoPremio = null;
 		System.out.println("Generé un premio!");
 		Random rnd = new Random();
@@ -109,11 +110,10 @@ public abstract class Enemigo extends Entidad {
 		case 4:
 			nuevoPremio = new CampoProteccion(pos, width, height);
 			break;
-
 		}
 
 		return nuevoPremio;
-
+		
 	}
 
 	public int getPuntaje() {
