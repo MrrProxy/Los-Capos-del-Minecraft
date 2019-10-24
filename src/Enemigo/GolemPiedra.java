@@ -4,7 +4,6 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
-import Visitor.Visitor;
 
 /**
  * Clase Bruja que extiende de Enemigo.
@@ -18,8 +17,8 @@ public class GolemPiedra extends Enemigo {
 		super(p, ancho, alto);
 
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemPiedra_Running.gif"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemPiedra_Running.gif"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemPiedra_Running.gif"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemPiedra_Attack.gif"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemPiedra_Dying.gif"));
 		this.imagen[3] = null;
 		velocidad = 6;
 		puntosVida = 1000;

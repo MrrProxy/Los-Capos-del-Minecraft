@@ -26,8 +26,10 @@ public class BotonComprar extends Boton {
 		LinkedList<JButton> buttons = tienda.getBoton();
 		this.setEnabled(false);
 		for (JButton b : buttons) {
-			if (b.equals(this))
+			if (b.equals(this)) {
 				b.setEnabled(false);
+			}
+
 			else {
 				b.setEnabled(true);
 			}

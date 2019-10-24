@@ -21,6 +21,7 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void afectar(Enemigo e) {
+		e.setEstado(2);
 	}
 
 	@Override

@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 import Entidad.Entidad;
-import Hilo.HiloOleadas;
+import Hilo.HiloSonido;
 import Juego.Juego;
 import Sonidos.sonidosMp3;
 import Tienda.Boton;
@@ -32,13 +32,15 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 
 	private static final long serialVersionUID = 1L;
 	// Frame y panel
-	private JFrame frameInicio, frameJuego, frameGane, framePerdi;
+	private JFrame frameInicio, frameJuego, frameFinal;
 	private JLayeredPane panel, panelPrincipal, panelJuego, panelTorres, panelJugador;
 
 	// Atributos de la GUI
 	private Juego j;
 	private TiendaJuego tienda;
 	private sonidosMp3 mp3;
+	private HiloSonido h;
+
 	// ****Labels****
 	private JLabel fondo;
 	private JLabel fondo2;
@@ -50,6 +52,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	// ****Botones****
 	private JButton startButton;
 	private JButton botonSonido;
+	private JButton reiniciar;
 
 	private static GUI instance;
 
@@ -127,15 +130,9 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 				/** Elimina la ventana anterior */
 				frameInicio.dispose();
 				iniciarJuego();
-				// sonidos.playLoop(2);
-//				JProgressBar current = new JProgressBar(0, 2000); // Crear un JProgressBar con valores 0-2000
-//				current.setValue(0); // Fijar valor por defecto.
-//				current.setStringPainted(true); // Mostrar valor numérico del progreso de la barra
-//				current.setBounds(300, 550, 400, 100);
-//				frameInicio.add(current);
-				//mp3 = new sonidosMp3();
+				h = HiloSonido.getInstace();
 				try {
-					//mp3.abrirArchivo("bsound1");
+					// mp3.abrirArchivo("bsound1");
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -214,8 +211,8 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 
 		botonSonido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				HiloOleadas h=HiloOleadas.getInstace();
-				mp3=h.getSoudtrack();
+
+				mp3 = h.getSoudtrack();
 				mp3.pausa();
 			}
 		});
@@ -234,13 +231,13 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		panelPrincipal.add(panelTorres);
 		panelPrincipal.add(panelJugador);
 		panelPrincipal.add(panelJuego);
-		
+
 		panelJuego.addMouseListener(new MouseAdapter() {
-			
+
 			public void mouseClicked(MouseEvent e) {
 				int x = e.getX();
-				int y= e.getY();
-				j.clickEnEntidades(new Point(x,y));
+				int y = e.getY();
+				j.clickEnEntidades(new Point(x, y));
 			}
 		});
 
@@ -326,11 +323,11 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Boton torre4 = new BotonT4(tienda, this);
 		Boton torre5 = new BotonT5(tienda, this);
 		Boton Comprar = new BotonComprar(tienda, this);
-		BotonPwup pwup1=new PowerUp1(this);
-		BotonPwup pwup2=new PowerUp2(this);
-		BotonPwup pwup3=new PowerUp3(this);
-		BotonPwup pwup4=new PowerUp4(this);
-		BotonPwup pwup5=new PowerUp5(this);
+		BotonPwup pwup1 = new PowerUp1(this);
+		BotonPwup pwup2 = new PowerUp2(this);
+		BotonPwup pwup3 = new PowerUp3(this);
+		BotonPwup pwup4 = new PowerUp4(this);
+		BotonPwup pwup5 = new PowerUp5(this);
 
 		Comprar.setFocusable(false);
 		torre1.setFocusable(false);
@@ -345,13 +342,13 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		agregarBotones(torre4);
 		agregarBotones(torre5);
 		agregarBotones(Comprar);
-		
-		panelJugador.add(pwup1,1);
-		panelJugador.add(pwup2,1);
-		panelJugador.add(pwup3,1);
-		panelJugador.add(pwup4,1);
-		panelJugador.add(pwup5,1);
-		
+
+		panelJugador.add(pwup1, 1);
+		panelJugador.add(pwup2, 1);
+		panelJugador.add(pwup3, 1);
+		panelJugador.add(pwup4, 1);
+		panelJugador.add(pwup5, 1);
+
 	}
 
 	public void agregarAlJuego(JLabel j) {
@@ -382,44 +379,65 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	}
 
 	public void perder() {
-		terminarJuego();
-		framePerdi = new JFrame();// Crea la ventana donde se desarrolla el juego
-		framePerdi.setBounds(0, 0, 600, 480);
-		framePerdi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		framePerdi.setLocationRelativeTo(null);
-		framePerdi.setLayout(null);
-		framePerdi.setResizable(false);
-		JLabel imagenganeButton = new JLabel(
-				new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/gameOver.png")));
+		crearFrameFinal();
+
+		JLabel imagenganeButton = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/gameOver.png")));
 		imagenganeButton.setBounds(0, 0, 640, 480);
-		framePerdi.add(imagenganeButton, 0);
-		mp3 =new sonidosMp3();
+		frameFinal.add(imagenganeButton, 0);
+		frameFinal.setTitle("Perdiste");
+		frameFinal.setVisible(true);
+		
+		mp3 = new sonidosMp3();
 		mp3.abrirArchivo("SadViolin");
-		framePerdi.setTitle("Perdiste");
-		framePerdi.setVisible(true);
-		framePerdi.setBackground(Color.BLACK);
 
 	}
 
 	public void ganar() {
-		terminarJuego();
-		frameGane = new JFrame();// Crea la ventana donde se desarrolla el juego
-		frameGane.setBounds(0, 0, 600, 600);
-		frameGane.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frameGane.setLocationRelativeTo(null);
+		crearFrameFinal();
+
 		JLabel imagenganeButton = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/tenor.gif")));
-		imagenganeButton.setBounds(100, 100, 400, 400);
-		frameGane.setLayout(null);
-		frameGane.setResizable(false);
-		frameGane.setTitle("Ganaste");
-		frameGane.setVisible(true);
-		frameGane.add(imagenganeButton, 0);
-		mp3 =new sonidosMp3();
+		imagenganeButton.setBounds(100, 0, 400, 400);
+		frameFinal.setTitle("Ganaste");
+		frameFinal.setVisible(true);
+		frameFinal.getContentPane().setBackground(Color.BLACK);
+		frameFinal.add(imagenganeButton, 0);
+		
+		mp3 = new sonidosMp3();
 		mp3.abrirArchivo("smokeEvd");
 	}
 
-	private void terminarJuego() {
+	// Crea el frame del fin del juego y el boton reiniciar
+	private void crearFrameFinal() {
 		frameJuego.dispose();
+		frameFinal = new JFrame();// Crea la ventana donde se desarrolla el juego
+		frameFinal.setBounds(0, 0, 640, 480);
+		frameFinal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frameFinal.setLocationRelativeTo(null);
+		frameFinal.setLayout(null);
+		frameFinal.setResizable(false);
+
+//		reiniciar = new JButton("Reiniciar");// Crea el boton
+//		reiniciar.setBounds(500, 200, 200, 50);
+//		reiniciar.setForeground(new java.awt.Color(155, 017, 030));
+//		reiniciar.setBackground(new java.awt.Color(0, 0, 0));
+//		reiniciar.setFont(new java.awt.Font("cambria", 10, 20));
+//		reiniciar.setHorizontalAlignment(SwingConstants.CENTER);
+//		reiniciar.setFocusPainted(false);
+//		reiniciar.setBorderPainted(true);
+//		reiniciar.setVisible(true);
+//
+//		reiniciar.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				reiniciarJuego();
+//			}
+//		});
+//		frameFinal.add(reiniciar);
+	}
+
+	private void reiniciarJuego() {
+		mp3.stop();
+		frameFinal.dispose();
+		iniciar();
 
 	}
 

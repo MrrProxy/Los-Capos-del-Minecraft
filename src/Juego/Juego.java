@@ -8,6 +8,7 @@ import Entidad.Entidad;
 import GUI.GUI;
 import Hilo.HiloOleadas;
 import Hilo.HiloPrincipal;
+import Hilo.HiloSonido;
 import Mapa.Mapa;
 
 /**
@@ -23,6 +24,8 @@ public class Juego {
 	protected int puntaje;
 	private HiloPrincipal tiempo;
 	private HiloOleadas tiempo2;
+	private HiloSonido tiempo3;
+
 	private GUI gui;
 	private LinkedList<Entidad> entidades;
 	private LinkedList<Entidad> aEliminar;
@@ -66,6 +69,8 @@ public class Juego {
 		tiempo.start();
 		tiempo2 = HiloOleadas.getInstace();
 		tiempo2.start();
+		tiempo3 = HiloSonido.getInstace();
+		tiempo3.start();
 
 	}
 
@@ -190,6 +195,8 @@ public class Juego {
 	public void terminarJuego(boolean gane) {
 		tiempo.setEjecutar(false);
 		tiempo2.setEjecutar(false);
+		tiempo3.setEjecutar(false);
+		tiempo3.stopSoudtrack();
 		aAgregar = new LinkedList<Entidad>();
 		aEliminar = new LinkedList<Entidad>();
 		entidades = new LinkedList<Entidad>();
@@ -199,14 +206,13 @@ public class Juego {
 			gui.ganar();
 		}
 	}
-	
-	public void clickEnEntidades(Point punto){
-		
-		for (Entidad e: entidades){
+
+	public void clickEnEntidades(Point punto) {
+		for (Entidad e : entidades) {
 			if (e.getRectangle().contains(punto))
 				e.fuisteClickeado();
 		}
-		
+
 	}
 
 }// Fin clase Juego

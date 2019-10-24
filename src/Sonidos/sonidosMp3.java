@@ -10,7 +10,7 @@ public class sonidosMp3 {
 
 	public sonidosMp3() {
 		player = new BasicPlayer();
-		reproducir=true;
+		reproducir = true;
 	}
 
 	public void playMp3() {
@@ -26,6 +26,9 @@ public class sonidosMp3 {
 	public void abrirArchivo(String url) {
 		File fileNAct = new File(this.getClass().getResource("/zMusica/" + url + ".mp3").getPath());
 		try {
+			if (player.getStatus() == BasicPlayer.PLAYING) {
+				player.stop();
+			}
 			player.open(fileNAct);
 			playMp3();
 		} catch (BasicPlayerException e) {
@@ -41,12 +44,15 @@ public class sonidosMp3 {
 	public void pausa() {
 		try {
 			if (player.getStatus() == BasicPlayer.PAUSED) {
-				reproducir=true;
+				reproducir = true;
 				player.resume();
 			} else {
 				player.pause();
-				reproducir=false;
-				
+				reproducir = false;
+			}
+			if (player.getStatus() == BasicPlayer.OPENED && !reproducir) {
+				reproducir=true;
+				playMp3();
 			}
 
 		} catch (BasicPlayerException e) {

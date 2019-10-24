@@ -4,8 +4,6 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
-import Visitor.Visitor;
-
 /**
  * Clase Ender que extiende de Enemigo.
  * 
@@ -18,8 +16,8 @@ public class Goblin extends Enemigo {
 		super(p, x, y);
 
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/WALKING_GOBLIN_1.gif"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/WALKING_GOBLIN_1.gif"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/WALKING_GOBLIN_1.gif"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ATTACK_GOBLIN_1.gif"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/DYING_GOBLIN_1.gif"));
 		this.imagen[3] = null;
 		velocidad = 8;
 		velocidad = 10;

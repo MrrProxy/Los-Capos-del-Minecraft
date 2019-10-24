@@ -4,7 +4,6 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
-import Visitor.Visitor;
 
 /**
  * Clase Esqueleto que extiende de Enemigo.
@@ -19,7 +18,7 @@ public class ReaperMan extends Enemigo {
 		super(p, ancho, alto);
 
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperMan_Running.gif"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperMan_Running.gif"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperMan_Attack.gif"));
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperMan_Dying.gif"));
 		this.imagen[3] = null;
 		velocidad = 26;
