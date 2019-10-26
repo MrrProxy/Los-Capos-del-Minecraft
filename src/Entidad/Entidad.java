@@ -1,9 +1,12 @@
 package Entidad;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import GUI.GUI;
@@ -106,6 +109,7 @@ public abstract class Entidad {
 			if(this.grafico == null){
 				this.grafico = new JLabel(imagen[i]);
 				this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
+				
 			}
 			return grafico;
 		}

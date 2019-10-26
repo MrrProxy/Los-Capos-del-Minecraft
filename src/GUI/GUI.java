@@ -357,6 +357,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	}
 
 	public void eliminarEntidad(JLabel grafico) {
+		panelJuego.repaint();
 		Timer timer = new Timer(4000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelJuego.remove(grafico);

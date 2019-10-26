@@ -10,6 +10,7 @@ import Hilo.HiloOleadas;
 import Hilo.HiloPrincipal;
 import Hilo.HiloSonido;
 import Mapa.Mapa;
+import Mapa.Nivel;
 
 /**
  * Clase Juego .
@@ -25,6 +26,7 @@ public class Juego {
 	private HiloPrincipal tiempo;
 	private HiloOleadas tiempo2;
 	private HiloSonido tiempo3;
+	private Nivel nivel;
 
 	private GUI gui;
 	private LinkedList<Entidad> entidades;
@@ -56,7 +58,7 @@ public class Juego {
 	public void iniciarJuego() {
 
 		map = new Mapa();
-
+		nivel= Nivel.getInstance();
 		entidades = new LinkedList<Entidad>();
 		aAgregar = new LinkedList<Entidad>();
 		aEliminar = new LinkedList<Entidad>();
@@ -106,12 +108,13 @@ public class Juego {
 		}
 		if (!aEliminar.isEmpty()) {
 			for (Entidad e : aEliminar) {
+				e.setGrafico(2);
 				entidades.remove(e);
 				cantMonedas = cantMonedas + e.getMonedas();
 				puntaje = puntaje + e.getPuntaje();
-				e.setGrafico(2);
+				nivel.sumarEnemigosMuertos();
 				gui.actualizarEstadisticas(puntaje, cantMonedas);
-				gui.eliminarEntidad(e.getGrafico(0));
+				gui.eliminarEntidad(e.getGrafico(2));
 			}
 			aEliminar = new LinkedList<Entidad>();
 		}
