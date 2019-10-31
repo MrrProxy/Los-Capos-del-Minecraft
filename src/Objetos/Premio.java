@@ -18,10 +18,7 @@ public class Premio extends Entidad {
 	}
 
 	@Override
-	public void morir() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 	public void fuisteClickeado(){
 		System.out.println("Click en premio!");

@@ -14,6 +14,7 @@ public class TiendaJuego {
 
 	private static TiendaJuego instance;
 	private LinkedList<JButton> buttons;
+	private int camposProteccion;
 
 	public static TiendaJuego getInstance() {
 		if (instance == null)
@@ -25,6 +26,7 @@ public class TiendaJuego {
 		this.juego = juego;
 		buttons = new LinkedList<JButton>();
 		this.nextToAdd = null;
+		camposProteccion=0;
 	}
 
 	public void setNextToAdd(Entidad toAdd) {

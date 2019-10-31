@@ -19,7 +19,7 @@ public class ReaperManRed extends Enemigo {
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperManRed_Attack.gif"));
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperManRed_Dying.gif"));
 		this.imagen[3] = null;
-		velocidad = 28;
+		velocidad = 14;
 		puntosVida = 1000;
 		monedas = 10;
 		puntaje = 10;
