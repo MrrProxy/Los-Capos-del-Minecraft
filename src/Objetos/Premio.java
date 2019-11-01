@@ -7,14 +7,25 @@ import Visitor.Visitor;
 
 public class Premio extends Entidad {
 	
+	protected boolean activado;
+	
 	public Premio(Point p, int x, int y){
 		super(p,x,y);
+		activado=false;
 	}
 
 	@Override
 	public void Accionar() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public boolean getActivado(){
+		return activado;
+	}
+	
+	public void setActivado(boolean a){
+		activado=a;
 	}
 
 	@Override

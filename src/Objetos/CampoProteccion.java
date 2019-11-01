@@ -20,16 +20,10 @@ public class CampoProteccion extends Premio {
 	}
 	
 	public void fuisteClickeado(){
-		morir();
-		CProteccion.getInstance().sumarContador();
-
-	}
-	
-	
-	
-	
-	
-	
-
+		if (!activado){
+			morir();
+			CProteccion.getInstance().sumarContador();}
+		
+		}
 
 }

@@ -2,6 +2,9 @@ package Visitor;
 
 import Disparos.Disparo;
 import Enemigo.Enemigo;
+import Enemigo.ReaperMan;
+import Enemigo.ReaperManRed;
+import Juego.Juego;
 import Objetos.Obstaculo;
 import Objetos.Premio;
 import Personaje.Personaje;
@@ -22,9 +25,12 @@ public class VisitorPersonaje extends Visitor{
 		miEntidad.setEstado(2);
 		if(e.getVida()<=0) {
 			miEntidad.setGrafico(0);
+			Juego.getInstance().enemigoMuerto();
 		}
 		
 	}
+	
+	public void afectar(ReaperMan e){System.out.println("Entre acá");};
 
 	public void afectar(Disparo d) {
 		

@@ -33,7 +33,11 @@ public class CProteccion extends BotonPwup {
 	@Override
 	protected void accionarBoton() {
 		
-		//CampoProteccion nuevo = new CampoProteccion()
+		GUI.getInstance().agregarCampo();
+		
+		
+		
+		
 		
 	}
 

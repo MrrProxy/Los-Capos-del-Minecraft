@@ -175,24 +175,27 @@ public class Nivel extends Mapa {
 	public void agregarEnemigos() {
 		Random random = new Random();
 		int r = random.nextInt(4) + 1;
+	
 		while (!enemigos.isEmpty() && r != 0) {
 			juego.agregarEntidad(enemigos.getFirst(), true);
 			enemigos.removeFirst();
 			r--;
 		}
-		if (enemigos.isEmpty() && N_Actual < N_Final && cantEnemigosMuertos == cantEnemigos) {
+		if (enemigos.isEmpty() && N_Actual < N_Final && cantEnemigosMuertos >= cantEnemigos) {
 //			try {
 //				HiloOleadas.sleep(10000);
 //			} catch (InterruptedException e) {
 //				e.printStackTrace();
 //			}
-			N_Actual += 1;
+			N_Actual ++;
 			cargarEnemigos();
 			cantEnemigosMuertos = 0;
 		} else {
-			if (N_Actual >= N_Final && cantEnemigosMuertos == cantEnemigos) {
+			if (N_Actual >= N_Final && cantEnemigosMuertos >= cantEnemigos) {
 				juego.terminarJuego(true);
+			
 			}
+			
 		}
 	}
 

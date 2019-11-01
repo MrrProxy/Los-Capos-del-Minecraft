@@ -6,6 +6,7 @@ import javax.swing.*;
 import Entidad.Entidad;
 import Hilo.HiloSonido;
 import Juego.Juego;
+import Objetos.CampoProteccion;
 import Sonidos.sonidosMp3;
 import Tienda.Boton;
 import Tienda.BotonComprar;
@@ -246,6 +247,29 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		crearBotones();
 
 	}// FIN iniciarJuego
+	
+	public void agregarCampo(){
+		
+		panelJuego.addMouseListener(new MouseAdapter() {
+			
+			int cont = 0;
+
+			public void mouseClicked(MouseEvent e) {
+				if (cont == 0) {
+					
+					int x = e.getX();
+					int y = e.getY();
+					
+					Point nuevoPunto = new Point(x,y);
+					j.clickEnJugadores(nuevoPunto);
+					
+				}
+				cont++;
+			
+			
+		}
+		});
+	}
 
 	public void agregarTorre(Entidad ste) {
 

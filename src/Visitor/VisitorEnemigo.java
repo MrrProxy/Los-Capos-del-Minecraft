@@ -2,6 +2,7 @@ package Visitor;
 
 import Disparos.Disparo;
 import Enemigo.Enemigo;
+import Juego.Juego;
 import Objetos.Obstaculo;
 import Objetos.Premio;
 import Personaje.Personaje;
@@ -35,6 +36,11 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void afectar(Premio p){
+		if (p.getActivado()){
+			p.morir();
+			miEntidad.morir();
+			Juego.getInstance().enemigoMuerto();
+		}
 		
 	}
 

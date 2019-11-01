@@ -112,12 +112,15 @@ public class Juego {
 				entidades.remove(e);
 				cantMonedas = cantMonedas + e.getMonedas();
 				puntaje = puntaje + e.getPuntaje();
-				nivel.sumarEnemigosMuertos();
 				gui.actualizarEstadisticas(puntaje, cantMonedas);
 				gui.eliminarEntidad(e.getGrafico(2));
 			}
 			aEliminar = new LinkedList<Entidad>();
 		}
+	}
+	
+	public void enemigoMuerto(){
+		nivel.sumarEnemigosMuertos();
 	}
 
 	public void agregarEntidad(Entidad e, boolean agregar) {
@@ -217,5 +220,12 @@ public class Juego {
 		}
 
 	}
+	
+	public void clickEnJugadores(Point punto){
+		for (Entidad e: entidades)
+			if (e.getRectangle().contains(punto))
+				e.addCampo();
+	}
+	
 
 }// Fin clase Juego

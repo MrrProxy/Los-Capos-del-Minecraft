@@ -39,6 +39,12 @@ public abstract class BotonPwup extends JButton {
 		contadorPremio++;
 		this.setEnabled(true);
 	}
+	
+	public void restarContador(){
+		contadorPremio--;
+		if (contadorPremio==0)
+			this.setEnabled(false);
+	}
 
 	// Preguntar si es correcto dejarlo protected para poder redefinirlo(no tendria
 	// sentido dejarlo privado)?¡

@@ -64,6 +64,9 @@ public abstract class Entidad {
 		public void fuisteClickeado(){
 
 		}
+		
+		public void addCampo(){
+		}
 			
 		
 		/**
