@@ -26,14 +26,4 @@ public class ReaperManRed extends Enemigo {
 		velocidadInicial=velocidad;
 
 	}
-
-	public void setGrafico(int dir){
-		if(this.grafico != null){
-			if(dir==2) {
-				this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperManRed_Dying.gif"));
-			}
-			this.grafico.setIcon(this.imagen[dir]);
-			this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
-		}
-	}
 }
