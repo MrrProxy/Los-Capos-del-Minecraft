@@ -6,7 +6,6 @@ import Disparos.Disparo;
 import Entidad.Entidad;
 import Visitor.VisitorPersonaje;
 import Objetos.*;
-import TiendaPersonaje.CProteccion;
 
 /**
  * Clase abstracta Personaje.
@@ -35,7 +34,6 @@ public abstract class Personaje extends Entidad {
 		CampoProteccion campo= new CampoProteccion(nuevoPunto,80,80);
 		campo.setActivado(true);
 		juego.agregarEntidad(campo, true);
-		CProteccion.getInstance().restarContador();
 	}
 	
 	

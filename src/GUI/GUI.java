@@ -48,7 +48,6 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	// ****Botones****
 	private JButton startButton;
 	private JButton botonSonido;
-	private JButton reiniciar;
 
 	private static GUI instance;
 
