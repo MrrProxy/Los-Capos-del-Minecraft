@@ -110,7 +110,8 @@ public abstract class Enemigo extends Entidad {
 			nuevoPremio = new CampoProteccion(pos, width, height);
 			break;
 		}
-
+		
+		juego.agregarEntidad(nuevoPremio, true);
 		return nuevoPremio;
 		
 	}

@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 import GUI.GUI;
+import Objetos.Premio;
 
 public abstract class BotonPwup extends JButton {
 
@@ -14,10 +15,12 @@ public abstract class BotonPwup extends JButton {
 
 	// Atributos
 	private GUI gui;
+	protected int contadorPremio;
 
 	// Constructor
 	protected BotonPwup(GUI gui) {
 		this.gui = gui;
+		contadorPremio=0;
 		// this.setIcon(this.getIconoBoton());
 		this.setForeground(new java.awt.Color(155, 017, 030));
 		this.setBackground(new java.awt.Color(0, 0, 0));
@@ -30,6 +33,17 @@ public abstract class BotonPwup extends JButton {
 				accionarBoton();
 			}
 		});
+	}
+	
+	public void sumarContador(){
+		contadorPremio++;
+		this.setEnabled(true);
+	}
+	
+	public void restarContador(){
+		contadorPremio--;
+		if (contadorPremio==0)
+			this.setEnabled(false);
 	}
 
 	// Preguntar si es correcto dejarlo protected para poder redefinirlo(no tendria

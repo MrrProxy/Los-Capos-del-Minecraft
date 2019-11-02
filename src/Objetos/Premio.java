@@ -7,8 +7,11 @@ import Visitor.Visitor;
 
 public class Premio extends Entidad {
 	
+	protected boolean activado;
+	
 	public Premio(Point p, int x, int y){
 		super(p,x,y);
+		activado=false;
 	}
 
 	@Override
@@ -16,12 +19,17 @@ public class Premio extends Entidad {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public boolean getActivado(){
+		return activado;
+	}
+	
+	public void setActivado(boolean a){
+		activado=a;
+	}
 
 	@Override
-	public void morir() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 	public void fuisteClickeado(){
 		System.out.println("Click en premio!");

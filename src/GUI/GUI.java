@@ -6,6 +6,7 @@ import javax.swing.*;
 import Entidad.Entidad;
 import Hilo.HiloSonido;
 import Juego.Juego;
+import Objetos.CampoProteccion;
 import Sonidos.sonidosMp3;
 import Tienda.Boton;
 import Tienda.BotonComprar;
@@ -15,12 +16,7 @@ import Tienda.BotonT3;
 import Tienda.BotonT4;
 import Tienda.BotonT5;
 import Tienda.TiendaJuego;
-import TiendaPersonaje.BotonPwup;
-import TiendaPersonaje.PowerUp1;
-import TiendaPersonaje.PowerUp2;
-import TiendaPersonaje.PowerUp3;
-import TiendaPersonaje.PowerUp4;
-import TiendaPersonaje.PowerUp5;
+import TiendaPersonaje.*;
 
 /**
  * Clase GUI .
@@ -64,7 +60,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI window = new GUI();
+					GUI window = GUI.getInstance();
 					window.frameInicio.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -251,6 +247,29 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		crearBotones();
 
 	}// FIN iniciarJuego
+	
+	public void agregarCampo(){
+		
+		panelJuego.addMouseListener(new MouseAdapter() {
+			
+			int cont = 0;
+
+			public void mouseClicked(MouseEvent e) {
+				if (cont == 0) {
+					
+					int x = e.getX();
+					int y = e.getY();
+					
+					Point nuevoPunto = new Point(x,y);
+					j.clickEnJugadores(nuevoPunto);
+					
+				}
+				cont++;
+			
+			
+		}
+		});
+	}
 
 	public void agregarTorre(Entidad ste) {
 
@@ -323,7 +342,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Boton torre4 = new BotonT4(tienda, this);
 		Boton torre5 = new BotonT5(tienda, this);
 		Boton Comprar = new BotonComprar(tienda, this);
-		BotonPwup pwup1 = new PowerUp1(this);
+		BotonPwup pwup1 = CProteccion.getInstance();
 		BotonPwup pwup2 = new PowerUp2(this);
 		BotonPwup pwup3 = new PowerUp3(this);
 		BotonPwup pwup4 = new PowerUp4(this);

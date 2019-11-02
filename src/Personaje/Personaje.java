@@ -5,6 +5,8 @@ import java.awt.Point;
 import Disparos.Disparo;
 import Entidad.Entidad;
 import Visitor.VisitorPersonaje;
+import Objetos.*;
+import TiendaPersonaje.CProteccion;
 
 /**
  * Clase abstracta Personaje.
@@ -26,6 +28,14 @@ public abstract class Personaje extends Entidad {
 	}
 
 	public void Accionar() {
+	}
+	
+	public void addCampo(){
+		Point nuevoPunto= new Point((pos.x-5),pos.y);
+		CampoProteccion campo= new CampoProteccion(nuevoPunto,80,80);
+		campo.setActivado(true);
+		juego.agregarEntidad(campo, true);
+		CProteccion.getInstance().restarContador();
 	}
 	
 	
