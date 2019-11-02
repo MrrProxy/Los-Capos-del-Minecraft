@@ -4,22 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.SwingConstants;
 
 import GUI.GUI;
-import Objetos.Premio;
 
 public abstract class BotonPwup extends JButton {
 
 	private static final long serialVersionUID = 1L;
 
 	// Atributos
-	private GUI gui;
 	protected int contadorPremio;
 
 	// Constructor
 	protected BotonPwup(GUI gui) {
-		this.gui = gui;
 		contadorPremio=0;
 		// this.setIcon(this.getIconoBoton());
 		this.setForeground(new java.awt.Color(155, 017, 030));
@@ -41,6 +37,7 @@ public abstract class BotonPwup extends JButton {
 	}
 	
 	public void restarContador(){
+		System.out.print("entree");
 		contadorPremio--;
 		if (contadorPremio==0)
 			this.setEnabled(false);
