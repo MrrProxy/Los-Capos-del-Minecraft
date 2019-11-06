@@ -95,19 +95,19 @@ public abstract class Enemigo extends Entidad {
 		int premioElegido = rnd.nextInt(5);
 		switch (premioElegido) {
 		case 0:
-			nuevoPremio = new CampoProteccion(pos, width, height);
+			nuevoPremio = new Temporizador(pos, width, height);
 			break;
 		case 1:
-			nuevoPremio = new CampoProteccion(pos, width, height);
+			nuevoPremio = new FuerzaDuplicada(pos, width, height);
 			break;
 		case 2:
 			nuevoPremio = new FuerzaDuplicada(pos, width, height);
 			break;
 		case 3:
-			nuevoPremio = new FuerzaDuplicada(pos, width, height);
+			nuevoPremio = new Temporizador(pos, width, height);
 			break;
 		case 4:
-			nuevoPremio = new FuerzaDuplicada(pos, width, height);
+			nuevoPremio = new Temporizador(pos, width, height);
 			break;
 		}
 		
@@ -135,6 +135,15 @@ public abstract class Enemigo extends Entidad {
 			salida = true;
 		}
 		return salida;
+	}
+	
+	public void detener(boolean d){
+		if (d) {
+			velocidad=0;
+		}
+		else {
+			velocidad=velocidadInicial;
+		}	
 	}
 
 }

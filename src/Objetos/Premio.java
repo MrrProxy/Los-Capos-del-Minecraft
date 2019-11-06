@@ -40,5 +40,9 @@ public class Premio extends Entidad {
 		v.afectar(this);
 		
 	}
+	
+    public void activarPowerUp() {
+		
+	}
 
 }

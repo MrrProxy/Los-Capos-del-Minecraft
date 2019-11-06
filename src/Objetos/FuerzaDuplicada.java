@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Entidad.Entidad;
-import TiendaPersonaje.CProteccion;
+import TiendaPersonaje.FDuplicada;
 import Visitor.VisitorPremio;
 
 import javax.swing.ImageIcon;
@@ -18,7 +18,6 @@ public class FuerzaDuplicada extends Premio {
 		miVisitor = new VisitorPremio(this);
 		puntosVida = 1;
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Objetos/fuerza1.png"));
-		// miVisitor = new VisitorFuerzaDuplicada(this);
 		// duplica el daño de todos los personajes.
 
 	}
@@ -37,13 +36,14 @@ public class FuerzaDuplicada extends Premio {
 			}
 		});
 		timer.start();
+		
 
 	}
 	
 	public void fuisteClickeado(){
 		if (!activado){
 			morir();
-			CProteccion.getInstance().sumarContador();}
+			FDuplicada.getInstance().sumarContador();}
 		
 		}
 }

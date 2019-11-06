@@ -3,38 +3,39 @@ package TiendaPersonaje;
 import javax.swing.ImageIcon;
 import GUI.GUI;
 import Objetos.FuerzaDuplicada;
+import Objetos.Temporizador;
 
-public class FDuplicada extends BotonPwup {
+public class Temp extends BotonPwup {
 	
 	private static final long serialVersionUID = 1L;
-	
-	private static  FDuplicada instance;
+	private static  Temp instance;
 
-	public FDuplicada(GUI gui) {
+	public Temp(GUI gui) {
 		super(gui);
 		this.setEnabled(false);
-		this.setBounds(400, 40, 100, 50);
-		this.setText("Fuerza Duplicada");
+		this.setBounds(500, 40, 100, 50);
+		this.setText("Temporizador ");
 
 	}
 	
-	public static FDuplicada getInstance() {
+	public static Temp getInstance() {
 		if (instance == null)
-			instance = new FDuplicada(GUI.getInstance());
+			instance = new Temp(GUI.getInstance());
 		return instance;
 
 	}
 
 	protected ImageIcon getIconoBoton() {
 		return null;
-	}
+		}
 
 	@Override
 	protected void accionarBoton() {
-	    FuerzaDuplicada f = new FuerzaDuplicada(null,0,0);
-	   f.activarPowerUp();
+		Temporizador t = new Temporizador(null,0,0);
+		t.activarPowerUp();
 		restarContador();
 	}
+
 
 	
 }

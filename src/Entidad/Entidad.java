@@ -229,5 +229,10 @@ public abstract class Entidad {
         public void DanioDuplicado() {
 			
 		}
+        
+        public void detener(boolean d){
+        	
+        }
+        
 	
 }
