@@ -343,9 +343,11 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Boton Comprar = new BotonComprar(tienda, this);
 		BotonPwup pwup1 = CProteccion.getInstance();
 		BotonPwup pwup2 = new PowerUp2(this);
-		BotonPwup pwup3 = new PowerUp3(this);
+		BotonPwup pwup3 = FDuplicada.getInstance();
 		BotonPwup pwup4 = new PowerUp4(this);
 		BotonPwup pwup5 = new PowerUp5(this);
+		
+
 
 		Comprar.setFocusable(false);
 		torre1.setFocusable(false);

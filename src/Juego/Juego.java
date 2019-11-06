@@ -123,7 +123,7 @@ public class Juego {
 		nivel.sumarEnemigosMuertos();
 	}
 
-	public void agregarEntidad(Entidad e, boolean agregar) {
+	public synchronized void agregarEntidad(Entidad e, boolean agregar) {
 		if (agregar)
 			aAgregar.add(e);
 		else {

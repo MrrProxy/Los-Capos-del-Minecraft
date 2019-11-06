@@ -101,13 +101,13 @@ public abstract class Enemigo extends Entidad {
 			nuevoPremio = new CampoProteccion(pos, width, height);
 			break;
 		case 2:
-			nuevoPremio = new CampoProteccion(pos, width, height);
+			nuevoPremio = new FuerzaDuplicada(pos, width, height);
 			break;
 		case 3:
-			nuevoPremio = new CampoProteccion(pos, width, height);
+			nuevoPremio = new FuerzaDuplicada(pos, width, height);
 			break;
 		case 4:
-			nuevoPremio = new CampoProteccion(pos, width, height);
+			nuevoPremio = new FuerzaDuplicada(pos, width, height);
 			break;
 		}
 		
