@@ -6,10 +6,10 @@ import javax.swing.*;
 import Entidad.Entidad;
 import Hilo.HiloSonido;
 import Juego.Juego;
-import Objetos.CampoProteccion;
 import Sonidos.sonidosMp3;
 import Tienda.Boton;
 import Tienda.BotonComprar;
+import Tienda.BotonLava;
 import Tienda.BotonT1;
 import Tienda.BotonT2;
 import Tienda.BotonT3;
@@ -43,6 +43,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	private JLabel fondo3;
 	private JLabel Monedas;
 	private JLabel Puntaje;
+	private JLabel imagenganeButton;
 
 	// ****Sonidos****
 	// ****Botones****
@@ -341,6 +342,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Boton torre4 = new BotonT4(tienda, this);
 		Boton torre5 = new BotonT5(tienda, this);
 		Boton Comprar = new BotonComprar(tienda, this);
+		Boton lavaBoton = new BotonLava(tienda, this);
 		BotonPwup pwup1 = CProteccion.getInstance();
 		BotonPwup pwup2 = new PowerUp2(this);
 		BotonPwup pwup3 = new PowerUp3(this);
@@ -352,6 +354,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		torre2.setFocusable(false);
 		torre3.setFocusable(false);
 		torre4.setFocusable(false);
+		
 		torre5.setFocusable(false);
 
 		agregarBotones(torre1);
@@ -360,6 +363,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		agregarBotones(torre4);
 		agregarBotones(torre5);
 		agregarBotones(Comprar);
+		agregarBotones(lavaBoton);
 
 		panelJugador.add(pwup1, 1);
 		panelJugador.add(pwup2, 1);
@@ -400,7 +404,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	public void perder() {
 		crearFrameFinal();
 
-		JLabel imagenganeButton = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/gameOver.png")));
+		imagenganeButton = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/gameOver.png")));
 		imagenganeButton.setBounds(0, 0, 640, 480);
 		frameFinal.add(imagenganeButton, 0);
 		frameFinal.setTitle("Perdiste");
@@ -414,7 +418,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	public void ganar() {
 		crearFrameFinal();
 
-		JLabel imagenganeButton = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/tenor.gif")));
+		imagenganeButton = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/tenor.gif")));
 		imagenganeButton.setBounds(100, 0, 400, 400);
 		frameFinal.setTitle("Ganaste");
 		frameFinal.setVisible(true);
@@ -453,11 +457,11 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 //		frameFinal.add(reiniciar);
 	}
 
-	private void reiniciarJuego() {
-		mp3.stop();
-		frameFinal.dispose();
-		iniciar();
-
-	}
+//	private void reiniciarJuego() {
+//		mp3.stop();
+//		frameFinal.dispose();
+//		iniciar();
+//
+//	}
 
 }// Fin GUI

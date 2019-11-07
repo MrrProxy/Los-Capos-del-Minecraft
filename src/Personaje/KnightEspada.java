@@ -24,6 +24,7 @@ public class KnightEspada extends Personaje {
 		puntosVida = 50000;
 		precioPersonaje = 300;
 		danioImpacto=200;
+		alcance=0;
 	}
 
 	public void Aceptar(Visitor v) {

@@ -25,6 +25,7 @@ public class KnightLanza extends Personaje {
 		puntosVida = 200;
 		precioPersonaje = 300;
 		danioImpacto=5;
+		alcance=0;
 	}
 
 	// Devuelve la imagen grafica de la torre

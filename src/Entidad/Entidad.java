@@ -1,12 +1,9 @@
 package Entidad;
 
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import GUI.GUI;
@@ -37,6 +34,9 @@ public abstract class Entidad {
 	protected Visitor miVisitor;
 	protected Icon imagen[];
 	protected int estado;
+	protected final int MOVIMIENTO = 0;
+	protected final int ATAQUE = 1;
+	protected final int MUERTE = 2;
 
 
 	
@@ -185,43 +185,63 @@ public abstract class Entidad {
 		public void setPrecioPersonaje(int precio) {
 			precioPersonaje=precio;
 		}
+		/**
+		 * Devuelve el puntaje de la entidad
+		 * @return int puntaje
+		 */
 		public int getPuntaje() {
 			return 0;
 		}
 		
+		/**
+		 * Resta el daño recibido, a la vida de la entidad
+		 * @param daño
+		 */
 		public void recibirDaño(int daño) {
 			puntosVida-=daño;
 			
 		}
+		/**
+		 * Retorna el visitor de la entidad
+		 * @return Visitor miVisitor
+		 */
 		public Visitor getVisitor() {
 			return miVisitor;
 		}
 		
+		/**
+		 * Retoran el rectangulo de la unidad
+		 * @return Rectagle 
+		 */
 		public Rectangle getRectangle() {
 			return new Rectangle(this.getPosition().x + this.velocidad, this.getPosition().y, this.anchoEntidad(),
 					this.altoEntidad());
 		}
+		/**
+		 * Retorna el alcance de ataque de la unidad
+		 * @return alcance
+		 */
 		public int getAlcance() {
 			return alcance;
 		}
 		
 		/**
 		 * Devuelve verdadero si las entidades colisionan, caso contrario falso.
-		 * 
 		 * @param e2 entidad2
 		 * @return verdadero si colisionan, caso contrario falso.
 		 */
 		public boolean chocan( Entidad e2) {
-			
-
 			boolean colisionan;
 			Rectangle rectangle = this.getRectangle();
 			Rectangle rectangle2 = e2.getRectangle();
 			colisionan=rectangle.intersects(rectangle2);
 			
-				return colisionan;
+			return colisionan;
 		}
-		
+		/**
+		 * Establece el estado del enemigo(ataque,correr, morir)
+		 * @param e (estado actual)
+		 */
 		public void setEstado(int e) {
 			estado=e;
 		}

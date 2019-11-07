@@ -3,9 +3,10 @@ package Visitor;
 import Disparos.Disparo;
 import Enemigo.Enemigo;
 import Entidad.Entidad;
-import Objetos.Obstaculo;
-import Objetos.Premio;
+import Obstaculos.Obstaculo;
+import Obstaculos.ObstaculoTemporal;
 import Personaje.Personaje;
+import PowerUps.Premio;
 
 public abstract class Visitor {
 	
@@ -20,5 +21,6 @@ public abstract class Visitor {
 	public abstract void afectar(Disparo d);
 	public abstract void afectar(Obstaculo o);
 	public abstract void afectar(Premio p);
+	public abstract void afectar(ObstaculoTemporal p);
 
 }

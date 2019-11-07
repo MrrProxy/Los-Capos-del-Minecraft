@@ -1,12 +1,8 @@
 package Personaje;
 
 import java.awt.Point;
-import java.awt.Rectangle;
-
 import javax.swing.ImageIcon;
-
 import Disparos.DisparoArquero;
-import Entidad.Entidad;
 import Juego.Juego;
 import Visitor.Visitor;
 
@@ -14,9 +10,9 @@ import Visitor.Visitor;
  * Clase Arquero que extiende de Personaje.
  * 
  * @author Aldana Case(104870),Biernat Diego (105974) , Emanuel Somoza (112100).
- *
  */
 public class Arquero extends Personaje {
+	boolean disparar;
 
 	// Constructor
 	public Arquero(Point p, int ancho, int alto) {
@@ -27,8 +23,9 @@ public class Arquero extends Personaje {
 		this.imagen[3] = null;
 		puntosVida = 200;
 		precioPersonaje = 300;
-		danioImpacto=5;
-		alcance=350;
+		danioImpacto = 5;
+		alcance = 350;
+		disparar = false;
 	}
 
 	public void Accionar() {
@@ -36,7 +33,7 @@ public class Arquero extends Personaje {
 		if (tiempoEntreDisparo == 0 ) {
 			Point point = new Point(this.getPosition());
 			disparo = new DisparoArquero(point, 50, 50, danioImpacto, alcance);
-			juego.agregarEntidad(disparo,true);
+			juego.agregarEntidad(disparo, true);
 			tiempoEntreDisparo = 20;
 		}
 		tiempoEntreDisparo--;
@@ -50,13 +47,30 @@ public class Arquero extends Personaje {
 	public void Aceptar(Visitor v) {
 		v.afectar(this);
 	}
+
 //	public boolean chocan(Entidad e2) {
-//		boolean salida=false;
-//		System.out.println(this.getPosition().y+"=="+e2.getPosition().y);
-//		if(this.getPosition().y==e2.getPosition().y && this.getPosition().x+alcance<=e2.getPosition().x) {//Controlo si choca adelante
-//			salida=true;
+//		boolean colisionan=false;
+//		Rectangle rectangle = new Rectangle(this.getPosition().x, this.getPosition().y,this.anchoEntidad() + this.alcance, this.altoEntidad());
+//		Rectangle rectangle2 = e2.getRectangle();
+//		if(rectangle.x +alcance<=rectangle2.x && rectangle.y==rectangle2.y) {
+//			colisionan=true;
 //		}
-//		return salida;
+//		if (colisionan) {
+//			disparar();
+//		}
+//		disparar = colisionan;
+//		return colisionan;
+//	}
+//
+//	public void disparar() {
+//		Juego juego = Juego.getInstance();
+//		if (tiempoEntreDisparo == 0 ) {
+//			Point point = new Point(this.getPosition());
+//			disparo = new DisparoArquero(point, 50, 50, danioImpacto, alcance);
+//			juego.agregarEntidad(disparo, true);
+//			tiempoEntreDisparo = 20;
+//		}
+//		tiempoEntreDisparo--;
 //	}
 
 }

@@ -7,8 +7,7 @@ import Visitor.Visitor;
 
 public class DisparoArquero extends Disparo {
 
-	private final int MOVIMIENTO = 1;
-	
+	//Constructor
 	public DisparoArquero(Point p, int x, int y, int daño, int alcance) {
 		super(p, x, y);
 		danioImpacto = daño;

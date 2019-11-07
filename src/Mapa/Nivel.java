@@ -15,9 +15,9 @@ import Enemigo.Enemigo;
 import Enemigo.ReaperMan;
 import Enemigo.Goblin;
 import Entidad.Entidad;
-import Hilo.HiloOleadas;
 import Juego.Juego;
-import Objetos.Obstaculo;
+import Obstaculos.Obstaculo;
+import Obstaculos.Roca;
 
 /**
  * Clase Nivel extiende Mapa .
@@ -99,7 +99,7 @@ public class Nivel extends Mapa {
 		Juego juego = Juego.getInstance();
 		
 		Point p = new Point(400, 320);
-		Obstaculo o = new Obstaculo(p,38,37);
+		Obstaculo o = new Roca(p,38,37);
 		juego.agregarEntidad(o,false);
 		
 		
@@ -230,6 +230,7 @@ public class Nivel extends Mapa {
 			break;
 		case 'e':
 			e = new ReaperMan(p, 70, 70);
+			
 			break;
 		case 'f':
 			e = new Goblin(p, 70, 70);

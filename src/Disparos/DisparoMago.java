@@ -18,7 +18,6 @@ public class DisparoMago extends Disparo {
 		this.imagen[3] = null;
 		puntosVida = 1;
 		velocidad = 6;
-
 	}
 
 	public void morir() {

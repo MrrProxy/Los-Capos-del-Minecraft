@@ -17,6 +17,14 @@ public class Mapa {
 	public Mapa() {
 	}
 
+	/**
+	 * Controla si la entidad pasada por parametro colisiona con otra entidad, de la
+	 * lista de entidades.
+	 * 
+	 * @param entidad
+	 * @param listaEntidades
+	 * @return boolean toReturn
+	 */
 	public boolean puedoAgregar(Entidad entidad, LinkedList<Entidad> listaEntidades) {
 		boolean toReturn = true;
 		Rectangle rectangle = entidad.getRectangle();
@@ -29,8 +37,5 @@ public class Mapa {
 		}
 		return toReturn;
 	}
-	
-	
-	
 
 }
