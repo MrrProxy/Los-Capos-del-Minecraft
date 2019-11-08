@@ -89,8 +89,8 @@ public abstract class Enemigo extends Entidad {
 	}
 
 	/**
-	 * Genera un power up
-	 * @return
+	 * Genera un power up random
+	 * @return Premio nuevoPremio
 	 */
 	private Premio generarPowerUp() {
 	
@@ -119,7 +119,7 @@ public abstract class Enemigo extends Entidad {
 		return nuevoPremio;
 		
 	}
-
+	
 	public int getPuntaje() {
 		return puntaje;
 	}

@@ -27,6 +27,8 @@ public class Juego {
 	private HiloOleadas tiempo2;
 	private HiloSonido tiempo3;
 	private Nivel nivel;
+	
+	private int multiplicadorOro;
 
 	private GUI gui;
 	private LinkedList<Entidad> entidades;
@@ -39,6 +41,7 @@ public class Juego {
 		VidaJugador = 100;
 		cantMonedas = 10000;
 		puntaje = 0;
+		multiplicadorOro = 1;
 	}
 
 	public static Juego getInstance() {
@@ -110,7 +113,7 @@ public class Juego {
 			for (Entidad e : aEliminar) {
 				e.setGrafico(2);
 				entidades.remove(e);
-				cantMonedas = cantMonedas + e.getMonedas();
+				cantMonedas = cantMonedas + e.getMonedas()*multiplicadorOro;
 				puntaje = puntaje + e.getPuntaje();
 				gui.actualizarEstadisticas(puntaje, cantMonedas);
 				gui.eliminarEntidad(e.getGrafico(2));
@@ -126,6 +129,12 @@ public class Juego {
 		nivel.sumarEnemigosMuertos();
 	}
 
+	
+	
+	public void setMultiplicador(int m) {
+		multiplicadorOro = m;
+	}
+
 	/**
 	 * Agrega la entidad a la lista de entidades si el espacio donde se quiere
 	 * agregar esta vacio(solo controla si agregar es falso) caso contrario obvia el
@@ -134,7 +143,7 @@ public class Juego {
 	 * @param Entidad e
 	 * @param boolean agregar
 	 */
-	public void agregarEntidad(Entidad e, boolean agregar) {
+	public synchronized void agregarEntidad(Entidad e, boolean agregar) {
 		if (agregar)
 			aAgregar.add(e);
 		else {

@@ -245,5 +245,14 @@ public abstract class Entidad {
 		public void setEstado(int e) {
 			estado=e;
 		}
+		
+        public void DanioDuplicado() {
+			
+		}
+        
+        public void detener(boolean d){
+        	
+        }
+        
 	
 }

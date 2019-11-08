@@ -16,7 +16,7 @@ public class PowerUp2 extends BotonPwup {
 
 	protected ImageIcon getIconoBoton() {
 		return null;
-	}
+		}
 
 	@Override
 	protected void accionarBoton() {

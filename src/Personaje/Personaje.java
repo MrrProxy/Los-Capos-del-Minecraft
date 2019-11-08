@@ -36,5 +36,9 @@ public abstract class Personaje extends Entidad {
 		juego.agregarEntidad(campo, true);
 	}
 	
+	public void DanioDuplicado() {
+		danioImpacto = danioImpacto*2;
+		
+	}
 	
 }
