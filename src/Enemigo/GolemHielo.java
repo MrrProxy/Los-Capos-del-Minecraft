@@ -25,6 +25,7 @@ public class GolemHielo extends Enemigo {
 		puntosVida = 100;
 		monedas = 10;
 		puntaje = 10;
+		danioImpacto=500;
 		velocidadInicial=velocidad;
 
 

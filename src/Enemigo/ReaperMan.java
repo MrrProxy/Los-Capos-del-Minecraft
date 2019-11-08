@@ -28,7 +28,7 @@ public class ReaperMan extends Enemigo {
 		puntosVida = 1000;
 		monedas = 10;
 		puntaje = 10;
-		danioImpacto=200;
+		//danioImpacto=200;
 		velocidadInicial=velocidad;
 		miVisitor = new VisitorEnemigoSuicida(this);
 

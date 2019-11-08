@@ -23,6 +23,7 @@ public abstract class Enemigo extends Entidad {
 	protected int puntaje;
 	protected int velocidadInicial;
 	protected Nivel nivel;// Es necesario para actualizar las muertes
+	private int DañoAJugador;//Daño que produce cada enemigo al pasar
 
 	// Constructor
 	protected Enemigo(Point p, int ancho, int alto) {
@@ -30,6 +31,7 @@ public abstract class Enemigo extends Entidad {
 		miVisitor = new VisitorEnemigo(this);
 		nivel = Nivel.getInstance();
 		estado=1;
+		DañoAJugador=5;
 
 	}
 
@@ -44,6 +46,11 @@ public abstract class Enemigo extends Entidad {
 
 	public int getVelocidadInicial() {
 		return velocidadInicial;
+	}
+	public void Slow(int v) {
+		if(velocidad==velocidadInicial) {
+			velocidad-=v;
+		}
 	}
 
 	public Rectangle getRectangle() {
@@ -70,10 +77,11 @@ public abstract class Enemigo extends Entidad {
 		if (estado == 1) {
 			Point point = new Point(this.getPosition().x - velocidad, this.getPosition().y);
 			pos = point;
+			velocidad=velocidadInicial;
 			setGrafico(0);
 			if (this.getPosition().x < -100) {
 				this.puntosVida = 0;
-				juego.setVida(50, false);
+				juego.setVida(DañoAJugador, false);
 			}
 		}
 	}

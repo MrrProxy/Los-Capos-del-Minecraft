@@ -25,7 +25,6 @@ public class VisitorPersonaje extends Visitor{
 		miEntidad.setEstado(2);
 		if(e.getVida()<=0) {
 			miEntidad.setGrafico(0);
-			Juego.getInstance().enemigoMuerto();
 		}
 		
 	}
@@ -49,6 +48,7 @@ public class VisitorPersonaje extends Visitor{
 	}
 
 	public void afectar(Obstaculo o) {
+		o.recibirDaño(miEntidad.getDanio());
 		
 	}
 

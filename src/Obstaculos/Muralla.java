@@ -4,8 +4,6 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
-import Visitor.Visitor;
-
 public class Muralla extends Obstaculo {
 
 	public Muralla(Point p, int width, int height) {
@@ -22,8 +20,5 @@ public class Muralla extends Obstaculo {
 		
 	}
 
-	public void Aceptar(Visitor v) {
-		
-	}
 
 }

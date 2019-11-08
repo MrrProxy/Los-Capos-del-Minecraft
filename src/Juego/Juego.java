@@ -85,7 +85,7 @@ public class Juego {
 				if (!e1.estoyMuerto()) {
 					boolean choco = false;
 					for (Entidad e2 : entidades) {
-						if (e1 != e2 && e1.chocan(e2) && e2.chocan(e1)) {
+						if (e1 != e2 && e1.chocan(e2) ) {
 							e1.Aceptar(e2.getVisitor());
 							choco = true;
 						}

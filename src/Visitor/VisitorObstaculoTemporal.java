@@ -19,6 +19,7 @@ public class VisitorObstaculoTemporal extends Visitor{
 
 	public void afectar(Enemigo e) {
 		e.recibirDaño(miEntidad.getDanio());
+		e.Slow(miEntidad.getSlow());
 	}
 
 	public void afectar(Disparo d) {

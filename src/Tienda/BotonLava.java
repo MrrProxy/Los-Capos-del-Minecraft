@@ -14,9 +14,10 @@ public class BotonLava extends Boton{
 	
 	public BotonLava(TiendaJuego tienda, GUI gui) {
 		super(tienda, gui);
-		this.setBounds(0, 500, 200, 100);
+		this.setBounds(0, 0, 200, 100);
 		this.setBorder(null);
 		this.setEnabled(false);
+		this.setVisible(false);
 
 	}
 

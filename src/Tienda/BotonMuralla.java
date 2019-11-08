@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 import Entidad.Entidad;
 import GUI.GUI;
-import Obstaculos.Lava;
+import Obstaculos.Muralla;
 
 public class BotonMuralla extends Boton{
 	
@@ -14,7 +14,7 @@ private static final long serialVersionUID = 1L;
 	
 	public BotonMuralla(TiendaJuego tienda, GUI gui) {
 		super(tienda, gui);
-		this.setBounds(0, 500, 200, 100);
+		this.setBounds(0, 100, 200, 100);
 		this.setBorder(null);
 		this.setEnabled(false);
 		this.setVisible(false);
@@ -22,15 +22,13 @@ private static final long serialVersionUID = 1L;
 	}
 
 
-	@Override
 	protected ImageIcon getIconoBoton() {
-		return new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/Boton2.png"));
+		return new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/BotonRoca.png"));
 
 	}
 
-	@Override
 	protected Entidad crearEntidad() {
-		Entidad entidad =new Lava(new Point(0,0),100,65);
+		Entidad entidad =new Muralla(new Point(0,0),70,65);
 		return entidad;
 	}
 

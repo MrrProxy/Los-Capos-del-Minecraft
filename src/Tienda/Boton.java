@@ -27,6 +27,7 @@ public abstract class Boton extends JButton{
 		this.setContentAreaFilled( false );		
 		this.setVisible(true);
 		this.setLayout(null);
+		this.setFocusable(false);
 		this.tienda.setBoton(this);
 		this.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

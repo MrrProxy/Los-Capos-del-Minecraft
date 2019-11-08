@@ -39,7 +39,6 @@ public class DuplicarMonedas extends Premio{
 			MDuplicada.getInstance().sumarContador();}
 		
 		}
-		// TODO Auto-generated constructor stub
 }
 	
 	

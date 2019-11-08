@@ -14,14 +14,18 @@ public class VisitorObstaculo extends Visitor{
 	}
 
 	public void afectar(Personaje p) {
-		
+		p.setEstado(2);
+		p.setGrafico(1);
 	}
 
 	public void afectar(Enemigo e) {
+		e.setGrafico(1);
+		e.setEstado(2);
 		
 	}
 
 	public void afectar(Disparo d) {
+		
 		
 	}
 

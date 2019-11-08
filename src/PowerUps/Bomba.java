@@ -6,7 +6,6 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 import TiendaPersonaje.Bombas;
-import TiendaPersonaje.CProteccion;
 import Visitor.VisitorPremio;
 
 public class Bomba extends Premio {

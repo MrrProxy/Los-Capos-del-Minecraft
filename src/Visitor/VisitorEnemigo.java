@@ -33,7 +33,6 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void afectar(Premio p) {
-		System.out.println("Estoy entrando acá");
 		if (p.getActivado()) {
 			p.morir();
 			miEntidad.morir();
@@ -48,8 +47,6 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void afectar(ObstaculoTemporal p) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override

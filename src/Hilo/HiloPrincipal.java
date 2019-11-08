@@ -28,7 +28,7 @@ public class HiloPrincipal extends Thread {
 
 	@Override
 	public void run() {
-		nivel.cargarObstaculos();
+		//nivel.cargarObstaculos();
 
 		while (ejecutar) {
 			try {

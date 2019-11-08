@@ -253,6 +253,9 @@ public abstract class Entidad {
         public void detener(boolean d){
         	
         }
+        public int getSlow() {
+        	return 0;
+        }
         
 	
 }

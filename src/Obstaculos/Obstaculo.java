@@ -2,6 +2,7 @@ package Obstaculos;
 
 import java.awt.Point;
 import Entidad.Entidad;
+import Visitor.Visitor;
 import Visitor.VisitorObstaculo;
 
 public abstract class Obstaculo extends Entidad{
@@ -11,6 +12,8 @@ public abstract class Obstaculo extends Entidad{
 		miVisitor=new VisitorObstaculo(this);
 	}
 
-	
+	public void Aceptar(Visitor v) {
+		v.afectar(this);
+	}
 
 }

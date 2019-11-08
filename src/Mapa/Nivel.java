@@ -11,11 +11,11 @@ import Enemigo.ReaperManRed;
 import Enemigo.GolemPiedra;
 import Enemigo.GolemHielo;
 import Enemigo.FallenAngel;
-import Enemigo.Enemigo;
 import Enemigo.ReaperMan;
 import Enemigo.Goblin;
 import Entidad.Entidad;
 import Juego.Juego;
+import Obstaculos.Agua;
 import Obstaculos.Obstaculo;
 import Obstaculos.Roca;
 
@@ -35,6 +35,8 @@ public class Nivel extends Mapa {
 	private Juego juego;
 	private int cantEnemigos;
 	private int cantEnemigosMuertos = 0;;
+	private Random random;
+	private int r;
 
 	private static Nivel instance;
 
@@ -88,22 +90,6 @@ public class Nivel extends Mapa {
 		return haySig;
 	}
 
-
-	// Metodos privados
-
-	/**
-	 * Carga los enemigos al juego.
-	 * 
-	 */
-	public void cargarObstaculos() {
-		Juego juego = Juego.getInstance();
-		
-		Point p = new Point(400, 320);
-		Obstaculo o = new Roca(p,38,37);
-		juego.agregarEntidad(o,false);
-		
-		
-	}
 	private void cargarEnemigos() {
 		BufferedReader br = null;
 		File fileNAct = new File(
@@ -136,7 +122,18 @@ public class Nivel extends Mapa {
 					}
 					Point p = new Point(x, y);
 					Entidad enem = crearEnemigo(tipo, p);
-					enemigos.addLast(enem);
+					random = new Random();
+					r = random.nextInt(10);
+					if (tipo != 'r' && tipo != 'h') {
+						if (r < 5) {
+							enemigos.addLast(enem);
+						} else {
+							enemigos.addFirst(enem);
+						}
+					}
+					else {
+						juego.agregarEntidad(enem, false);
+					}
 				}
 
 			}
@@ -154,6 +151,54 @@ public class Nivel extends Mapa {
 		}
 	}
 
+//	private void cargarObstaculos() {
+//		BufferedReader br = null;
+//		File fileNAct = new File(
+//				this.getClass().getResource("/zNiveles/Mapa/n" + N_Actual + "_enemigos.txt").getPath());
+//
+//		try {
+//			String sCurrentLine;
+//			br = new BufferedReader(new FileReader(fileNAct));
+//
+//			// Para cada linea del archivo
+//			while ((sCurrentLine = br.readLine()) != null) {
+//				// Para cada letra de la linea
+//				int i = 0;
+//
+//				while (i < sCurrentLine.length()) {
+//					char tipo = sCurrentLine.charAt(i); // Obtengo tipo de enemmigo
+//					int x = 0;
+//					int y = 0;
+//					i++;
+//
+//					while (i < sCurrentLine.length() && sCurrentLine.charAt(i) != ' ') {
+//						x = leerVariable(i, sCurrentLine);
+//						i = i + 3;
+//						y = leerVariable(i, sCurrentLine);
+//						i = i + 3;
+//					}
+//					if (i < sCurrentLine.length()) {
+//						if (sCurrentLine.charAt(i) == ' ')
+//							i++;
+//					}
+//					Point p = new Point(x, y);
+//					Entidad enem = crearEnemigo(tipo, p);
+//					enemigos.addLast(enem);
+//				}
+//
+//			}
+//
+//		} catch (IOException u) { // Esto es por si ocurre un error
+//			u.printStackTrace();
+//		} finally { // Esto es para que, haya ocurrido error o no
+//			try {
+//				if (br != null)
+//					br.close(); // Cierre el archivo
+//			} catch (IOException ex) {
+//				ex.printStackTrace();
+//			}
+//		}
+//	}
 	/**
 	 * Lee desde el archivo la coordenada X o Y de tres numeros.
 	 * 
@@ -173,9 +218,9 @@ public class Nivel extends Mapa {
 	}
 
 	public void agregarEnemigos() {
-		Random random = new Random();
-		int r = random.nextInt(4) + 1;
-	
+		random = new Random();
+		r = random.nextInt(4) + 1;
+
 		while (!enemigos.isEmpty() && r != 0) {
 			juego.agregarEntidad(enemigos.getFirst(), true);
 			enemigos.removeFirst();
@@ -187,15 +232,15 @@ public class Nivel extends Mapa {
 //			} catch (InterruptedException e) {
 //				e.printStackTrace();
 //			}
-			N_Actual ++;
+			N_Actual++;
 			cargarEnemigos();
 			cantEnemigosMuertos = 0;
 		} else {
 			if (N_Actual >= N_Final && cantEnemigosMuertos >= cantEnemigos) {
 				juego.terminarJuego(true);
-			
+
 			}
-			
+
 		}
 	}
 
@@ -213,8 +258,8 @@ public class Nivel extends Mapa {
 	 * @param p    posicion a asignar.
 	 * @return enemigo.
 	 */
-	private Enemigo crearEnemigo(char tipo, Point p) {
-		Enemigo e = null;
+	private Entidad crearEnemigo(char tipo, Point p) {
+		Entidad e = null;
 		switch (tipo) {
 		case 'a':
 			e = new ReaperManRed(p, 70, 70);
@@ -230,10 +275,16 @@ public class Nivel extends Mapa {
 			break;
 		case 'e':
 			e = new ReaperMan(p, 70, 70);
-			
+
 			break;
 		case 'f':
 			e = new Goblin(p, 70, 70);
+			break;
+		case 'r':
+			e = new Roca(p, 70, 70);
+			break;
+		case 'h':
+			e = new Agua(p, 70, 70);
 			break;
 		}
 		return e;

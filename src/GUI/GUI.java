@@ -11,6 +11,8 @@ import Sonidos.sonidosMp3;
 import Tienda.Boton;
 import Tienda.BotonComprar;
 import Tienda.BotonLava;
+import Tienda.BotonMuralla;
+import Tienda.BotonSiguiente;
 import Tienda.BotonT1;
 import Tienda.BotonT2;
 import Tienda.BotonT3;
@@ -410,6 +412,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	}
 
 	public void crearBotones() {
+		
 		Boton torre1 = new BotonT1(tienda, this);
 		Boton torre2 = new BotonT2(tienda, this);
 		Boton torre3 = new BotonT3(tienda, this);
@@ -417,21 +420,15 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Boton torre5 = new BotonT5(tienda, this);
 		Boton Comprar = new BotonComprar(tienda, this);
 		Boton lavaBoton = new BotonLava(tienda, this);
+		Boton murallaBoton = new BotonMuralla(tienda, this);
+		Boton siguienteBoton = new BotonSiguiente(tienda, this);
+
 		BotonPwup pwup1 = CProteccion.getInstance();
 		BotonPwup pwup2 = Bombas.getInstance();
 		BotonPwup pwup3 = FDuplicada.getInstance();
 		BotonPwup pwup4 = Temp.getInstance();
 		BotonPwup pwup5 = new MDuplicada(this);
 		
-
-		Comprar.setFocusable(false);
-		torre1.setFocusable(false);
-		torre2.setFocusable(false);
-		torre3.setFocusable(false);
-		torre4.setFocusable(false);
-		
-		torre5.setFocusable(false);
-
 		agregarBotones(torre1);
 		agregarBotones(torre2);
 		agregarBotones(torre3);
@@ -439,6 +436,8 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		agregarBotones(torre5);
 		agregarBotones(Comprar);
 		agregarBotones(lavaBoton);
+		agregarBotones(siguienteBoton);
+		agregarBotones(murallaBoton);
 
 		panelJugador.add(pwup1, 1);
 		panelJugador.add(pwup2, 1);

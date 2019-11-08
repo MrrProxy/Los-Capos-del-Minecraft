@@ -8,11 +8,13 @@ import Visitor.VisitorObstaculoTemporal;
 public class ObstaculoTemporal extends Obstaculo{
 
 	protected int tiempo;
+	protected int slow;
 	
 	public ObstaculoTemporal(Point p, int width, int height) {
 		super(p, width, height);
 		miVisitor=new VisitorObstaculoTemporal(this);
 		danioImpacto=5;
+		slow=0;
 	}
 
 	public void Accionar() {
@@ -27,6 +29,9 @@ public class ObstaculoTemporal extends Obstaculo{
 		v.afectar(this);
 	}
 	
+	public int getSlow() {
+		return slow;
+	}
 	
 }
 
