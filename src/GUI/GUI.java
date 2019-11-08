@@ -47,6 +47,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	private JLabel Monedas;
 	private JLabel Puntaje;
 	private JLabel imagenganeButton;
+	private JLabel vidaJugador;
 
 	// ****Sonidos****
 	// ****Botones****
@@ -199,6 +200,13 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Monedas.setFont(new java.awt.Font("cambria", 15, 20));
 		Monedas.setVisible(true);
 
+		vidaJugador = new JLabel("Vida : 100");
+		vidaJugador.setBounds(600, 0, 200, 50);
+		vidaJugador.setForeground(new java.awt.Color(255, 0, 0));
+		vidaJugador.setBackground(new java.awt.Color(255, 0, 0));
+		vidaJugador.setFont(new java.awt.Font("cambria", 15, 20));
+		vidaJugador.setVisible(true);
+
 		botonSonido = new JButton("Sonido");// Crea el boton
 		botonSonido.setBounds(820, 0, 180, 50);
 		botonSonido.setForeground(new java.awt.Color(155, 017, 030));
@@ -219,6 +227,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		// Se agregan los JLabel a sus respectivos paneles
 		panelJugador.add(Puntaje, 0);
 		panelJugador.add(Monedas, 0);
+		panelJugador.add(vidaJugador, 0);
 		panelTorres.add(fondo, -1);
 		panelJugador.add(fondo2, -1);
 		panelJuego.add(fondo3, -1);
@@ -250,37 +259,36 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		crearBotones();
 
 	}// FIN iniciarJuego
-	
-	public void agregarCampo(){
-		
+
+	public void agregarCampo() {
+
 		panelJuego.addMouseListener(new MouseAdapter() {
-			
+
 			int cont = 0;
 
 			public void mouseClicked(MouseEvent e) {
 				if (cont == 0) {
-					
+
 					int x = e.getX();
 					int y = e.getY();
-					
-					Point nuevoPunto = new Point(x,y);
+
+					Point nuevoPunto = new Point(x, y);
 					j.clickEnJugadores(nuevoPunto);
-					
+
 				}
 				cont++;
-			
-			
-		}
+
+			}
 		});
 	}
-	
-	public void agregarBomba(BombaExplosion b){
-		
-		
+
+	public void agregarBomba(BombaExplosion b) {
+
 		panelJuego.addMouseListener(new MouseAdapter() {
 			int cont = 0;
-			public void mouseClicked(MouseEvent e){
-				if (cont == 0) { 
+
+			public void mouseClicked(MouseEvent e) {
+				if (cont == 0) {
 					int x = e.getX();
 					int y = e.getY();
 					switch (y / 100) {
@@ -329,23 +337,17 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 					}
 					if (x > 500)
 						x = 500;
-					Point punto = new Point(x,y);
+					Point punto = new Point(x, y);
 					b.setPosition(punto);
-					j.agregarEntidad(b,true);
+					j.agregarEntidad(b, true);
 					cont++;
-					
-					
-					
+
 				}
 			}
-			
-			
-			
+
 		});
-		
+
 	}
-	
-	
 
 	public void agregarTorre(Entidad ste) {
 
@@ -412,7 +414,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	}
 
 	public void crearBotones() {
-		
+
 		Boton torre1 = new BotonT1(tienda, this);
 		Boton torre2 = new BotonT2(tienda, this);
 		Boton torre3 = new BotonT3(tienda, this);
@@ -428,7 +430,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		BotonPwup pwup3 = FDuplicada.getInstance();
 		BotonPwup pwup4 = Temp.getInstance();
 		BotonPwup pwup5 = new MDuplicada(this);
-		
+
 		agregarBotones(torre1);
 		agregarBotones(torre2);
 		agregarBotones(torre3);
@@ -469,9 +471,10 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		panelTorres.add(B, 0);
 	}
 
-	public void actualizarEstadisticas(int puntaje, int cantMonedas) {
+	public void actualizarEstadisticas(int puntaje, int cantMonedas, int vidaActual) {
 		Puntaje.setText("Puntaje : " + puntaje);
 		Monedas.setText("Monedas : " + cantMonedas);
+		vidaJugador.setText("Vida : " + vidaActual);
 
 	}
 
@@ -483,7 +486,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		frameFinal.add(imagenganeButton, 0);
 		frameFinal.setTitle("Perdiste");
 		frameFinal.setVisible(true);
-		
+
 		mp3 = new sonidosMp3();
 		mp3.abrirArchivo("SadViolin");
 
@@ -492,18 +495,18 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	public void ganar() {
 		crearFrameFinal();
 
-		imagenganeButton = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/tenor.gif")));
+		imagenganeButton = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/youWin.jpg")));
 		imagenganeButton.setBounds(100, 0, 400, 400);
 		frameFinal.setTitle("Ganaste");
 		frameFinal.setVisible(true);
 		frameFinal.getContentPane().setBackground(Color.BLACK);
 		frameFinal.add(imagenganeButton, 0);
-		
+
 		mp3 = new sonidosMp3();
 		mp3.abrirArchivo("smokeEvd");
 	}
 
-	// Crea el frame del fin del juego y el boton reiniciar
+	// Crea el frame del fin del juego 
 	private void crearFrameFinal() {
 		frameJuego.dispose();
 		frameFinal = new JFrame();// Crea la ventana donde se desarrolla el juego
@@ -513,29 +516,5 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		frameFinal.setLayout(null);
 		frameFinal.setResizable(false);
 
-//		reiniciar = new JButton("Reiniciar");// Crea el boton
-//		reiniciar.setBounds(500, 200, 200, 50);
-//		reiniciar.setForeground(new java.awt.Color(155, 017, 030));
-//		reiniciar.setBackground(new java.awt.Color(0, 0, 0));
-//		reiniciar.setFont(new java.awt.Font("cambria", 10, 20));
-//		reiniciar.setHorizontalAlignment(SwingConstants.CENTER);
-//		reiniciar.setFocusPainted(false);
-//		reiniciar.setBorderPainted(true);
-//		reiniciar.setVisible(true);
-//
-//		reiniciar.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				reiniciarJuego();
-//			}
-//		});
-//		frameFinal.add(reiniciar);
 	}
-
-//	private void reiniciarJuego() {
-//		mp3.stop();
-//		frameFinal.dispose();
-//		iniciar();
-//
-//	}
-
 }// Fin GUI

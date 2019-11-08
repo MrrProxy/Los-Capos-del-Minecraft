@@ -103,9 +103,11 @@ public class Juego {
 
 		if (!aAgregar.isEmpty()) {
 			for (Entidad e : aAgregar) {
-				entidades.addFirst(e);
-				gui.actualizarEstadisticas(puntaje, cantMonedas);
-				gui.agregarAlJuego(e.getGrafico(0));
+				if(e!=null) {
+				 entidades.addFirst(e);
+				 gui.actualizarEstadisticas(puntaje, cantMonedas,VidaJugador);
+				 gui.agregarAlJuego(e.getGrafico(0));
+				}
 			}
 			aAgregar = new LinkedList<Entidad>();
 		}
@@ -115,7 +117,7 @@ public class Juego {
 				entidades.remove(e);
 				cantMonedas = cantMonedas + e.getMonedas()*multiplicadorOro;
 				puntaje = puntaje + e.getPuntaje();
-				gui.actualizarEstadisticas(puntaje, cantMonedas);
+				gui.actualizarEstadisticas(puntaje, cantMonedas,VidaJugador);
 				gui.eliminarEntidad(e.getGrafico(2));
 			}
 			aEliminar = new LinkedList<Entidad>();
@@ -143,7 +145,8 @@ public class Juego {
 	 * @param Entidad e
 	 * @param boolean agregar
 	 */
-	public synchronized void agregarEntidad(Entidad e, boolean agregar) {
+	public synchronized boolean agregarEntidad(Entidad e, boolean agregar) {
+		boolean toreturn=agregar;
 		if (agregar)
 			aAgregar.add(e);
 		else {
@@ -151,9 +154,11 @@ public class Juego {
 				if (map.puedoAgregar(e, entidades)) {
 					aAgregar.add(e);
 					cantMonedas -= e.getPrecioPersonaje();
+					toreturn=true;
 				}
 			}
 		}
+		return  toreturn;
 	}
 
 	/**

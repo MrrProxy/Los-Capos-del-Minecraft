@@ -16,7 +16,6 @@ import Enemigo.Goblin;
 import Entidad.Entidad;
 import Juego.Juego;
 import Obstaculos.Agua;
-import Obstaculos.Obstaculo;
 import Obstaculos.Roca;
 
 /**
@@ -130,8 +129,7 @@ public class Nivel extends Mapa {
 						} else {
 							enemigos.addFirst(enem);
 						}
-					}
-					else {
+					} else {
 						juego.agregarEntidad(enem, false);
 					}
 				}
@@ -151,54 +149,6 @@ public class Nivel extends Mapa {
 		}
 	}
 
-//	private void cargarObstaculos() {
-//		BufferedReader br = null;
-//		File fileNAct = new File(
-//				this.getClass().getResource("/zNiveles/Mapa/n" + N_Actual + "_enemigos.txt").getPath());
-//
-//		try {
-//			String sCurrentLine;
-//			br = new BufferedReader(new FileReader(fileNAct));
-//
-//			// Para cada linea del archivo
-//			while ((sCurrentLine = br.readLine()) != null) {
-//				// Para cada letra de la linea
-//				int i = 0;
-//
-//				while (i < sCurrentLine.length()) {
-//					char tipo = sCurrentLine.charAt(i); // Obtengo tipo de enemmigo
-//					int x = 0;
-//					int y = 0;
-//					i++;
-//
-//					while (i < sCurrentLine.length() && sCurrentLine.charAt(i) != ' ') {
-//						x = leerVariable(i, sCurrentLine);
-//						i = i + 3;
-//						y = leerVariable(i, sCurrentLine);
-//						i = i + 3;
-//					}
-//					if (i < sCurrentLine.length()) {
-//						if (sCurrentLine.charAt(i) == ' ')
-//							i++;
-//					}
-//					Point p = new Point(x, y);
-//					Entidad enem = crearEnemigo(tipo, p);
-//					enemigos.addLast(enem);
-//				}
-//
-//			}
-//
-//		} catch (IOException u) { // Esto es por si ocurre un error
-//			u.printStackTrace();
-//		} finally { // Esto es para que, haya ocurrido error o no
-//			try {
-//				if (br != null)
-//					br.close(); // Cierre el archivo
-//			} catch (IOException ex) {
-//				ex.printStackTrace();
-//			}
-//		}
-//	}
 	/**
 	 * Lee desde el archivo la coordenada X o Y de tres numeros.
 	 * 
@@ -219,13 +169,14 @@ public class Nivel extends Mapa {
 
 	public void agregarEnemigos() {
 		random = new Random();
-		r = random.nextInt(4) + 1;
-
+		r = random.nextInt(2) + 1;
+		boolean b=false;
 		while (!enemigos.isEmpty() && r != 0) {
 			juego.agregarEntidad(enemigos.getFirst(), true);
-			enemigos.removeFirst();
+				enemigos.removeFirst();
 			r--;
 		}
+		System.out.println("catenemigosmuertos  "+cantEnemigosMuertos+"y cant enemigos "+cantEnemigos+"agregueee "+b+" lista enemigos"+enemigos.isEmpty());
 		if (enemigos.isEmpty() && N_Actual < N_Final && cantEnemigosMuertos >= cantEnemigos) {
 //			try {
 //				HiloOleadas.sleep(10000);
@@ -268,13 +219,13 @@ public class Nivel extends Mapa {
 			e = new GolemPiedra(p, 70, 70);
 			break;
 		case 'c':
-			e = new GolemHielo(p, 70, 70);
+			e = new ReaperMan(p, 70, 70);
 			break;
 		case 'd':
 			e = new FallenAngel(p, 70, 70);
 			break;
 		case 'e':
-			e = new ReaperMan(p, 70, 70);
+			e = new GolemHielo(p, 70, 70);
 
 			break;
 		case 'f':

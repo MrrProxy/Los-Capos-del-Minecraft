@@ -24,7 +24,7 @@ public class BotonLava extends Boton{
 
 	@Override
 	protected ImageIcon getIconoBoton() {
-		return new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/Boton2.png"));
+		return new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/BotonLava.png"));
 
 	}
 
