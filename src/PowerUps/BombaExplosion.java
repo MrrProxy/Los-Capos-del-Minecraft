@@ -14,7 +14,7 @@ public class BombaExplosion extends Entidad{
 		puntosVida=1;
 		danioImpacto=100000;
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Objetos/BombaExplotando.png"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Objetos/Explosion.png"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Objetos/ExplosionGrande.gif"));
 	}
 	
 	public void recibirDaño(int danioImpacto){};
