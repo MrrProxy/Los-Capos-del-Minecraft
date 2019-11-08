@@ -98,16 +98,16 @@ public abstract class Enemigo extends Entidad {
 			nuevoPremio = new CampoProteccion(pos, width, height);
 			break;
 		case 1:
-			nuevoPremio = new CampoProteccion(pos, width, height);
+			nuevoPremio = new Bomba(pos, 80, 80);
 			break;
 		case 2:
-			nuevoPremio = new CampoProteccion(pos, width, height);
+			nuevoPremio = new Bomba(pos, 80, 80);
 			break;
 		case 3:
-			nuevoPremio = new CampoProteccion(pos, width, height);
+			nuevoPremio = new Bomba(pos, 80, 80);
 			break;
 		case 4:
-			nuevoPremio = new CampoProteccion(pos, width, height);
+			nuevoPremio = new Bomba(pos, 80, 80);
 			break;
 		}
 		

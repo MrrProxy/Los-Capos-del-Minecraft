@@ -11,7 +11,7 @@ public class CProteccion extends BotonPwup {
 	
 	private static  CProteccion instance;
 
-	public CProteccion(GUI gui) {
+	private CProteccion(GUI gui) {
 		super(gui);
 		this.setEnabled(false);
 		this.setBounds(200, 40, 100, 50);

@@ -5,6 +5,7 @@ import Enemigo.Enemigo;
 import Enemigo.ReaperMan;
 import Enemigo.ReaperManRed;
 import Juego.Juego;
+import Objetos.BombaExplosion;
 import Objetos.Obstaculo;
 import Objetos.Premio;
 import Personaje.Personaje;
@@ -31,6 +32,10 @@ public class VisitorPersonaje extends Visitor{
 	}
 	
 	public void afectar(ReaperMan e){System.out.println("Entre acá");};
+	
+	public void afectar(BombaExplosion b){
+		//b.actuar();
+	}
 
 	public void afectar(Disparo d) {
 		

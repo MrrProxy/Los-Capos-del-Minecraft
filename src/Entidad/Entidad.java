@@ -190,7 +190,7 @@ public abstract class Entidad {
 		}
 		
 		public void recibirDaño(int daño) {
-			puntosVida-=daño;
+			puntosVida=puntosVida-daño;
 			
 		}
 		public Visitor getVisitor() {

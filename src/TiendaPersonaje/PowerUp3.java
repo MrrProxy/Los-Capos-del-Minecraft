@@ -1,7 +1,10 @@
 package TiendaPersonaje;
 
 import javax.swing.ImageIcon;
+
+import Entidad.Entidad;
 import GUI.GUI;
+import Juego.Juego;
 
 public class PowerUp3 extends BotonPwup {
 	
@@ -20,6 +23,9 @@ public class PowerUp3 extends BotonPwup {
 
 	@Override
 	protected void accionarBoton() {
+		
+		for (Entidad e : Juego.getInstance().getEntidades())
+			System.out.println(e.getClass());
 		
 	}
 

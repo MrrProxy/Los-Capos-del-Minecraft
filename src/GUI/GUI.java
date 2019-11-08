@@ -6,6 +6,8 @@ import javax.swing.*;
 import Entidad.Entidad;
 import Hilo.HiloSonido;
 import Juego.Juego;
+import Objetos.Bomba;
+import Objetos.BombaExplosion;
 import Objetos.CampoProteccion;
 import Sonidos.sonidosMp3;
 import Tienda.Boton;
@@ -269,6 +271,80 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		}
 		});
 	}
+	
+	public void agregarBomba(BombaExplosion b){
+		
+		//Point punto = null;
+		
+		panelJuego.addMouseListener(new MouseAdapter() {
+			int cont = 0;
+			public void mouseClicked(MouseEvent e){
+				if (cont == 0) { 
+					int x = e.getX();
+					int y = e.getY();
+					switch (y / 100) {
+					case 0:
+						y = 0;
+						break;
+					case 1:
+						y = 100;
+						break;
+					case 2:
+						y = 200;
+						break;
+					case 3:
+						y = 300;
+						break;
+					case 4:
+						y = 400;
+						break;
+					case 5:
+						y = 500;
+						break;
+					case 6:
+						y = 600;
+						break;
+					}
+					switch (x / 100) {
+					case 0:
+						x = 0;
+						break;
+					case 1:
+						x = 100;
+						break;
+					case 2:
+						x = 200;
+						break;
+					case 3:
+						x = 300;
+						break;
+					case 4:
+						x = 400;
+						break;
+					case 5:
+						x = 500;
+						break;
+
+					}
+					if (x > 500)
+						x = 500;
+					Point punto = new Point(x,y);
+					b.setPosition(punto);
+					j.agregarEntidad(b,true);
+					cont++;
+					
+					
+					
+				}
+			}
+			
+			
+			
+		});
+		
+	}
+	
+	
 
 	public void agregarTorre(Entidad ste) {
 
@@ -342,7 +418,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Boton torre5 = new BotonT5(tienda, this);
 		Boton Comprar = new BotonComprar(tienda, this);
 		BotonPwup pwup1 = CProteccion.getInstance();
-		BotonPwup pwup2 = new PowerUp2(this);
+		BotonPwup pwup2 = Bombas.getInstance();
 		BotonPwup pwup3 = new PowerUp3(this);
 		BotonPwup pwup4 = new PowerUp4(this);
 		BotonPwup pwup5 = new PowerUp5(this);
