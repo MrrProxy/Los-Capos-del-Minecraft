@@ -1,4 +1,4 @@
-package Objetos;
+package PowerUps;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -43,14 +43,11 @@ public class BombaExplosion extends Entidad{
 		
 		//timer.start();
 	}
-
-	@Override
+	
 	public void Accionar() {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void Aceptar(Visitor v) {
 		v.afectar(this);
 		

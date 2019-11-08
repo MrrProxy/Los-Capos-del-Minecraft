@@ -6,9 +6,7 @@ import javax.swing.*;
 import Entidad.Entidad;
 import Hilo.HiloSonido;
 import Juego.Juego;
-import Objetos.Bomba;
-import Objetos.BombaExplosion;
-import Objetos.CampoProteccion;
+import PowerUps.BombaExplosion;
 import Sonidos.sonidosMp3;
 import Tienda.Boton;
 import Tienda.BotonComprar;
@@ -276,7 +274,6 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	
 	public void agregarBomba(BombaExplosion b){
 		
-		//Point punto = null;
 		
 		panelJuego.addMouseListener(new MouseAdapter() {
 			int cont = 0;
