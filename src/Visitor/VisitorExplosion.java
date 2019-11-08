@@ -3,9 +3,9 @@ package Visitor;
 import Disparos.Disparo;
 import Enemigo.Enemigo;
 import Entidad.Entidad;
-import Objetos.BombaExplosion;
-import Objetos.Obstaculo;
-import Objetos.Premio;
+import Obstaculos.Obstaculo;
+import Obstaculos.ObstaculoTemporal;
+import PowerUps.*;
 import Personaje.Personaje;
 
 public class VisitorExplosion extends Visitor {
@@ -36,13 +36,19 @@ public class VisitorExplosion extends Visitor {
 	}
 
 	@Override
+	public void afectar(Premio p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public void afectar(Obstaculo o) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void afectar(Premio p) {
+	public void afectar(ObstaculoTemporal p) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -2,10 +2,9 @@ package Visitor;
 
 import Disparos.Disparo;
 import Enemigo.Enemigo;
+import Enemigo.ReaperMan;
 import Juego.Juego;
-import Objetos.BombaExplosion;
-import Objetos.Obstaculo;
-import Objetos.Premio;
+import PowerUps.*;
 import Obstaculos.Obstaculo;
 import Obstaculos.ObstaculoTemporal;
 import Personaje.Personaje;
