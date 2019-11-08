@@ -2,6 +2,7 @@ package TiendaPersonaje;
 
 import javax.swing.ImageIcon;
 import GUI.GUI;
+import PowerUps.*;
 
 public class Bombas extends BotonPwup {
 	

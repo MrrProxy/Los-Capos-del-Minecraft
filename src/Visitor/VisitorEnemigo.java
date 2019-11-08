@@ -2,7 +2,6 @@ package Visitor;
 
 import Disparos.Disparo;
 import Enemigo.Enemigo;
-import Juego.Juego;
 import Obstaculos.Obstaculo;
 import Obstaculos.ObstaculoTemporal;
 import Personaje.Personaje;
@@ -29,35 +28,34 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void afectar(Disparo d) {
-		
+
 	}
-	
 
 	@Override
-	public void afectar(Premio p){
+	public void afectar(Premio p) {
 		System.out.println("Estoy entrando acá");
-		if (p.getActivado()){
+		if (p.getActivado()) {
 			p.morir();
 			miEntidad.morir();
 		}
-		
+
 	}
-	
-	public void afectar(BombaExplosion b){
-		//b.actuar();
-		//System.out.println("Entre??");
+
+	public void afectar(BombaExplosion b) {
+		// b.actuar();
+		// System.out.println("Entre??");
 	}
 
 	@Override
 	public void afectar(ObstaculoTemporal p) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void afectar(Obstaculo o) {
 		o.recibirDaño(miEntidad.getDanio());
-		
+
 	}
 
 }

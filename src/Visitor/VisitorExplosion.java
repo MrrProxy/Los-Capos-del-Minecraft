@@ -37,6 +37,11 @@ public class VisitorExplosion extends Visitor {
 	}
 
 	public void afectar(ObstaculoTemporal p) {
+		
+	}
+
+	@Override
+	public void afectar(Premio p) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -47,10 +52,5 @@ public class VisitorExplosion extends Visitor {
 		
 	}
 
-	@Override
-	public void afectar(Premio p) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
