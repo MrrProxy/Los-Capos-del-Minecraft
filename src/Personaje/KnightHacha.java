@@ -24,6 +24,7 @@ public class KnightHacha extends Personaje {
 		puntosVida = 200;
 		precioPersonaje = 300;
 		danioImpacto=5;
+		alcance=0;
 	}
 
 	@Override

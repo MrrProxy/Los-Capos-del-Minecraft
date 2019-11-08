@@ -4,8 +4,8 @@ import java.awt.Point;
 
 import Disparos.Disparo;
 import Entidad.Entidad;
+import PowerUps.*;
 import Visitor.VisitorPersonaje;
-import Objetos.*;
 
 /**
  * Clase abstracta Personaje.

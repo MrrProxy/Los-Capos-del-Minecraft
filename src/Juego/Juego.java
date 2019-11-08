@@ -61,7 +61,7 @@ public class Juego {
 	public void iniciarJuego() {
 
 		map = new Mapa();
-		nivel= Nivel.getInstance();
+		nivel = Nivel.getInstance();
 		entidades = new LinkedList<Entidad>();
 		aAgregar = new LinkedList<Entidad>();
 		aEliminar = new LinkedList<Entidad>();
@@ -85,7 +85,7 @@ public class Juego {
 				if (!e1.estoyMuerto()) {
 					boolean choco = false;
 					for (Entidad e2 : entidades) {
-						if (e1 != e2 && e1.chocan(e2)) {
+						if (e1 != e2 && e1.chocan(e2) && e2.chocan(e1)) {
 							e1.Aceptar(e2.getVisitor());
 							choco = true;
 						}
@@ -113,7 +113,7 @@ public class Juego {
 			for (Entidad e : aEliminar) {
 				e.setGrafico(2);
 				entidades.remove(e);
-				cantMonedas = cantMonedas + e.getMonedas();
+				cantMonedas = cantMonedas + e.getMonedas()*multiplicadorOro;
 				puntaje = puntaje + e.getPuntaje();
 				gui.actualizarEstadisticas(puntaje, cantMonedas);
 				gui.eliminarEntidad(e.getGrafico(2));
@@ -121,14 +121,28 @@ public class Juego {
 			aEliminar = new LinkedList<Entidad>();
 		}
 	}
+
+	/**
+	 * 
+	 */
+	public void enemigoMuerto() {
+		nivel.sumarEnemigosMuertos();
+	}
+
+	
 	
 	public void setMultiplicador(int m) {
 		multiplicadorOro = m;
 	}
-	public void enemigoMuerto(){
-		nivel.sumarEnemigosMuertos();
-	}
 
+	/**
+	 * Agrega la entidad a la lista de entidades si el espacio donde se quiere
+	 * agregar esta vacio(solo controla si agregar es falso) caso contrario obvia el
+	 * contro y agrega la entidad.
+	 * 
+	 * @param Entidad e
+	 * @param boolean agregar
+	 */
 	public synchronized void agregarEntidad(Entidad e, boolean agregar) {
 		if (agregar)
 			aAgregar.add(e);
@@ -203,7 +217,12 @@ public class Juego {
 		}
 	}
 
-	// Termina el juego
+	/**
+	 * Termina el juego Si gane es verdadero llama a ganar, caso contrario llama a
+	 * perder.
+	 * 
+	 * @param gane
+	 */
 	public void terminarJuego(boolean gane) {
 		tiempo.setEjecutar(false);
 		tiempo2.setEjecutar(false);
@@ -219,6 +238,12 @@ public class Juego {
 		}
 	}
 
+	/**
+	 * Controla si la entidad fue clickeada, en cuyo caso llama a fusteclikeado de
+	 * la entidad
+	 * 
+	 * @param punto
+	 */
 	public void clickEnEntidades(Point punto) {
 		for (Entidad e : entidades) {
 			if (e.getRectangle().contains(punto))
@@ -226,12 +251,17 @@ public class Juego {
 		}
 
 	}
-	
-	public void clickEnJugadores(Point punto){
-		for (Entidad e: entidades)
+
+	/**
+	 * Controla si la entidad fue clickeada, en cuyo caso agrega el campo sobre la
+	 * entidad (solo si esta es un personaje)
+	 * 
+	 * @param punto
+	 */
+	public void clickEnJugadores(Point punto) {
+		for (Entidad e : entidades)
 			if (e.getRectangle().contains(punto))
 				e.addCampo();
 	}
-	
 
 }// Fin clase Juego

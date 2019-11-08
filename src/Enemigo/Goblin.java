@@ -15,9 +15,9 @@ public class Goblin extends Enemigo {
 	public Goblin(Point p, int x, int y) {
 		super(p, x, y);
 
-		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/WALKING_GOBLIN_1.gif"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ATTACK_GOBLIN_1.gif"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/DYING_GOBLIN_1.gif"));
+		this.imagen[MOVIMIENTO] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/WALKING_GOBLIN_1.gif"));
+		this.imagen[ATAQUE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ATTACK_GOBLIN_1.gif"));
+		this.imagen[MUERTE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/DYING_GOBLIN_1.gif"));
 		this.imagen[3] = null;
 		velocidad = 8;
 		velocidad = 10;

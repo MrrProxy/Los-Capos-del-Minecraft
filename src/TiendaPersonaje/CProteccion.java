@@ -3,7 +3,7 @@ package TiendaPersonaje;
 import javax.swing.ImageIcon;
 import GUI.GUI;
 import Juego.Juego;
-import Objetos.CampoProteccion;
+import PowerUps.CampoProteccion;
 
 public class CProteccion extends BotonPwup {
 	

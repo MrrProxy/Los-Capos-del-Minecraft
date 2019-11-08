@@ -6,7 +6,10 @@ import Juego.Juego;
 import Objetos.BombaExplosion;
 import Objetos.Obstaculo;
 import Objetos.Premio;
+import Obstaculos.Obstaculo;
+import Obstaculos.ObstaculoTemporal;
 import Personaje.Personaje;
+import PowerUps.Premio;
 
 public class VisitorEnemigo extends Visitor {
 
@@ -31,9 +34,6 @@ public class VisitorEnemigo extends Visitor {
 		
 	}
 	
-	public void afectar(Obstaculo o) {
-		o.recibirDaño(miEntidad.getDanio());
-	}
 
 	@Override
 	public void afectar(Premio p){
@@ -41,7 +41,6 @@ public class VisitorEnemigo extends Visitor {
 		if (p.getActivado()){
 			p.morir();
 			miEntidad.morir();
-			Juego.getInstance().enemigoMuerto();
 		}
 		
 	}
@@ -49,6 +48,18 @@ public class VisitorEnemigo extends Visitor {
 	public void afectar(BombaExplosion b){
 		//b.actuar();
 		//System.out.println("Entre??");
+	}
+
+	@Override
+	public void afectar(ObstaculoTemporal p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void afectar(Obstaculo o) {
+		o.recibirDaño(miEntidad.getDanio());
+		
 	}
 
 }

@@ -14,9 +14,9 @@ public class FallenAngel extends Enemigo {
 	public FallenAngel(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 		
-		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/FallenAngel0_running.gif"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/FallenAngel0_attack.gif"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/FallenAngel0_die.gif"));
+		this.imagen[MOVIMIENTO] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/FallenAngel0_running.gif"));
+		this.imagen[ATAQUE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/FallenAngel0_attack.gif"));
+		this.imagen[MUERTE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/FallenAngel0_die.gif"));
 		this.imagen[3] = null;
 		velocidad=6;
 		puntosVida=1000;
@@ -24,7 +24,6 @@ public class FallenAngel extends Enemigo {
 		puntaje=10;
 		this.danioImpacto = 5;
 		velocidadInicial=velocidad;
-
 
 	}
 

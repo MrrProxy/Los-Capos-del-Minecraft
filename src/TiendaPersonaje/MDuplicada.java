@@ -4,8 +4,8 @@ import java.awt.Color;
 
 import javax.swing.ImageIcon;
 import GUI.GUI;
-import Objetos.DuplicarMonedas;
-import Objetos.FuerzaDuplicada;
+import PowerUps.DuplicarMonedas;
+import PowerUps.FuerzaDuplicada;
 
 public class MDuplicada extends BotonPwup {
 	

@@ -6,8 +6,7 @@ import Visitor.VisitorDisparo;
 
 public abstract class Disparo extends Entidad {
 	
-	
-	
+	//Constructor
 	protected Disparo(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 		miVisitor=new VisitorDisparo(this);

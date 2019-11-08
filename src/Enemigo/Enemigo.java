@@ -6,7 +6,7 @@ import java.util.Random;
 
 import Entidad.Entidad;
 import Mapa.Nivel;
-import Objetos.*;
+import PowerUps.*;
 import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 
@@ -79,23 +79,27 @@ public abstract class Enemigo extends Entidad {
 	}
 
 	public void morir() {
-		puntosVida = 0;
+		juego.enemigoMuerto();
 		Random rnd = new Random();
 		int posibilidad = rnd.nextInt(5);
-		if (posibilidad == 1) // posibilidad puede ser 0,1,2,3,4. Quiero un 20% prob de soltar premio
+		if (posibilidad == 1) { // posibilidad puede ser 0,1,2,3,4. Quiero un 20% prob de soltar premio
 			generarPowerUp();
+		}
 
 	}
 
+	/**
+	 * Genera un power up random
+	 * @return Premio nuevoPremio
+	 */
 	private Premio generarPowerUp() {
 	
 		Premio nuevoPremio = null;
-		System.out.println("Generé un premio!");
 		Random rnd = new Random();
 		int premioElegido = rnd.nextInt(5);
 		switch (premioElegido) {
 		case 0:
-			nuevoPremio = new Temporizador(pos, width, height);
+			nuevoPremio = new CampoProteccion(pos, width, height);
 			break;
 		case 1:
 			nuevoPremio = new Bomba(pos, 80, 80);
@@ -108,7 +112,6 @@ public abstract class Enemigo extends Entidad {
 			break;
 		case 4:
 			nuevoPremio = new Bomba(pos, 80, 80);
-
 			break;
 		}
 		
@@ -116,7 +119,7 @@ public abstract class Enemigo extends Entidad {
 		return nuevoPremio;
 		
 	}
-
+	
 	public int getPuntaje() {
 		return puntaje;
 	}
@@ -136,15 +139,6 @@ public abstract class Enemigo extends Entidad {
 			salida = true;
 		}
 		return salida;
-	}
-	
-	public void detener(boolean d){
-		if (d) {
-			velocidad=0;
-		}
-		else {
-			velocidad=velocidadInicial;
-		}	
 	}
 
 }

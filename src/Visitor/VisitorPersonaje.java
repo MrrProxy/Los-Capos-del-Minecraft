@@ -2,13 +2,14 @@ package Visitor;
 
 import Disparos.Disparo;
 import Enemigo.Enemigo;
-import Enemigo.ReaperMan;
-import Enemigo.ReaperManRed;
 import Juego.Juego;
 import Objetos.BombaExplosion;
 import Objetos.Obstaculo;
 import Objetos.Premio;
+import Obstaculos.Obstaculo;
+import Obstaculos.ObstaculoTemporal;
 import Personaje.Personaje;
+import PowerUps.Premio;
 
 public class VisitorPersonaje extends Visitor{
 	
@@ -30,7 +31,7 @@ public class VisitorPersonaje extends Visitor{
 		}
 		
 	}
-	
+
 	public void afectar(ReaperMan e){System.out.println("Entre acá");};
 	
 	public void afectar(BombaExplosion b){
@@ -41,15 +42,16 @@ public class VisitorPersonaje extends Visitor{
 		
 	}
 
-	@Override
-	public void afectar(Obstaculo o) {
-		// TODO Auto-generated method stub
+
+	public void afectar(Premio p) {
 		
 	}
 
-	@Override
-	public void afectar(Premio p) {
-		// TODO Auto-generated method stub
+	public void afectar(ObstaculoTemporal p) {
+		
+	}
+
+	public void afectar(Obstaculo o) {
 		
 	}
 

@@ -2,7 +2,7 @@ package TiendaPersonaje;
 
 import javax.swing.ImageIcon;
 import GUI.GUI;
-import Objetos.FuerzaDuplicada;
+import PowerUps.FuerzaDuplicada;
 
 public class FDuplicada extends BotonPwup {
 	

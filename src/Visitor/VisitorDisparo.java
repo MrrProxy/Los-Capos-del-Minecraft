@@ -3,9 +3,10 @@ package Visitor;
 import Disparos.Disparo;
 import Enemigo.Enemigo;
 import Entidad.Entidad;
-import Objetos.Obstaculo;
-import Objetos.Premio;
+import Obstaculos.Obstaculo;
+import Obstaculos.ObstaculoTemporal;
 import Personaje.Personaje;
+import PowerUps.Premio;
 
 public class VisitorDisparo extends Visitor {
 
@@ -28,15 +29,15 @@ public class VisitorDisparo extends Visitor {
 		miEntidad.Accionar();
 	}
 
-	@Override
-	public void afectar(Obstaculo o) {
-		miEntidad.Accionar();
-		
+
+	public void afectar(Premio p) {
+	}
+
+	public void afectar(ObstaculoTemporal p) {
 	}
 
 	@Override
-	public void afectar(Premio p) {
-		// TODO Auto-generated method stub
+	public void afectar(Obstaculo o) {
 		
 	}
 	

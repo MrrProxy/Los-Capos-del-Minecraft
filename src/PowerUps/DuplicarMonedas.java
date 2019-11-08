@@ -1,4 +1,4 @@
-package Objetos;
+package PowerUps;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 import Entidad.Entidad;
-import TiendaPersonaje.CProteccion;
 import TiendaPersonaje.MDuplicada;
 import Visitor.VisitorPremio;
 

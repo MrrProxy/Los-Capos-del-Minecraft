@@ -2,8 +2,8 @@ package TiendaPersonaje;
 
 import javax.swing.ImageIcon;
 import GUI.GUI;
-import Objetos.FuerzaDuplicada;
-import Objetos.Temporizador;
+import PowerUps.FuerzaDuplicada;
+import PowerUps.Temporizador;
 
 public class Temp extends BotonPwup {
 	

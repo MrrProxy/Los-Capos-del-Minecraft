@@ -17,9 +17,9 @@ public class GolemHielo extends Enemigo {
 	public GolemHielo(Point p, int ancho, int alto) {
 		super(p, ancho, alto);
 
-		this.imagen[0] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemHielo_Running.gif"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemHielo_Attack.gif"));
-		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemHielo_Dying.gif"));
+		this.imagen[MOVIMIENTO] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemHielo_Running.gif"));
+		this.imagen[ATAQUE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemHielo_Attack.gif"));
+		this.imagen[MUERTE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemHielo_Dying.gif"));
 		this.imagen[3] = null;
 		velocidad = 8;
 		puntosVida = 100;
