@@ -95,7 +95,7 @@ public abstract class Enemigo extends Entidad {
 		int premioElegido = rnd.nextInt(5);
 		switch (premioElegido) {
 		case 0:
-			nuevoPremio = new CampoProteccion(pos, width, height);
+			nuevoPremio = new Temporizador(pos, width, height);
 			break;
 		case 1:
 			nuevoPremio = new Bomba(pos, 80, 80);
@@ -108,6 +108,7 @@ public abstract class Enemigo extends Entidad {
 			break;
 		case 4:
 			nuevoPremio = new Bomba(pos, 80, 80);
+
 			break;
 		}
 		
@@ -135,6 +136,15 @@ public abstract class Enemigo extends Entidad {
 			salida = true;
 		}
 		return salida;
+	}
+	
+	public void detener(boolean d){
+		if (d) {
+			velocidad=0;
+		}
+		else {
+			velocidad=velocidadInicial;
+		}	
 	}
 
 }

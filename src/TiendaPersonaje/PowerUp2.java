@@ -3,14 +3,14 @@ package TiendaPersonaje;
 import javax.swing.ImageIcon;
 import GUI.GUI;
 
-public class PowerUp4 extends BotonPwup {
+public class PowerUp2 extends BotonPwup {
 	
 	private static final long serialVersionUID = 1L;
 
-	public PowerUp4(GUI gui) {
+	public PowerUp2(GUI gui) {
 		super(gui);
-		this.setBounds(500, 40, 100, 50);
-		this.setText("Pwup4 ");
+		this.setBounds(300, 40, 100, 50);
+		this.setText("Pwup2 ");
 
 	}
 

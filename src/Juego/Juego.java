@@ -27,6 +27,8 @@ public class Juego {
 	private HiloOleadas tiempo2;
 	private HiloSonido tiempo3;
 	private Nivel nivel;
+	
+	private int multiplicadorOro;
 
 	private GUI gui;
 	private LinkedList<Entidad> entidades;
@@ -39,6 +41,7 @@ public class Juego {
 		VidaJugador = 100;
 		cantMonedas = 10000;
 		puntaje = 0;
+		multiplicadorOro = 1;
 	}
 
 	public static Juego getInstance() {
@@ -119,6 +122,9 @@ public class Juego {
 		}
 	}
 	
+	public void setMultiplicador(int m) {
+		multiplicadorOro = m;
+	}
 	public void enemigoMuerto(){
 		nivel.sumarEnemigosMuertos();
 	}
