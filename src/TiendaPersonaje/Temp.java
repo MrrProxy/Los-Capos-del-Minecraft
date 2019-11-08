@@ -2,7 +2,6 @@ package TiendaPersonaje;
 
 import javax.swing.ImageIcon;
 import GUI.GUI;
-import PowerUps.FuerzaDuplicada;
 import PowerUps.Temporizador;
 
 public class Temp extends BotonPwup {
@@ -29,7 +28,6 @@ public class Temp extends BotonPwup {
 		return null;
 		}
 
-	@Override
 	protected void accionarBoton() {
 		Temporizador t = new Temporizador(null,0,0);
 		t.activarPowerUp();

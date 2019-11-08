@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
-import TiendaPersonaje.Bombas;
+import TiendaPersonaje.BombaBoton;
 import Visitor.VisitorPremio;
 
 public class Bomba extends Premio {
@@ -20,8 +20,9 @@ public class Bomba extends Premio {
 	
 	public void fuisteClickeado(){
 		if (!activado){
+			System.out.println("que pasa");
 			morir();
-			Bombas.getInstance().sumarContador();
+			BombaBoton.getInstance().sumarContador();
 		}
 		
 	}

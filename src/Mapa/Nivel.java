@@ -14,6 +14,7 @@ import Enemigo.FallenAngel;
 import Enemigo.ReaperMan;
 import Enemigo.Goblin;
 import Entidad.Entidad;
+import Hilo.HiloOleadas;
 import Juego.Juego;
 import Obstaculos.Agua;
 import Obstaculos.Roca;
@@ -27,7 +28,7 @@ import Obstaculos.Roca;
 public class Nivel extends Mapa {
 
 	// Atributos de clase
-	private static int N_Final = 2;
+	private static int N_Final = 6;
 	// Atributos de instancia
 	private int N_Actual;
 	private LinkedList<Entidad> enemigos;
@@ -123,7 +124,7 @@ public class Nivel extends Mapa {
 					Entidad enem = crearEnemigo(tipo, p);
 					random = new Random();
 					r = random.nextInt(10);
-					if (tipo != 'r' && tipo != 'h') {
+					if (tipo != 'r' && tipo != 'h' && enem!=null) {
 						if (r < 5) {
 							enemigos.addLast(enem);
 						} else {
@@ -170,19 +171,18 @@ public class Nivel extends Mapa {
 	public void agregarEnemigos() {
 		random = new Random();
 		r = random.nextInt(2) + 1;
-		boolean b=false;
 		while (!enemigos.isEmpty() && r != 0) {
 			juego.agregarEntidad(enemigos.getFirst(), true);
-				enemigos.removeFirst();
+			enemigos.removeFirst();
 			r--;
 		}
-		System.out.println("catenemigosmuertos  "+cantEnemigosMuertos+"y cant enemigos "+cantEnemigos+"agregueee "+b+" lista enemigos"+enemigos.isEmpty());
-		if (enemigos.isEmpty() && N_Actual < N_Final && cantEnemigosMuertos >= cantEnemigos) {
-//			try {
-//				HiloOleadas.sleep(10000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
+		//System.out.println("catenemigosmuertos  "+cantEnemigosMuertos+"y cant enemigos "+cantEnemigos+" lista enemigos"+enemigos.isEmpty());
+		if (enemigos.isEmpty() && N_Actual <= N_Final && cantEnemigosMuertos >= cantEnemigos) {
+			try {
+				HiloOleadas.sleep(10000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			N_Actual++;
 			cargarEnemigos();
 			cantEnemigosMuertos = 0;

@@ -6,6 +6,7 @@ import Obstaculos.Obstaculo;
 import Obstaculos.ObstaculoTemporal;
 import Personaje.Personaje;
 import PowerUps.BombaExplosion;
+import PowerUps.CampoProteccionActivado;
 import PowerUps.Premio;
 
 public class VisitorEnemigo extends Visitor {
@@ -25,31 +26,26 @@ public class VisitorEnemigo extends Visitor {
 	public void afectar(Enemigo e) {
 		e.setEstado(2);
 	}
+	
+	public void afectar(CampoProteccionActivado c){
+		c.morir();
+		miEntidad.morir();
+	}
 
 	@Override
 	public void afectar(Disparo d) {
 
 	}
 
-	@Override
 	public void afectar(Premio p) {
-		if (p.getActivado()) {
-			p.morir();
-			miEntidad.morir();
-		}
-
 	}
 
 	public void afectar(BombaExplosion b) {
-		// b.actuar();
-		// System.out.println("Entre??");
 	}
 
-	@Override
 	public void afectar(ObstaculoTemporal p) {
 	}
 
-	@Override
 	public void afectar(Obstaculo o) {
 		o.recibirDaño(miEntidad.getDanio());
 

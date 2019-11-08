@@ -21,8 +21,8 @@ public class KnightHacha extends Personaje {
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ATTACK_KNIGHT_2.gif"));
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/DIE_KNIGHT_2.gif"));
 		this.imagen[3] = null;
-		puntosVida = 200;
-		precioPersonaje = 300;
+		puntosVida = 5000;
+		precioPersonaje = 2500;
 		danioImpacto=5;
 		alcance=0;
 	}

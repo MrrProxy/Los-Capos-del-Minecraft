@@ -426,10 +426,10 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Boton siguienteBoton = new BotonSiguiente(tienda, this);
 
 		BotonPwup pwup1 = CProteccion.getInstance();
-		BotonPwup pwup2 = Bombas.getInstance();
+		BotonPwup pwup2 = BombaBoton.getInstance();
 		BotonPwup pwup3 = FDuplicada.getInstance();
 		BotonPwup pwup4 = Temp.getInstance();
-		BotonPwup pwup5 = new MDuplicada(this);
+		BotonPwup pwup5 = new VelocidadDuplicada(this);
 
 		agregarBotones(torre1);
 		agregarBotones(torre2);
@@ -496,10 +496,9 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		crearFrameFinal();
 
 		imagenganeButton = new JLabel(new ImageIcon(this.getClass().getResource("/zImagenes/Mapa/youWin.jpg")));
-		imagenganeButton.setBounds(100, 0, 400, 400);
+		imagenganeButton.setBounds(0, 0, 600, 600);
 		frameFinal.setTitle("Ganaste");
 		frameFinal.setVisible(true);
-		frameFinal.getContentPane().setBackground(Color.BLACK);
 		frameFinal.add(imagenganeButton, 0);
 
 		mp3 = new sonidosMp3();
@@ -510,7 +509,8 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 	private void crearFrameFinal() {
 		frameJuego.dispose();
 		frameFinal = new JFrame();// Crea la ventana donde se desarrolla el juego
-		frameFinal.setBounds(0, 0, 640, 480);
+		frameFinal.setBounds(0, 0, 640, 600);
+		frameFinal.getContentPane().setBackground(Color.BLACK);
 		frameFinal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameFinal.setLocationRelativeTo(null);
 		frameFinal.setLayout(null);

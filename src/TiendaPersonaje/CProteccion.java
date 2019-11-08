@@ -34,7 +34,6 @@ public class CProteccion extends BotonPwup {
 	protected void accionarBoton() {
 		
 		GUI.getInstance().agregarCampo();
-		restarContador();
 		
 		
 		

@@ -25,6 +25,8 @@ public class VisitorObstaculo extends Visitor{
 	}
 
 	public void afectar(Disparo d) {
+		miEntidad.recibirDaño(d.getDanio());
+		d.morir();
 		
 		
 	}

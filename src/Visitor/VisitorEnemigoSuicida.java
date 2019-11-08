@@ -28,12 +28,6 @@ public class VisitorEnemigoSuicida extends Visitor {
 	}
 	
 	public void afectar(Premio p) {
-		if (p.getActivado()){
-			p.morir();
-			miEntidad.morir();
-		}
-		else
-			miEntidad.Accionar();
 	}
 
 	public void afectar(ObstaculoTemporal p) {

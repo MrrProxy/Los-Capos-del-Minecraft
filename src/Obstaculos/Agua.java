@@ -15,7 +15,7 @@ public class Agua extends ObstaculoTemporal{
 		this.imagen[3] = null;
 		puntosVida=100;
 		danioImpacto=5;
-		slow=6;
+		slow=3;
 
 	}
 

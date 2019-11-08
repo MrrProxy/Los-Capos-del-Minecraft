@@ -28,8 +28,7 @@ public class HiloOleadas extends Thread {
 		while (ejecutar) {
 			try {
 				nivel.agregarEnemigos();
-				//nivel.cargarObstaculos();
-				Thread.sleep(8000);
+				Thread.sleep(4000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

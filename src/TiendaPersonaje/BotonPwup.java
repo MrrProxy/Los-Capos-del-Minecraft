@@ -20,8 +20,7 @@ public abstract class BotonPwup extends JButton {
 		// this.setIcon(this.getIconoBoton());
 		this.setForeground(new java.awt.Color(155, 017, 030));
 		this.setBackground(new java.awt.Color(0, 0, 0));
-		this.setFont(new java.awt.Font("cambria", 4, 18));
-		this.setText("holass");
+		this.setFont(new java.awt.Font("cambria", 4, 12));
 		this.setVisible(true);
 		this.setLayout(null);
 		this.addActionListener(new ActionListener() {
@@ -33,7 +32,9 @@ public abstract class BotonPwup extends JButton {
 	
 	public void sumarContador(){
 		contadorPremio++;
-		this.setEnabled(true);
+		System.out.println(contadorPremio);
+		System.out.println("que onda");
+		setEnabled(true);
 	}
 	
 	public void restarContador(){

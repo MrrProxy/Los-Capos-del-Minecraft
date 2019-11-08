@@ -23,10 +23,11 @@ public class Mago extends Personaje {
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/ATTACK_MAGO_1.gif"));
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/zImagenes/Jugador/DIE_MAGO_1.gif"));
 		this.imagen[3] = null;
-		puntosVida = 2000;
-		precioPersonaje = 600;
-		danioImpacto=5;
+		puntosVida = 1000;
+		precioPersonaje = 4000;
+		danioImpacto=200;
 		alcance=500;
+		tiempoRealDisparos=30;
 		 mp3=new sonidosMp3();
 	}
 
@@ -36,7 +37,7 @@ public class Mago extends Personaje {
 			Point point = new Point(this.getPosition());
 			disparo = new DisparoMago(point, 50, 50, danioImpacto, alcance);
 			juego.agregarEntidad(disparo,true);
-			tiempoEntreDisparo = 30;
+			tiempoEntreDisparo = tiempoRealDisparos;
 			mp3.abrirArchivo("battle015");
 
 		}

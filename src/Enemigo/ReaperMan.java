@@ -24,11 +24,12 @@ public class ReaperMan extends Enemigo {
 		this.imagen[ATAQUE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ReaperMan_Attack.gif"));
 		this.imagen[MUERTE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/Explosion.gif"));
 		this.imagen[3] = null;
-		velocidad = 13;
+		velocidad = 6;
 		puntosVida = 1000;
 		monedas = 10;
 		puntaje = 10;
-		//danioImpacto=200;
+		danioImpacto=35;
+		DañoAJugador=15;
 		velocidadInicial=velocidad;
 		miVisitor = new VisitorEnemigoSuicida(this);
 

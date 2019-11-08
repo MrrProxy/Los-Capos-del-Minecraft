@@ -20,10 +20,12 @@ public class GolemPiedra extends Enemigo {
 		this.imagen[ATAQUE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemPiedra_Attack.gif"));
 		this.imagen[MUERTE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemPiedra_Dying.gif"));
 		this.imagen[3] = null;
-		velocidad = 6;
-		puntosVida = 1000;
-		monedas = 10;
-		puntaje = 10;
+		velocidad = 2;
+		puntosVida = 15000;
+		monedas = 5000;
+		puntaje = 500;
+		DañoAJugador=40;
+		danioImpacto=120;
 		velocidadInicial=velocidad;
 
 

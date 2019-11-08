@@ -145,8 +145,7 @@ public class Juego {
 	 * @param Entidad e
 	 * @param boolean agregar
 	 */
-	public synchronized boolean agregarEntidad(Entidad e, boolean agregar) {
-		boolean toreturn=agregar;
+	public synchronized void agregarEntidad(Entidad e, boolean agregar) {
 		if (agregar)
 			aAgregar.add(e);
 		else {
@@ -154,11 +153,9 @@ public class Juego {
 				if (map.puedoAgregar(e, entidades)) {
 					aAgregar.add(e);
 					cantMonedas -= e.getPrecioPersonaje();
-					toreturn=true;
 				}
 			}
 		}
-		return  toreturn;
 	}
 
 	/**
@@ -249,7 +246,7 @@ public class Juego {
 	 * 
 	 * @param punto
 	 */
-	public void clickEnEntidades(Point punto) {
+	public synchronized void clickEnEntidades(Point punto) {
 		for (Entidad e : entidades) {
 			if (e.getRectangle().contains(punto))
 				e.fuisteClickeado();
@@ -263,7 +260,7 @@ public class Juego {
 	 * 
 	 * @param punto
 	 */
-	public void clickEnJugadores(Point punto) {
+	public synchronized void clickEnJugadores(Point punto) {
 		for (Entidad e : entidades)
 			if (e.getRectangle().contains(punto))
 				e.addCampo();

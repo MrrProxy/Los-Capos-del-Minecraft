@@ -19,12 +19,12 @@ public class Goblin extends Enemigo {
 		this.imagen[ATAQUE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/ATTACK_GOBLIN_1.gif"));
 		this.imagen[MUERTE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/DYING_GOBLIN_1.gif"));
 		this.imagen[3] = null;
-		velocidad = 8;
 		velocidad = 10;
 		puntosVida = 1000;
-		monedas = 10;
+		monedas = 500;
+		DañoAJugador=3;
 		puntaje = 10;
-		danioImpacto=5;
+		danioImpacto=15;
 		velocidadInicial=velocidad;
 
 	}

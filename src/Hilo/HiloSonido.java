@@ -58,9 +58,13 @@ public class HiloSonido extends Thread {
 	private void soudtrackNivel() {
 		if (noTerminedeJugar) {
 			if (nivel.obtenerNivelActual() != soudtrack) {
-				soudtrack = nivel.obtenerNivelActual();
-				sonidosMp3.stop();
-				sonidosMp3.abrirArchivo("bsound" + nivel.obtenerNivelActual());
+				if (soudtrack > 2) {
+					sonidosMp3.abrirArchivo("bsound" + 1);
+				} else {
+					soudtrack = nivel.obtenerNivelActual();
+					sonidosMp3.stop();
+					sonidosMp3.abrirArchivo("bsound" + nivel.obtenerNivelActual());
+				}
 			} else {
 				sonidosMp3.loop();
 			}

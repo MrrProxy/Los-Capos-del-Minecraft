@@ -21,11 +21,12 @@ public class GolemHielo extends Enemigo {
 		this.imagen[ATAQUE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemHielo_Attack.gif"));
 		this.imagen[MUERTE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/GolemHielo_Dying.gif"));
 		this.imagen[3] = null;
-		velocidad = 8;
-		puntosVida = 100;
-		monedas = 10;
-		puntaje = 10;
-		danioImpacto=500;
+		velocidad = 5;
+		puntosVida = 800;
+		monedas = 300;
+		puntaje = 5;
+		danioImpacto=5;
+		DañoAJugador=2;
 		velocidadInicial=velocidad;
 
 

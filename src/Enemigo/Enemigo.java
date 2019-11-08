@@ -23,7 +23,7 @@ public abstract class Enemigo extends Entidad {
 	protected int puntaje;
 	protected int velocidadInicial;
 	protected Nivel nivel;// Es necesario para actualizar las muertes
-	private int DañoAJugador;//Daño que produce cada enemigo al pasar
+	protected int DañoAJugador;//Daño que produce cada enemigo al pasar
 
 	// Constructor
 	protected Enemigo(Point p, int ancho, int alto) {
@@ -31,8 +31,6 @@ public abstract class Enemigo extends Entidad {
 		miVisitor = new VisitorEnemigo(this);
 		nivel = Nivel.getInstance();
 		estado=1;
-		DañoAJugador=5;
-
 	}
 
 	/**
@@ -50,6 +48,9 @@ public abstract class Enemigo extends Entidad {
 	public void Slow(int v) {
 		if(velocidad==velocidadInicial) {
 			velocidad-=v;
+			if(velocidad<=0) {
+				velocidad=1;
+			}
 		}
 	}
 
@@ -107,19 +108,19 @@ public abstract class Enemigo extends Entidad {
 		int premioElegido = rnd.nextInt(5);
 		switch (premioElegido) {
 		case 0:
-			nuevoPremio = new CampoProteccion(pos, width, height);
+			nuevoPremio = new CampoProteccion(pos,80,80);
 			break;
 		case 1:
-			nuevoPremio = new Bomba(pos, 80, 80);
+			nuevoPremio = new Bomba(pos, 70, 70);
 			break;
 		case 2:
-			nuevoPremio = new Bomba(pos, 80, 80);
+			nuevoPremio = new DuplicarVelocidadAtaque(pos,70, 70);
 			break;
 		case 3:
-			nuevoPremio = new Bomba(pos, 80, 80);
+			nuevoPremio = new Temporizador(pos, 40, 39);
 			break;
 		case 4:
-			nuevoPremio = new Bomba(pos, 80, 80);
+			nuevoPremio = new FuerzaDuplicada(pos, 40, 39);
 			break;
 		}
 		
@@ -147,6 +148,14 @@ public abstract class Enemigo extends Entidad {
 			salida = true;
 		}
 		return salida;
+	}
+	
+	public void detener(boolean d){
+		if (d)
+			velocidad=0;
+		else{
+			velocidad=velocidadInicial;
+		}
 	}
 
 }

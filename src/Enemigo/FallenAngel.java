@@ -18,11 +18,12 @@ public class FallenAngel extends Enemigo {
 		this.imagen[ATAQUE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/FallenAngel0_attack.gif"));
 		this.imagen[MUERTE] = new ImageIcon(this.getClass().getResource("/zImagenes/Enemigo/FallenAngel0_die.gif"));
 		this.imagen[3] = null;
-		velocidad=6;
-		puntosVida=1000;
-		monedas=10;
-		puntaje=10;
-		this.danioImpacto = 5;
+		velocidad=5;
+		puntosVida=5000;
+		monedas=2000;
+		DañoAJugador=15;
+		puntaje=40;
+		this.danioImpacto = 40;
 		velocidadInicial=velocidad;
 
 	}
