@@ -4,21 +4,22 @@ import javax.swing.ImageIcon;
 import GUI.GUI;
 import PowerUps.*;
 
-public class Bombas extends BotonPwup {
+public class BombaBoton extends BotonPwup {
 	
 	private static final long serialVersionUID = 1L;
-	private static Bombas instance;
+	private static BombaBoton instance;
 
-	private Bombas(GUI gui) {
+	private BombaBoton(GUI gui) {
 		super(gui);
 		this.setBounds(300, 40, 100, 50);
 		this.setText("Bombas");
+		this.setEnabled(false);
 
 	}
 	
-	public static Bombas getInstance(){
+	public static BombaBoton getInstance(){
 		if (instance==null)
-			instance=new Bombas(GUI.getInstance());
+			instance=new BombaBoton(GUI.getInstance());
 		return instance;
 		
 	}

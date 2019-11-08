@@ -244,7 +244,7 @@ public class Juego {
 	 * 
 	 * @param punto
 	 */
-	public void clickEnEntidades(Point punto) {
+	public synchronized void clickEnEntidades(Point punto) {
 		for (Entidad e : entidades) {
 			if (e.getRectangle().contains(punto))
 				e.fuisteClickeado();
@@ -258,7 +258,7 @@ public class Juego {
 	 * 
 	 * @param punto
 	 */
-	public void clickEnJugadores(Point punto) {
+	public synchronized void clickEnJugadores(Point punto) {
 		for (Entidad e : entidades)
 			if (e.getRectangle().contains(punto))
 				e.addCampo();

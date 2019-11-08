@@ -254,5 +254,8 @@ public abstract class Entidad {
         	
         }
         
-	
+        public void setTiempoDisparo(int t){};
+        
+        public int getTiempoDisparos(){return 0;}
+       
 }

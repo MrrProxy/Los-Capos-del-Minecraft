@@ -264,6 +264,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 					
 					Point nuevoPunto = new Point(x,y);
 					j.clickEnJugadores(nuevoPunto);
+					CProteccion.getInstance().restarContador();
 					
 				}
 				cont++;
@@ -333,6 +334,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 					b.setPosition(punto);
 					j.agregarEntidad(b,true);
 					cont++;
+					BombaBoton.getInstance().restarContador();
 					
 					
 					
@@ -420,10 +422,10 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		Boton Comprar = new BotonComprar(tienda, this);
 		Boton lavaBoton = new BotonLava(tienda, this);
 		BotonPwup pwup1 = CProteccion.getInstance();
-		BotonPwup pwup2 = Bombas.getInstance();
+		BotonPwup pwup2 = BombaBoton.getInstance();
 		BotonPwup pwup3 = FDuplicada.getInstance();
 		BotonPwup pwup4 = Temp.getInstance();
-		BotonPwup pwup5 = new MDuplicada(this);
+		BotonPwup pwup5 = VelocidadDuplicada.getInstance();
 		
 
 		Comprar.setFocusable(false);

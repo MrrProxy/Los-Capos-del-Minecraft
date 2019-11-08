@@ -26,6 +26,11 @@ public class VisitorEnemigo extends Visitor {
 	public void afectar(Enemigo e) {
 		e.setEstado(2);
 	}
+	
+	public void afectar(CampoProteccionActivado c){
+		c.morir();
+		miEntidad.morir();
+	}
 
 	@Override
 	public void afectar(Disparo d) {
@@ -35,12 +40,6 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void afectar(Premio p){
-		System.out.println("Estoy entrando acá");
-		if (p.getActivado()){
-			p.morir();
-			miEntidad.morir();
-		}
-		
 	}
 	
 	public void afectar(BombaExplosion b){

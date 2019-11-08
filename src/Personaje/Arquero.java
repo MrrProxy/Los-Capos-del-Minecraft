@@ -26,6 +26,7 @@ public class Arquero extends Personaje {
 		danioImpacto = 5;
 		alcance = 350;
 		disparar = false;
+		tiempoRealDisparos=20;
 	}
 
 	public void Accionar() {
@@ -34,7 +35,7 @@ public class Arquero extends Personaje {
 			Point point = new Point(this.getPosition());
 			disparo = new DisparoArquero(point, 50, 50, danioImpacto, alcance);
 			juego.agregarEntidad(disparo, true);
-			tiempoEntreDisparo = 20;
+			tiempoEntreDisparo = tiempoRealDisparos;
 		}
 		tiempoEntreDisparo--;
 

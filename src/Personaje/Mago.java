@@ -27,6 +27,7 @@ public class Mago extends Personaje {
 		precioPersonaje = 600;
 		danioImpacto=5;
 		alcance=500;
+		tiempoRealDisparos=30;
 		 mp3=new sonidosMp3();
 	}
 
@@ -36,7 +37,7 @@ public class Mago extends Personaje {
 			Point point = new Point(this.getPosition());
 			disparo = new DisparoMago(point, 50, 50, danioImpacto, alcance);
 			juego.agregarEntidad(disparo,true);
-			tiempoEntreDisparo = 30;
+			tiempoEntreDisparo = tiempoRealDisparos;
 			mp3.abrirArchivo("battle015");
 
 		}

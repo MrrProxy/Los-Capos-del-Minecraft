@@ -23,6 +23,8 @@ public abstract class Visitor {
 	public abstract void afectar(Obstaculo o);
 	public abstract void afectar(Premio p);
 	public abstract void afectar(ObstaculoTemporal p);
+	public void afectar(CampoProteccionActivado c){
+	}
 
 	public void afectar(BombaExplosion bombaExplosion) {
 		// TODO Auto-generated method stub

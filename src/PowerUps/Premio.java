@@ -19,14 +19,6 @@ public class Premio extends Entidad {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	public boolean getActivado(){
-		return activado;
-	}
-	
-	public void setActivado(boolean a){
-		activado=a;
-	}
 
 	@Override
 

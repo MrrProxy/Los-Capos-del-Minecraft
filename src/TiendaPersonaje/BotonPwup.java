@@ -33,7 +33,9 @@ public abstract class BotonPwup extends JButton {
 	
 	public void sumarContador(){
 		contadorPremio++;
-		this.setEnabled(true);
+		System.out.println(contadorPremio);
+		System.out.println("que onda");
+		setEnabled(true);
 	}
 	
 	public void restarContador(){

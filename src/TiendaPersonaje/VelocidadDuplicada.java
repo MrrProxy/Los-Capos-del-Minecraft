@@ -4,26 +4,26 @@ import java.awt.Color;
 
 import javax.swing.ImageIcon;
 import GUI.GUI;
-import PowerUps.DuplicarMonedas;
+import PowerUps.DuplicarVelocidadAtaque;
 import PowerUps.FuerzaDuplicada;
 
-public class MDuplicada extends BotonPwup {
+public class VelocidadDuplicada extends BotonPwup {
 	
 	private static final long serialVersionUID = 1L;
-	private static  MDuplicada instance;
+	private static  VelocidadDuplicada instance;
 
 
-	public MDuplicada(GUI gui) {
+	public VelocidadDuplicada(GUI gui) {
 		super(gui);
 		this.setEnabled(false);
 		this.setBounds(600, 40, 100, 50);
-		this.setText("Duplicar Monedas ");
+		this.setText("VA");
 
 	}
 	
-	public static MDuplicada getInstance() {
+	public static VelocidadDuplicada getInstance() {
 		if (instance == null)
-			instance = new MDuplicada(GUI.getInstance());
+			instance = new VelocidadDuplicada(GUI.getInstance());
 		return instance;
 
 	}
@@ -35,7 +35,7 @@ public class MDuplicada extends BotonPwup {
 
 	@Override
 	protected void accionarBoton() {
-		 DuplicarMonedas m = new DuplicarMonedas(null,0,0);
+		 DuplicarVelocidadAtaque m = new DuplicarVelocidadAtaque(null,0,0);
 		   m.activarPowerUp();
 			restarContador();
 		//this.setForeground(Color.RED);
