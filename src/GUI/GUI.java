@@ -429,7 +429,7 @@ public class GUI extends JFrame {// Interfaz grafica del juego
 		BotonPwup pwup2 = BombaBoton.getInstance();
 		BotonPwup pwup3 = FDuplicada.getInstance();
 		BotonPwup pwup4 = Temp.getInstance();
-		BotonPwup pwup5 = new VelocidadDuplicada(this);
+		BotonPwup pwup5 = VelocidadDuplicada.getInstance();
 
 		agregarBotones(torre1);
 		agregarBotones(torre2);

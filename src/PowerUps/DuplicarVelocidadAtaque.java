@@ -37,7 +37,7 @@ public class DuplicarVelocidadAtaque extends Premio{
 	}
 	public void fuisteClickeado(){	
 			morir();
-			FDuplicada.getInstance().sumarContador();}
+			VelocidadDuplicada.getInstance().sumarContador();}
 	}
 
 	
